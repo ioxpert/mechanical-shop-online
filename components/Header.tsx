@@ -8,6 +8,14 @@ interface HeaderProps {
   onCartClick: () => void;
 }
 
+const BrandIcon: React.FC = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mr-3 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h18v18H3V3z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3 12h18" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18" />
+  </svg>
+);
+
 const ShoppingCartIcon: React.FC = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -19,7 +27,10 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount, onCartClick }) => {
     <header className="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-md">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <div className="text-2xl font-bold text-primary font-serif">
-          <NavLink to="/">Shri Guru Nanak Glass</NavLink>
+          <NavLink to="/" className="flex items-center">
+            <BrandIcon />
+            <span>Shri Guru Nanak Glass</span>
+          </NavLink>
         </div>
         <nav className="hidden md:flex items-center space-x-8">
           {NAV_LINKS.map((link) => (
