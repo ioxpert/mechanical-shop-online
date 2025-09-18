@@ -21,9 +21,9 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ products, onAddToCart }) =>
 
   // Defines the display order and titles for product categories
   const categoryOrder: { key: string; title: string }[] = [
-    { key: 'Glass', title: 'Glass Items' },
-    { key: 'Aluminum', title: 'Aluminum Items' },
     { key: 'Mirrors', title: 'Mirror Items' },
+    { key: 'Aluminum', title: 'Aluminum Items' },
+    { key: 'Glass', title: 'Glass Items' },
   ];
 
   return (
