@@ -21,6 +21,23 @@ const XMarkIcon: React.FC = () => (
   </svg>
 );
 
+// Helper to convert a data URL to a File object
+const dataURLtoFile = (dataurl: string, filename: string): File | null => {
+  const arr = dataurl.split(',');
+  if (arr.length < 2) return null;
+  const match = arr[0].match(/:(.*?);/);
+  if (!match) return null;
+  const mime = match[1];
+  const bstr = atob(arr[1]);
+  let n = bstr.length;
+  const u8arr = new Uint8Array(n);
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+  return new File([u8arr], filename, { type: mime });
+};
+
+
 const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRemoveFromCart, onIncrementQuantity, onClearCart }) => {
   const { t } = useTranslation();
   const [checkoutStep, setCheckoutStep] = useState<CheckoutStep>('cart');
@@ -32,6 +49,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
   });
   const [locationStatus, setLocationStatus] = useState<'idle' | 'fetching' | 'success' | 'error'>('idle');
   const [finalOrderDetails, setFinalOrderDetails] = useState<{ whatsappUrl: string; images: CustomImage[] } | null>(null);
+  const [isPreparingOrder, setIsPreparingOrder] = useState(false);
 
   useEffect(() => {
     if (!isOpen) {
@@ -40,6 +58,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
         setCustomerDetails({ name: '', phone: '', address: '', location: null });
         setLocationStatus('idle');
         setFinalOrderDetails(null);
+        setIsPreparingOrder(false);
       }, 300);
     }
   }, [isOpen]);
@@ -88,8 +107,9 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
     setCheckoutStep('form');
   };
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = async () => {
     if (!isFormValid || cartItems.length === 0) return;
+    setIsPreparingOrder(true);
 
     const orderItems = cartItems.filter(item => !item.id.startsWith('custom-'));
     const customRequests = cartItems.filter(item => item.id.startsWith('custom-'));
@@ -116,6 +136,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
           message += ` (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}`;
         }
         message += '\n';
+        message += `  *${t('itemImage')}:* ${item.imageUrl}\n`;
         
         if (item.customInfo) {
           message += `  *${t('customizationNotes')}:* ${item.customInfo}\n`;
@@ -145,19 +166,48 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
     if (hasCustomizedItems) {
       message += `*${t('note')}:* ${t('customPriceNoteWhatsapp')}\n\n`;
     }
-
     message += t('whatsappOrderConfirmation');
+
+    // Attempt to use Web Share API for custom images
+    const customImageFiles: File[] = cartItems
+      .map(item => item.customImageBase64 && item.customImageName ? dataURLtoFile(item.customImageBase64, item.customImageName) : null)
+      .filter((file): file is File => file !== null);
+
+    if (navigator.share && customImageFiles.length > 0 && navigator.canShare && navigator.canShare({ files: customImageFiles })) {
+      try {
+        await navigator.share({
+          title: t('whatsappOrderTitle'),
+          text: message,
+          files: customImageFiles,
+        });
+        onClearCart();
+        onClose();
+        setIsPreparingOrder(false);
+        return;
+      } catch (err) {
+        console.error('User cancelled share or error:', err);
+        // Fallback to manual attach if user cancels
+      }
+    }
     
+    // Fallback logic
     const whatsappNumber = CONTACT_INFO.managers[0].phone.replace(/\D/g, '');
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-    const customImages: CustomImage[] = cartItems
+    const customImagesForDownload: CustomImage[] = cartItems
         .filter(item => item.customImageName && item.customImageBase64)
         .map(item => ({ name: item.customImageName!, base64: item.customImageBase64! }));
 
-    setFinalOrderDetails({ whatsappUrl, images: customImages });
-    setCheckoutStep('confirmation');
+    if (customImagesForDownload.length > 0) {
+        setFinalOrderDetails({ whatsappUrl, images: customImagesForDownload });
+        setCheckoutStep('confirmation');
+    } else {
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        onClearCart();
+        onClose();
+    }
+    setIsPreparingOrder(false);
   };
   
   const handleFinalClose = () => {
@@ -180,6 +230,21 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
       case 'success': return t('locationSuccess');
       default: return t('locationGet');
     }
+  }
+  
+  const submitButtonText = () => {
+      if (isPreparingOrder) {
+          return (
+            <div className="flex items-center justify-center">
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                {t('submitOrder')}...
+            </div>
+          );
+      }
+      return t('submitOrder');
   }
 
   return (
@@ -256,7 +321,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
               </>
             )}
             {checkoutStep === 'form' && (
-              <form>
+              <form onSubmit={(e) => { e.preventDefault(); handleFormSubmit(); }}>
                 <div className="space-y-4">
                   <div>
                     <label htmlFor="name" className="block text-primary font-semibold mb-2">{t('formName')}</label>
@@ -355,9 +420,10 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
               <div className="flex flex-col space-y-4">
                  <button 
                   onClick={handleFormSubmit}
-                  disabled={!isFormValid}
-                  className="w-full bg-primary text-white font-bold py-3 rounded-md hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed">
-                  {t('submitOrder')}
+                  disabled={!isFormValid || isPreparingOrder}
+                  className="w-full bg-primary text-white font-bold py-3 rounded-md hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center h-12"
+                 >
+                  {submitButtonText()}
                 </button>
                 <button 
                   onClick={() => setCheckoutStep('cart')}

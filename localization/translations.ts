@@ -103,6 +103,7 @@ export const translations = {
     whatsappOrderItems: 'Order Items',
     customizationNotes: 'Customization',
     whatsappOrderConfirmation: 'Please confirm this order.',
+    itemImage: 'Image',
 
     // Custom Order Modal
     customOrderFor: 'Custom Order for {{category}}',
@@ -268,6 +269,7 @@ export const translations = {
     whatsappOrderItems: 'ऑर्डर आइटम',
     customizationNotes: 'अनुकूलन',
     whatsappOrderConfirmation: 'कृपया इस आदेश की पुष्टि करें।',
+    itemImage: 'छवि',
 
     // Custom Order Modal
     customOrderFor: '{{category}} के लिए कस्टम ऑर्डर',
@@ -433,6 +435,7 @@ export const translations = {
     whatsappOrderItems: 'ਆਰਡਰ ਆਈਟਮਾਂ',
     customizationNotes: 'ਕਸਟਮਾਈਜ਼ੇਸ਼ਨ',
     whatsappOrderConfirmation: 'ਕਿਰਪਾ ਕਰਕੇ ਇਸ ਆਰਡਰ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ।',
+    itemImage: 'ਚਿੱਤਰ',
 
     // Custom Order Modal
     customOrderFor: '{{category}} ਲਈ ਕਸਟਮ ਆਰਡਰ',
