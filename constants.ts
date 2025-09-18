@@ -3,7 +3,7 @@ import type { Product } from './types';
 export const NAV_LINKS = [
   { name: 'Home', path: '/' },
   { name: 'Products', path: '/products' },
-  { name: 'About Us', path: '/#about' },
+  { name: 'About Us', path: '/about' },
   { name: 'Contact', path: '/#contact' },
 ];
 
@@ -103,5 +103,44 @@ export const PRODUCTS: Product[] = [
     price: 350.00,
     imageUrl: 'https://picsum.photos/seed/railing12/600/400',
     category: 'Aluminum',
+  },
+];
+
+export const TEAM_MEMBERS = [
+  {
+    name: 'Hardeep Singh',
+    role: 'Founder & Lead Glazier',
+    bio: 'With over 20 years of experience, Hardeep founded the company with a vision for quality and precision. His expertise guides every project.',
+    imageUrl: 'https://picsum.photos/seed/team1/400/400',
+  },
+  {
+    name: 'Priya Kaur',
+    role: 'Operations Manager',
+    bio: 'Priya ensures that every project runs smoothly from initial consultation to final installation, guaranteeing customer satisfaction.',
+    imageUrl: 'https://picsum.photos/seed/team2/400/400',
+  },
+  {
+    name: 'Raj Patel',
+    role: 'Senior Technician',
+    bio: 'Raj specializes in complex aluminum framework and installations, bringing meticulous attention to detail to every job.',
+    imageUrl: 'https://picsum.photos/seed/team3/400/400',
+  },
+];
+
+export const TOOLS_MATERIALS = [
+  {
+    name: 'High-Grade Aluminum',
+    description: 'We use only premium, corrosion-resistant aluminum for durable and long-lasting frames and structures.',
+    imageUrl: 'https://picsum.photos/seed/material1/600/400',
+  },
+  {
+    name: 'Safety Tempered Glass',
+    description: 'Our tempered glass is heat-treated for increased strength and safety, making it ideal for a wide range of applications.',
+    imageUrl: 'https://picsum.photos/seed/material2/600/400',
+  },
+  {
+    name: 'Precision Cutting Tools',
+    description: 'State-of-the-art cutting equipment allows us to achieve flawless edges and exact dimensions for a perfect fit every time.',
+    imageUrl: 'https://picsum.photos/seed/tool1/600/400',
   },
 ];

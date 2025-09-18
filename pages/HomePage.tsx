@@ -49,26 +49,8 @@ const HomePage: React.FC<HomePageProps> = ({ onAddToCart }) => {
         </div>
       </section>
 
-      {/* About Us */}
-      <section id="about" className="py-20 bg-white">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
-          <div className="md:w-1/2">
-            <img src="https://picsum.photos/seed/about/800/600" alt="About Us" className="rounded-lg shadow-xl" />
-          </div>
-          <div className="md:w-1/2">
-            <h2 className="text-4xl font-bold font-serif text-primary mb-6">About Shri Guru Nanak Glass</h2>
-            <p className="text-gray-600 mb-4">
-              With decades of experience in the glass and aluminium industry, we pride ourselves on delivering superior quality products and exceptional craftsmanship. Our commitment to innovation and customer satisfaction has made us a trusted partner for architects, builders, and homeowners alike.
-            </p>
-            <p className="text-gray-600">
-              From bespoke residential projects to large-scale commercial installations, we bring expertise, precision, and a keen eye for design to every job.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-accent">
+      <section id="contact" className="py-20 bg-light">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold font-serif text-primary mb-6">Get In Touch</h2>
           <p className="text-gray-700 max-w-2xl mx-auto mb-10">
