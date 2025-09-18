@@ -1,4 +1,3 @@
-
 import type { Product } from './types';
 
 export const NAV_LINKS = [
@@ -39,7 +38,7 @@ export const PRODUCTS: Product[] = [
     description: 'Elegant and space-saving sliding door with a robust aluminum frame.',
     price: 750.00,
     imageUrl: 'https://picsum.photos/seed/door4/600/400',
-    category: 'Doors',
+    category: 'Aluminum',
   },
   {
     id: '5',
@@ -71,6 +70,38 @@ export const PRODUCTS: Product[] = [
     description: 'Sleek and ergonomic brushed aluminum handle for interior and exterior doors.',
     price: 45.99,
     imageUrl: 'https://picsum.photos/seed/handle8/600/400',
-    category: 'Hardware',
+    category: 'Aluminum',
+  },
+  {
+    id: '9',
+    name: 'Frameless Wall Mirror',
+    description: 'Modern and minimalist frameless mirror with polished edges. Perfect for any room.',
+    price: 125.00,
+    imageUrl: 'https://picsum.photos/seed/mirror9/600/400',
+    category: 'Mirrors',
+  },
+  {
+    id: '10',
+    name: 'LED Bathroom Mirror',
+    description: 'Backlit LED mirror with anti-fog function and touch controls. Adds a touch of luxury.',
+    price: 299.99,
+    imageUrl: 'https://picsum.photos/seed/mirror10/600/400',
+    category: 'Mirrors',
+  },
+  {
+    id: '11',
+    name: 'Antique Gold Frame Mirror',
+    description: 'An elegant, ornate mirror with a vintage gold-finished frame. A statement piece.',
+    price: 210.50,
+    imageUrl: 'https://picsum.photos/seed/mirror11/600/400',
+    category: 'Mirrors',
+  },
+  {
+    id: '12',
+    name: 'Aluminum Railing System',
+    description: 'Durable and low-maintenance aluminum railings for balconies, decks, and stairs.',
+    price: 350.00,
+    imageUrl: 'https://picsum.photos/seed/railing12/600/400',
+    category: 'Aluminum',
   },
 ];
