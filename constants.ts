@@ -150,7 +150,7 @@ export const TOOLS_MATERIALS: ToolMaterial[] = [
 
 export const CONTACT_INFO = {
   managers: [
-    { name: 'Hardeep Singh', phone: '+91 123-456-7890' },
+    { name: 'Hardeep Singh', phone: '+91 9610868884' },
     { name: 'Manager 2', phone: '+91 098-765-4321' },
   ],
   email: 'contact.sgn@gmail.com',
