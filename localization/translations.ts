@@ -28,8 +28,6 @@ export const translations = {
     requestCustomOrder: 'Request a Custom Order',
     submitRequest: 'Submit Request',
     proceedToCheckout: 'Proceed to Checkout',
-    submitOrder: 'Submit Order',
-    backToCart: 'Back to Cart',
 
     // HomePage
     heroTitle: 'Crafting Visions in Glass & Aluminium',
@@ -70,7 +68,6 @@ export const translations = {
 
     // Cart Modal
     cartTitle: 'Your Cart',
-    formTitle: 'Your Information',
     confirmationTitle: 'Final Step',
     cartEmpty: 'Your cart is empty.',
     yourNotes: 'Your Notes',
@@ -79,16 +76,6 @@ export const translations = {
     clearCart: 'Clear Cart',
     subtotal: 'Subtotal',
     formName: 'Full Name',
-    formPhone: 'Phone Number',
-    formAddress: 'Delivery Address',
-    // FIX: Add missing translation key
-    formLocation: 'Location',
-    formLocationOptional: 'Location (Optional)',
-    locationGet: 'Get Current Location',
-    locationFetching: 'Getting Location...',
-    locationSuccess: 'Location Captured!',
-    locationSuccessMsg: 'Location captured successfully!',
-    locationErrorMsg: 'Could not get location. Please check browser permissions or enter address manually.',
     confirmationHeader: 'Your order is ready!',
     confirmationSubheader: 'Please complete the following two steps to submit your order.',
     confirmationStep1: 'Step 1: Send Order Details on WhatsApp',
@@ -99,7 +86,6 @@ export const translations = {
 
     // WhatsApp Message
     whatsappOrderTitle: 'New Order from Shri Guru Nanak Glass & Aluminium Website',
-    whatsappCustomerDetails: 'Customer Details',
     whatsappOrderItems: 'Order Items',
     customizationNotes: 'Customization',
     whatsappOrderConfirmation: 'Please confirm this order.',
@@ -194,8 +180,6 @@ export const translations = {
     requestCustomOrder: 'कस्टम ऑर्डर का अनुरोध करें',
     submitRequest: 'अनुरोध भेजें',
     proceedToCheckout: 'चेकआउट के लिए आगे बढ़ें',
-    submitOrder: 'ऑर्डर जमा करें',
-    backToCart: 'कार्ट पर वापस जाएं',
 
     // HomePage
     heroTitle: 'ग्लास और एल्युमीनियम में सपनों को साकार करते हैं',
@@ -236,7 +220,6 @@ export const translations = {
 
     // Cart Modal
     cartTitle: 'आपकी कार्ट',
-    formTitle: 'आपकी जानकारी',
     confirmationTitle: 'अंतिम चरण',
     cartEmpty: 'आपकी कार्ट खाली है।',
     yourNotes: 'आपकी टिप्पणियाँ',
@@ -245,16 +228,6 @@ export const translations = {
     clearCart: 'कार्ट साफ़ करें',
     subtotal: 'उप-योग',
     formName: 'पूरा नाम',
-    formPhone: 'फ़ोन नंबर',
-    formAddress: 'वितरण का पता',
-    // FIX: Add missing translation key
-    formLocation: 'स्थान',
-    formLocationOptional: 'स्थान (वैकल्पिक)',
-    locationGet: 'वर्तमान स्थान प्राप्त करें',
-    locationFetching: 'स्थान प्राप्त हो रहा है...',
-    locationSuccess: 'स्थान प्राप्त हुआ!',
-    locationSuccessMsg: 'स्थान सफलतापूर्वक प्राप्त कर लिया गया है!',
-    locationErrorMsg: 'स्थान प्राप्त नहीं हो सका। कृपया ब्राउज़र अनुमतियों की जांच करें या मैन्युअल रूप से पता दर्ज करें।',
     confirmationHeader: 'आपका ऑर्डर तैयार है!',
     confirmationSubheader: 'अपना ऑर्डर जमा करने के लिए कृपया निम्नलिखित दो चरण पूरे करें।',
     confirmationStep1: 'चरण 1: व्हाट्सएप पर ऑर्डर विवरण भेजें',
@@ -265,7 +238,6 @@ export const translations = {
 
     // WhatsApp Message
     whatsappOrderTitle: 'श्री गुरु नानक ग्लास और एल्युमीनियम वेबसाइट से नया ऑर्डर',
-    whatsappCustomerDetails: 'ग्राहक विवरण',
     whatsappOrderItems: 'ऑर्डर आइटम',
     customizationNotes: 'अनुकूलन',
     whatsappOrderConfirmation: 'कृपया इस आदेश की पुष्टि करें।',
@@ -360,8 +332,6 @@ export const translations = {
     requestCustomOrder: 'ਇੱਕ ਕਸਟਮ ਆਰਡਰ ਲਈ ਬੇਨਤੀ ਕਰੋ',
     submitRequest: 'ਬੇਨਤੀ ਦਰਜ ਕਰੋ',
     proceedToCheckout: 'ਚੈੱਕਆਉਟ ਲਈ ਅੱਗੇ ਵਧੋ',
-    submitOrder: 'ਆਰਡਰ ਜਮ੍ਹਾਂ ਕਰੋ',
-    backToCart: 'ਕਾਰਟ ਤੇ ਵਾਪਸ ਜਾਓ',
 
     // HomePage
     heroTitle: 'ਸ਼ੀਸ਼ੇ ਅਤੇ ਐਲੂਮੀਨੀਅਮ ਵਿੱਚ ਦ੍ਰਿਸ਼ਟੀਕੋਣ ਤਿਆਰ ਕਰਨਾ',
@@ -402,7 +372,6 @@ export const translations = {
 
     // Cart Modal
     cartTitle: 'ਤੁਹਾਡੀ ਕਾਰਟ',
-    formTitle: 'ਤੁਹਾਡੀ ਜਾਣਕਾਰੀ',
     confirmationTitle: 'ਅੰਤਿਮ ਕਦਮ',
     cartEmpty: 'ਤੁਹਾਡੀ ਕਾਰਟ ਖਾਲੀ ਹੈ।',
     yourNotes: 'ਤੁਹਾਡੇ ਨੋਟਸ',
@@ -411,16 +380,6 @@ export const translations = {
     clearCart: 'ਕਾਰਟ ਸਾਫ਼ ਕਰੋ',
     subtotal: 'ਉਪ-ਜੋੜ',
     formName: 'ਪੂਰਾ ਨਾਂਮ',
-    formPhone: 'ਫੋਨ ਨੰਬਰ',
-    formAddress: 'ਡਿਲਿਵਰੀ ਪਤਾ',
-    // FIX: Add missing translation key
-    formLocation: 'ਸਥਾਨ',
-    formLocationOptional: 'ਸਥਾਨ (ਵਿਕਲਪਿਕ)',
-    locationGet: 'ਮੌਜੂਦਾ ਸਥਾਨ ਪ੍ਰਾਪਤ ਕਰੋ',
-    locationFetching: 'ਸਥਾਨ ਪ੍ਰਾਪਤ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...',
-    locationSuccess: 'ਸਥਾਨ ਕੈਪਚਰ ਕੀਤਾ ਗਿਆ!',
-    locationSuccessMsg: 'ਸਥਾਨ ਸਫਲਤਾਪੂਰਵਕ ਕੈਪਚਰ ਕੀਤਾ ਗਿਆ!',
-    locationErrorMsg: 'ਸਥਾਨ ਪ੍ਰਾਪਤ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਬ੍ਰਾਊਜ਼ਰ ਅਨੁਮਤੀਆਂ ਦੀ ਜਾਂਚ ਕਰੋ ਜਾਂ ਪਤਾ ਹੱਥੀਂ ਦਰਜ ਕਰੋ।',
     confirmationHeader: 'ਤੁਹਾਡਾ ਆਰਡਰ ਤਿਆਰ ਹੈ!',
     confirmationSubheader: 'ਆਪਣਾ ਆਰਡਰ ਜਮ੍ਹਾਂ ਕਰਨ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਹੇਠਾਂ ਦਿੱਤੇ ਦੋ ਕਦਮ ਪੂਰੇ ਕਰੋ।',
     confirmationStep1: 'ਕਦਮ 1: WhatsApp ਤੇ ਆਰਡਰ ਦੇ ਵੇਰਵੇ ਭੇਜੋ',
@@ -431,7 +390,6 @@ export const translations = {
     
     // WhatsApp Message
     whatsappOrderTitle: 'ਸ਼੍ਰੀ ਗੁਰੂ ਨਾਨਕ ਗਲਾਸ ਅਤੇ ਐਲੂਮੀਨੀਅਮ ਵੈੱਬਸਾਈਟ ਤੋਂ ਨਵਾਂ ਆਰਡਰ',
-    whatsappCustomerDetails: 'ਗਾਹਕ ਦੇ ਵੇਰਵੇ',
     whatsappOrderItems: 'ਆਰਡਰ ਆਈਟਮਾਂ',
     customizationNotes: 'ਕਸਟਮਾਈਜ਼ੇਸ਼ਨ',
     whatsappOrderConfirmation: 'ਕਿਰਪਾ ਕਰਕੇ ਇਸ ਆਰਡਰ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ।',

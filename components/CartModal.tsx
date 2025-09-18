@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import type { CartItem, Product } from '../types';
+import type { CartItem } from '../types';
 import { CONTACT_INFO } from '../constants';
 import { useTranslation } from '../localization/useTranslation';
 
@@ -12,7 +12,7 @@ interface CartModalProps {
   onClearCart: () => void;
 }
 
-type CheckoutStep = 'cart' | 'form' | 'confirmation';
+type CheckoutStep = 'cart' | 'confirmation';
 type CustomImage = { name: string; base64: string; };
 
 const XMarkIcon: React.FC = () => (
@@ -41,13 +41,6 @@ const dataURLtoFile = (dataurl: string, filename: string): File | null => {
 const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRemoveFromCart, onIncrementQuantity, onClearCart }) => {
   const { t } = useTranslation();
   const [checkoutStep, setCheckoutStep] = useState<CheckoutStep>('cart');
-  const [customerDetails, setCustomerDetails] = useState({
-    name: '',
-    phone: '',
-    address: '',
-    location: null as { latitude: number; longitude: number; } | null,
-  });
-  const [locationStatus, setLocationStatus] = useState<'idle' | 'fetching' | 'success' | 'error'>('idle');
   const [finalOrderDetails, setFinalOrderDetails] = useState<{ whatsappUrl: string; images: CustomImage[] } | null>(null);
   const [isPreparingOrder, setIsPreparingOrder] = useState(false);
 
@@ -55,8 +48,6 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
     if (!isOpen) {
       setTimeout(() => {
         setCheckoutStep('cart');
-        setCustomerDetails({ name: '', phone: '', address: '', location: null });
-        setLocationStatus('idle');
         setFinalOrderDetails(null);
         setIsPreparingOrder(false);
       }, 300);
@@ -73,42 +64,8 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
     return sum + item.price * item.quantity;
   }, 0);
   
-  const isFormValid = customerDetails.name.trim() !== '' && customerDetails.phone.trim() !== '' && customerDetails.address.trim() !== '';
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setCustomerDetails(prev => ({...prev, [name]: value}));
-  };
-  
-  const handleGetLocation = () => {
-    if (!navigator.geolocation) {
-      setLocationStatus('error');
-      return;
-    }
-    setLocationStatus('fetching');
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setCustomerDetails(prev => ({
-          ...prev,
-          location: {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          }
-        }));
-        setLocationStatus('success');
-      },
-      () => {
-        setLocationStatus('error');
-      }
-    );
-  };
-
-  const handleProceedToForm = () => {
-    setCheckoutStep('form');
-  };
-
-  const handleFormSubmit = async () => {
-    if (!isFormValid || cartItems.length === 0) return;
+  const handleProceedToCheckout = async () => {
+    if (cartItems.length === 0) return;
     setIsPreparingOrder(true);
 
     const orderItems = cartItems.filter(item => !item.id.startsWith('custom-'));
@@ -116,16 +73,6 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
 
     let message = `*${t('whatsappOrderTitle')}*\n\n`;
     
-    message += `--- *${t('whatsappCustomerDetails')}* ---\n`;
-    message += `*${t('formName')}:* ${customerDetails.name}\n`;
-    message += `*${t('formPhone')}:* ${customerDetails.phone}\n`;
-    message += `*${t('formAddress')}:* ${customerDetails.address}\n`;
-    if (customerDetails.location) {
-      const { latitude, longitude } = customerDetails.location;
-      message += `*${t('formLocation')}:* https://www.google.com/maps?q=${latitude},${longitude}\n`;
-    }
-    message += '\n';
-
     message += `--- *${t('whatsappOrderItems')}* ---\n`;
 
     if (orderItems.length > 0) {
@@ -186,7 +133,6 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
         return;
       } catch (err) {
         console.error('User cancelled share or error:', err);
-        // Fallback to manual attach if user cancels
       }
     }
     
@@ -218,33 +164,24 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
   const renderTitle = () => {
     switch (checkoutStep) {
       case 'cart': return t('cartTitle');
-      case 'form': return t('formTitle');
       case 'confirmation': return t('confirmationTitle');
       default: return t('cartTitle');
     }
   };
 
-  const locationButtonText = () => {
-    switch(locationStatus){
-      case 'fetching': return t('locationFetching');
-      case 'success': return t('locationSuccess');
-      default: return t('locationGet');
-    }
-  }
-  
-  const submitButtonText = () => {
+  const proceedButtonContent = () => {
       if (isPreparingOrder) {
           return (
             <div className="flex items-center justify-center">
-                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                {t('submitOrder')}...
+                {t('proceedToCheckout')}...
             </div>
           );
       }
-      return t('submitOrder');
+      return t('proceedToCheckout');
   }
 
   return (
@@ -320,45 +257,6 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
                 </button>
               </>
             )}
-            {checkoutStep === 'form' && (
-              <form onSubmit={(e) => { e.preventDefault(); handleFormSubmit(); }}>
-                <div className="space-y-4">
-                  <div>
-                    <label htmlFor="name" className="block text-primary font-semibold mb-2">{t('formName')}</label>
-                    <input type="text" id="name" name="name" required value={customerDetails.name} onChange={handleInputChange} className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-primary font-semibold mb-2">{t('formPhone')}</label>
-                    <input type="tel" id="phone" name="phone" required value={customerDetails.phone} onChange={handleInputChange} className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" />
-                  </div>
-                  <div>
-                    <label htmlFor="address" className="block text-primary font-semibold mb-2">{t('formAddress')}</label>
-                    <textarea id="address" name="address" rows={3} required value={customerDetails.address} onChange={handleInputChange} className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
-                  </div>
-                   <div>
-                    <label className="block text-primary font-semibold mb-2">{t('formLocationOptional')}</label>
-                    <button
-                      type="button"
-                      onClick={handleGetLocation}
-                      disabled={locationStatus === 'fetching'}
-                      className="w-full p-3 border border-dashed border-secondary text-secondary rounded-md hover:bg-secondary/10 transition-colors disabled:opacity-50 disabled:cursor-wait"
-                    >
-                      {locationButtonText()}
-                    </button>
-                    {locationStatus === 'success' && customerDetails.location && (
-                      <p className="text-green-600 text-sm mt-2">
-                        {t('locationSuccessMsg')}
-                      </p>
-                    )}
-                    {locationStatus === 'error' && (
-                      <p className="text-red-500 text-sm mt-2">
-                        {t('locationErrorMsg')}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </form>
-            )}
             {checkoutStep === 'confirmation' && finalOrderDetails && (
                 <div className="text-center">
                     <h3 className="text-xl font-bold text-primary mb-4">{t('confirmationHeader')}</h3>
@@ -410,27 +308,13 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
                   <span className="text-xl font-bold text-primary">${subtotal.toFixed(2)}</span>
                 </div>
                 <button 
-                  onClick={handleProceedToForm}
-                  className="w-full bg-secondary text-primary font-bold py-3 rounded-md hover:opacity-90 transition-opacity">
-                  {t('proceedToCheckout')}
+                  onClick={handleProceedToCheckout}
+                  disabled={isPreparingOrder}
+                  className="w-full bg-secondary text-primary font-bold py-3 rounded-md hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center h-12"
+                >
+                  {proceedButtonContent()}
                 </button>
               </>
-            )}
-            {checkoutStep === 'form' && (
-              <div className="flex flex-col space-y-4">
-                 <button 
-                  onClick={handleFormSubmit}
-                  disabled={!isFormValid || isPreparingOrder}
-                  className="w-full bg-primary text-white font-bold py-3 rounded-md hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center h-12"
-                 >
-                  {submitButtonText()}
-                </button>
-                <button 
-                  onClick={() => setCheckoutStep('cart')}
-                  className="w-full bg-gray-200 text-gray-700 font-bold py-3 rounded-md hover:bg-gray-300 transition-colors">
-                  {t('backToCart')}
-                </button>
-              </div>
             )}
             {checkoutStep === 'confirmation' && (
                 <button
