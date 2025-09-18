@@ -11,6 +11,8 @@ export const translations = {
     done: 'Done',
     thankYou: 'Thank You!',
     selectedFile: 'Selected',
+    optional: 'Optional',
+    fieldRequired: '*',
     
     // Navigation
     navHome: 'Home',
@@ -28,6 +30,8 @@ export const translations = {
     requestCustomOrder: 'Request a Custom Order',
     submitRequest: 'Submit Request',
     proceedToCheckout: 'Proceed to Checkout',
+    submitOrderButton: 'Submit Order',
+    getLocationButton: 'Get Current Location',
 
     // HomePage
     heroTitle: 'Crafting Visions in Glass & Aluminium',
@@ -68,6 +72,7 @@ export const translations = {
 
     // Cart Modal
     cartTitle: 'Your Cart',
+    formTitle: 'Your Information',
     confirmationTitle: 'Final Step',
     cartEmpty: 'Your cart is empty.',
     yourNotes: 'Your Notes',
@@ -75,7 +80,6 @@ export const translations = {
     customPriceNote: 'Price will be provided on WhatsApp based on the item\'s size and design.',
     clearCart: 'Clear Cart',
     subtotal: 'Subtotal',
-    formName: 'Full Name',
     confirmationHeader: 'Your order is ready!',
     confirmationSubheader: 'Please complete the following two steps to submit your order.',
     confirmationStep1: 'Step 1: Send Order Details on WhatsApp',
@@ -83,6 +87,11 @@ export const translations = {
     confirmationStep2Subheader: 'Download your design images below and attach them to the WhatsApp chat.',
     subtotalStandardItems: 'Subtotal (Standard Items)',
     customPriceNoteWhatsapp: 'Please provide the exact price for the customized items.',
+    formNameLabel: 'Full Name',
+    formPhoneLabel: 'Phone Number',
+    formAddressLabel: 'Delivery Address',
+    formLocationLabel: 'Live Location',
+    fetchingLocation: 'Fetching location...',
 
     // WhatsApp Message
     whatsappOrderTitle: 'New Order from Shri Guru Nanak Glass & Aluminium Website',
@@ -90,10 +99,13 @@ export const translations = {
     customizationNotes: 'Customization',
     whatsappOrderConfirmation: 'Please confirm this order.',
     itemImage: 'Image',
+    customerInfo: 'Customer Information',
 
     // Custom Order Modal
     customOrderFor: 'Custom Order for {{category}}',
     customOrderSubmitted: 'Your custom order request has been added to your cart. Please proceed to checkout to submit it.',
+    // FIX: Add missing translation key 'formName'
+    formName: 'Your Name',
     formWhatsapp: 'Your WhatsApp Number',
     formDimensions: 'Dimensions (e.g., W x H)',
     formDimensionsPlaceholder: 'e.g., 24in x 36in',
@@ -163,6 +175,8 @@ export const translations = {
     done: 'हो गया',
     thankYou: 'धन्यवाद!',
     selectedFile: 'चयनित',
+    optional: 'वैकल्पिक',
+    fieldRequired: '*',
     
     // Navigation
     navHome: 'होम',
@@ -180,6 +194,8 @@ export const translations = {
     requestCustomOrder: 'कस्टम ऑर्डर का अनुरोध करें',
     submitRequest: 'अनुरोध भेजें',
     proceedToCheckout: 'चेकआउट के लिए आगे बढ़ें',
+    submitOrderButton: 'ऑर्डर जमा करें',
+    getLocationButton: 'वर्तमान स्थान प्राप्त करें',
 
     // HomePage
     heroTitle: 'ग्लास और एल्युमीनियम में सपनों को साकार करते हैं',
@@ -220,6 +236,7 @@ export const translations = {
 
     // Cart Modal
     cartTitle: 'आपकी कार्ट',
+    formTitle: 'आपकी जानकारी',
     confirmationTitle: 'अंतिम चरण',
     cartEmpty: 'आपकी कार्ट खाली है।',
     yourNotes: 'आपकी टिप्पणियाँ',
@@ -227,7 +244,6 @@ export const translations = {
     customPriceNote: 'आइटम के आकार और डिज़ाइन के आधार पर व्हाट्सएप पर मूल्य प्रदान किया जाएगा।',
     clearCart: 'कार्ट साफ़ करें',
     subtotal: 'उप-योग',
-    formName: 'पूरा नाम',
     confirmationHeader: 'आपका ऑर्डर तैयार है!',
     confirmationSubheader: 'अपना ऑर्डर जमा करने के लिए कृपया निम्नलिखित दो चरण पूरे करें।',
     confirmationStep1: 'चरण 1: व्हाट्सएप पर ऑर्डर विवरण भेजें',
@@ -235,6 +251,11 @@ export const translations = {
     confirmationStep2Subheader: 'नीचे अपनी डिज़ाइन छवियां डाउनलोड करें और उन्हें व्हाट्सएप चैट में संलग्न करें।',
     subtotalStandardItems: 'उप-योग (मानक आइटम)',
     customPriceNoteWhatsapp: 'कृपया अनुकूलित वस्तुओं के लिए सटीक मूल्य प्रदान करें।',
+    formNameLabel: 'पूरा नाम',
+    formPhoneLabel: 'फोन नंबर',
+    formAddressLabel: 'वितरण का पता',
+    formLocationLabel: 'लाइव लोकेशन',
+    fetchingLocation: 'स्थान प्राप्त किया जा रहा है...',
 
     // WhatsApp Message
     whatsappOrderTitle: 'श्री गुरु नानक ग्लास और एल्युमीनियम वेबसाइट से नया ऑर्डर',
@@ -242,10 +263,13 @@ export const translations = {
     customizationNotes: 'अनुकूलन',
     whatsappOrderConfirmation: 'कृपया इस आदेश की पुष्टि करें।',
     itemImage: 'छवि',
+    customerInfo: 'ग्राहक जानकारी',
 
     // Custom Order Modal
     customOrderFor: '{{category}} के लिए कस्टम ऑर्डर',
     customOrderSubmitted: 'आपका कस्टम ऑर्डर अनुरोध आपकी कार्ट में जोड़ दिया गया है। इसे जमा करने के लिए कृपया चेकआउट के लिए आगे बढ़ें।',
+    // FIX: Add missing translation key 'formName'
+    formName: 'आपका नाम',
     formWhatsapp: 'आपका व्हाट्सएप नंबर',
     formDimensions: 'आयाम (जैसे, चौड़ाई x ऊंचाई)',
     formDimensionsPlaceholder: 'उदा., 24 इंच x 36 इंच',
@@ -315,6 +339,8 @@ export const translations = {
     done: 'ਹੋ ਗਿਆ',
     thankYou: 'ਧੰਨਵਾਦ!',
     selectedFile: 'ਚੁਣੀ ਗਈ',
+    optional: 'ਵਿਕਲਪਿਕ',
+    fieldRequired: '*',
     
     // Navigation
     navHome: 'ਮੁੱਖ ਪੰਨਾ',
@@ -332,6 +358,8 @@ export const translations = {
     requestCustomOrder: 'ਇੱਕ ਕਸਟਮ ਆਰਡਰ ਲਈ ਬੇਨਤੀ ਕਰੋ',
     submitRequest: 'ਬੇਨਤੀ ਦਰਜ ਕਰੋ',
     proceedToCheckout: 'ਚੈੱਕਆਉਟ ਲਈ ਅੱਗੇ ਵਧੋ',
+    submitOrderButton: 'ਆਰਡਰ ਜਮ੍ਹਾਂ ਕਰੋ',
+    getLocationButton: 'ਮੌਜੂਦਾ ਸਥਾਨ ਪ੍ਰਾਪਤ ਕਰੋ',
 
     // HomePage
     heroTitle: 'ਸ਼ੀਸ਼ੇ ਅਤੇ ਐਲੂਮੀਨੀਅਮ ਵਿੱਚ ਦ੍ਰਿਸ਼ਟੀਕੋਣ ਤਿਆਰ ਕਰਨਾ',
@@ -372,6 +400,7 @@ export const translations = {
 
     // Cart Modal
     cartTitle: 'ਤੁਹਾਡੀ ਕਾਰਟ',
+    formTitle: 'ਤੁਹਾਡੀ ਜਾਣਕਾਰੀ',
     confirmationTitle: 'ਅੰਤਿਮ ਕਦਮ',
     cartEmpty: 'ਤੁਹਾਡੀ ਕਾਰਟ ਖਾਲੀ ਹੈ।',
     yourNotes: 'ਤੁਹਾਡੇ ਨੋਟਸ',
@@ -379,7 +408,6 @@ export const translations = {
     customPriceNote: 'ਆਈਟਮ ਦੇ ਆਕਾਰ ਅਤੇ ਡਿਜ਼ਾਈਨ ਦੇ ਆਧਾਰ ਤੇ ਕੀਮਤ WhatsApp ਤੇ ਪ੍ਰਦਾਨ ਕੀਤੀ ਜਾਵੇਗੀ।',
     clearCart: 'ਕਾਰਟ ਸਾਫ਼ ਕਰੋ',
     subtotal: 'ਉਪ-ਜੋੜ',
-    formName: 'ਪੂਰਾ ਨਾਂਮ',
     confirmationHeader: 'ਤੁਹਾਡਾ ਆਰਡਰ ਤਿਆਰ ਹੈ!',
     confirmationSubheader: 'ਆਪਣਾ ਆਰਡਰ ਜਮ੍ਹਾਂ ਕਰਨ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਹੇਠਾਂ ਦਿੱਤੇ ਦੋ ਕਦਮ ਪੂਰੇ ਕਰੋ।',
     confirmationStep1: 'ਕਦਮ 1: WhatsApp ਤੇ ਆਰਡਰ ਦੇ ਵੇਰਵੇ ਭੇਜੋ',
@@ -387,6 +415,11 @@ export const translations = {
     confirmationStep2Subheader: 'ਹੇਠਾਂ ਆਪਣੇ ਡਿਜ਼ਾਈਨ ਚਿੱਤਰਾਂ ਨੂੰ ਡਾਊਨਲੋਡ ਕਰੋ ਅਤੇ ਉਹਨਾਂ ਨੂੰ WhatsApp ਚੈਟ ਨਾਲ ਨੱਥੀ ਕਰੋ।',
     subtotalStandardItems: 'ਉਪ-ਜੋੜ (ਮਿਆਰੀ ਵਸਤੂਆਂ)',
     customPriceNoteWhatsapp: 'ਕਿਰਪਾ ਕਰਕੇ ਅਨੁਕੂਲਿਤ ਆਈਟਮਾਂ ਲਈ ਸਹੀ ਕੀਮਤ ਪ੍ਰਦਾਨ ਕਰੋ।',
+    formNameLabel: 'ਪੂਰਾ ਨਾਂਮ',
+    formPhoneLabel: 'ਫੋਨ ਨੰਬਰ',
+    formAddressLabel: 'ਡਿਲਿਵਰੀ ਦਾ ਪਤਾ',
+    formLocationLabel: 'ਲਾਈਵ ਸਥਾਨ',
+    fetchingLocation: 'ਸਥਾਨ ਪ੍ਰਾਪਤ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...',
     
     // WhatsApp Message
     whatsappOrderTitle: 'ਸ਼੍ਰੀ ਗੁਰੂ ਨਾਨਕ ਗਲਾਸ ਅਤੇ ਐਲੂਮੀਨੀਅਮ ਵੈੱਬਸਾਈਟ ਤੋਂ ਨਵਾਂ ਆਰਡਰ',
@@ -394,10 +427,13 @@ export const translations = {
     customizationNotes: 'ਕਸਟਮਾਈਜ਼ੇਸ਼ਨ',
     whatsappOrderConfirmation: 'ਕਿਰਪਾ ਕਰਕੇ ਇਸ ਆਰਡਰ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ।',
     itemImage: 'ਚਿੱਤਰ',
+    customerInfo: 'ਗਾਹਕ ਦੀ ਜਾਣਕਾਰੀ',
 
     // Custom Order Modal
     customOrderFor: '{{category}} ਲਈ ਕਸਟਮ ਆਰਡਰ',
     customOrderSubmitted: 'ਤੁਹਾਡੀ ਕਸਟਮ ਆਰਡਰ ਬੇਨਤੀ ਤੁਹਾਡੀ ਕਾਰਟ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰ ਦਿੱਤੀ ਗਈ ਹੈ। ਇਸ ਨੂੰ ਜਮ੍ਹਾਂ ਕਰਨ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਚੈੱਕਆਉਟ ਲਈ ਅੱਗੇ ਵਧੋ।',
+    // FIX: Add missing translation key 'formName'
+    formName: 'ਤੁਹਾਡਾ ਨਾਮ',
     formWhatsapp: 'ਤੁਹਾਡਾ ਵਟਸਐਪ ਨੰਬਰ',
     formDimensions: 'ਮਾਪ (ਜਿਵੇਂ, W x H)',
     formDimensionsPlaceholder: 'ਜਿਵੇਂ, 24in x 36in',
