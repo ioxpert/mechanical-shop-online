@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import type { CartItem, Product } from './types';
+// FIX: Import AddToCartProduct type.
+import type { CartItem, Product, AddToCartProduct } from './types';
 import { PRODUCTS } from './constants';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -9,6 +10,7 @@ import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import AboutUsPage from './pages/AboutUsPage';
 import ContactPage from './pages/ContactPage';
+import { LanguageProvider } from './localization/LanguageContext';
 
 const App: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -18,9 +20,10 @@ const App: React.FC = () => {
     return cartItems.reduce((sum, item) => sum + item.quantity, 0);
   }, [cartItems]);
 
-  const addToCart = (product: Product & { customInfo?: string; customImageName?: string }) => {
+  // FIX: Use the AddToCartProduct type for the product parameter.
+  const addToCart = (product: AddToCartProduct) => {
     setCartItems(prevItems => {
-      const hasCustomization = (product.customInfo && product.customInfo.trim() !== '') || product.customImageName;
+      const hasCustomization = (product.customInfo && product.customInfo.trim() !== '') || product.customImageName || product.customImageBase64 || product.description;
       
       if (hasCustomization) {
         const newItem: CartItem = {
@@ -32,7 +35,7 @@ const App: React.FC = () => {
       }
 
       // If there is no custom info, check if a standard version of the item already exists.
-      const existingItem = prevItems.find(item => item.id === product.id && (!item.customInfo || item.customInfo.trim() === '') && !item.customImageName);
+      const existingItem = prevItems.find(item => item.id === product.id && (!item.customInfo || item.customInfo.trim() === '') && !item.customImageName && !item.customImageBase64);
       
       if (existingItem) {
         // If it exists, just increment the quantity.
@@ -42,7 +45,7 @@ const App: React.FC = () => {
       }
       
       // Otherwise, add the new standard item to the cart.
-      return [...prevItems, { ...product, quantity: 1, customInfo: '', customImageName: undefined }];
+      return [...prevItems, { ...product, quantity: 1, customInfo: '', customImageName: undefined, customImageBase64: undefined }];
     });
   };
 
@@ -74,26 +77,28 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-light text-primary">
-      <Header cartItemCount={cartItemCount} onCartClick={() => setIsCartOpen(true)} />
-      <main className="flex-grow">
-        <Routes>
-          <Route path="/" element={<HomePage onAddToCart={addToCart} />} />
-          <Route path="/products" element={<ProductsPage products={PRODUCTS} onAddToCart={addToCart} />} />
-          <Route path="/about" element={<AboutUsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
-      </main>
-      <Footer />
-      <CartModal
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        cartItems={cartItems}
-        onRemoveFromCart={removeFromCart}
-        onIncrementQuantity={incrementQuantity}
-        onClearCart={clearCart}
-      />
-    </div>
+    <LanguageProvider>
+      <div className="flex flex-col min-h-screen bg-light text-primary">
+        <Header cartItemCount={cartItemCount} onCartClick={() => setIsCartOpen(true)} />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<HomePage onAddToCart={addToCart} />} />
+            <Route path="/products" element={<ProductsPage products={PRODUCTS} onAddToCart={addToCart} />} />
+            <Route path="/about" element={<AboutUsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </main>
+        <Footer />
+        <CartModal
+          isOpen={isCartOpen}
+          onClose={() => setIsCartOpen(false)}
+          cartItems={cartItems}
+          onRemoveFromCart={removeFromCart}
+          onIncrementQuantity={incrementQuantity}
+          onClearCart={clearCart}
+        />
+      </div>
+    </LanguageProvider>
   );
 };
 
