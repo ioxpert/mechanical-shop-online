@@ -63,8 +63,8 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
   const handleFinalSubmit = () => {
     if (!isFormValid || cartItems.length === 0) return;
 
-    const standardItems = cartItems.filter(item => !item.id.startsWith('custom-'));
-    const customItems = cartItems.filter(item => item.id.startsWith('custom-'));
+    const orderItems = cartItems.filter(item => !item.id.startsWith('custom-'));
+    const customRequests = cartItems.filter(item => item.id.startsWith('custom-'));
 
     let message = '*New Order from Shri Guru Nanak Glass & Aluminium Website*\n\n';
     
@@ -80,21 +80,33 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
 
     message += '--- *Order Items* ---\n';
 
-    if (standardItems.length > 0) {
-      standardItems.forEach(item => {
+    if (orderItems.length > 0) {
+      orderItems.forEach(item => {
         message += `- ${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}\n`;
+        if (item.customInfo) {
+          message += `  *Customization:* ${item.customInfo}\n`;
+        }
       });
       message += '\n';
     }
 
-    if (customItems.length > 0) {
-      customItems.forEach(item => {
+    if (customRequests.length > 0) {
+      customRequests.forEach(item => {
         message += `*${item.name}*\n${item.description}\n\n`;
       });
     }
 
     message += `--------------------\n`;
     message += `*Subtotal: $${subtotal.toFixed(2)}*\n\n`;
+    
+    const hasCustomizedItems = cartItems.some(
+      item => (item.customInfo && item.customInfo.trim() !== '') || item.id.startsWith('custom-')
+    );
+
+    if (hasCustomizedItems) {
+      message += '*Note:* Please provide the exact price for the customized items.\n\n';
+    }
+
     message += `Please confirm this order.`;
     
     const whatsappNumber = CONTACT_INFO.managers[0].phone.replace(/\D/g, '');
@@ -104,7 +116,6 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
 
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     
-    // Reset state after submission
     onClearCart();
     setIsCheckoutView(false);
     setCustomerDetails({ name: '', phone: '', address: '', location: null });
@@ -170,13 +181,15 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
               <>
                 <div className="space-y-6">
                   {cartItems.map(item => {
-                    const isCustom = item.id.startsWith('custom-');
+                    const isCustomOrderRequest = item.id.startsWith('custom-');
+                    const hasCustomInfo = !!item.customInfo;
+
                     return (
                       <div key={item.id} className="flex items-start space-x-4">
                         <img src={item.imageUrl} alt={item.name} className="w-20 h-20 object-cover rounded-md" />
                         <div className="flex-grow">
                           <h3 className="font-semibold text-primary">{item.name}</h3>
-                          {isCustom ? (
+                          {isCustomOrderRequest ? (
                             <>
                               <p className="text-gray-500 text-sm whitespace-pre-wrap mt-1">{item.description}</p>
                               <p className="text-xs text-secondary italic mt-2">
@@ -186,7 +199,12 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
                           ) : (
                             <p className="text-gray-500 text-sm">${item.price.toFixed(2)}</p>
                           )}
-                           {!isCustom && (
+                          {hasCustomInfo && (
+                              <p className="text-sm text-gray-700 mt-2 p-2 bg-accent rounded-md">
+                                <span className="font-semibold">Your Notes:</span> {item.customInfo}
+                              </p>
+                          )}
+                           {!isCustomOrderRequest && !hasCustomInfo && (
                               <div className="flex items-center mt-2">
                                 <button onClick={() => onRemoveFromCart(item.id)} className="px-2 py-1 border rounded-md">-</button>
                                 <span className="px-3">{item.quantity}</span>
@@ -194,7 +212,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
                               </div>
                            )}
                         </div>
-                        {!isCustom && (
+                        {!isCustomOrderRequest && (
                           <p className="font-semibold text-primary">${(item.price * item.quantity).toFixed(2)}</p>
                         )}
                       </div>

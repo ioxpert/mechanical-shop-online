@@ -19,15 +19,30 @@ const App: React.FC = () => {
     return cartItems.reduce((sum, item) => sum + item.quantity, 0);
   }, [cartItems]);
 
-  const addToCart = (product: Product) => {
+  const addToCart = (product: Product & { customInfo?: string }) => {
     setCartItems(prevItems => {
-      const existingItem = prevItems.find(item => item.id === product.id);
+      // If there's custom info, always add it as a new, unique item in the cart.
+      if (product.customInfo && product.customInfo.trim() !== '') {
+        const newItem: CartItem = {
+          ...product,
+          id: `${product.id}-${Date.now()}`, // Create a unique ID for the customized item
+          quantity: 1,
+        };
+        return [...prevItems, newItem];
+      }
+
+      // If there is no custom info, check if a standard version of the item already exists.
+      const existingItem = prevItems.find(item => item.id === product.id && (!item.customInfo || item.customInfo.trim() === ''));
+      
       if (existingItem) {
+        // If it exists, just increment the quantity.
         return prevItems.map(item =>
           item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
-      return [...prevItems, { ...product, quantity: 1 }];
+      
+      // Otherwise, add the new standard item to the cart.
+      return [...prevItems, { ...product, quantity: 1, customInfo: '' }];
     });
   };
 

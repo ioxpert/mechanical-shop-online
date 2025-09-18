@@ -1,25 +1,29 @@
+
 import React, { useMemo, useState } from 'react';
 import type { Product } from '../types';
 import ProductCard from '../components/ProductCard';
 import CustomOrderModal from '../components/CustomOrderModal';
+import AddToCartModal from '../components/AddToCartModal';
 
 interface ProductsPageProps {
   products: Product[];
-  onAddToCart: (product: Product) => void;
+  onAddToCart: (product: Product & { customInfo?: string }) => void;
 }
 
 const ProductsPage: React.FC<ProductsPageProps> = ({ products, onAddToCart }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCustomOrderModalOpen, setIsCustomOrderModalOpen] = useState(false);
+  const [isAddToCartModalOpen, setIsAddToCartModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  const handleOpenModal = (categoryTitle: string) => {
+  const handleOpenCustomOrderModal = (categoryTitle: string) => {
     setSelectedCategory(categoryTitle);
-    setIsModalOpen(true);
+    setIsCustomOrderModalOpen(true);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedCategory(null);
+  const handleAddToCartClick = (product: Product) => {
+    setSelectedProduct(product);
+    setIsAddToCartModalOpen(true);
   };
   
   const productsByCategory = useMemo(() => {
@@ -52,7 +56,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ products, onAddToCart }) =>
                 <div className="flex flex-col sm:flex-row justify-between items-baseline border-b-2 border-secondary pb-4 mb-10">
                     <h2 id={`category-title-${key}`} className="text-3xl font-bold font-serif text-primary mb-4 sm:mb-0">{title}</h2>
                     <button 
-                      onClick={() => handleOpenModal(title)}
+                      onClick={() => handleOpenCustomOrderModal(title)}
                       className="bg-secondary text-primary font-bold py-2 px-6 rounded-md hover:opacity-90 transition-all duration-300 whitespace-nowrap"
                     >
                       Request a Custom Order
@@ -60,7 +64,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ products, onAddToCart }) =>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
                   {productsByCategory[key].map(product => (
-                    <ProductCard key={product.id} product={product} onAddToCart={onAddToCart} />
+                    <ProductCard key={product.id} product={product} onAddToCartClick={handleAddToCartClick} />
                   ))}
                 </div>
               </section>
@@ -69,9 +73,15 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ products, onAddToCart }) =>
         </div>
       </div>
       <CustomOrderModal 
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
+        isOpen={isCustomOrderModalOpen}
+        onClose={() => setIsCustomOrderModalOpen(false)}
         category={selectedCategory}
+        onAddToCart={onAddToCart}
+      />
+      <AddToCartModal
+        isOpen={isAddToCartModalOpen}
+        onClose={() => setIsAddToCartModalOpen(false)}
+        product={selectedProduct}
         onAddToCart={onAddToCart}
       />
     </div>

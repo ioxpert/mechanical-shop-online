@@ -1,16 +1,24 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { Product } from '../types';
 import { PRODUCTS } from '../constants';
 import ProductCard from '../components/ProductCard';
+import AddToCartModal from '../components/AddToCartModal';
 
 interface HomePageProps {
-  onAddToCart: (product: Product) => void;
+  onAddToCart: (product: Product & { customInfo?: string }) => void;
 }
 
 const HomePage: React.FC<HomePageProps> = ({ onAddToCart }) => {
   const featuredProducts = PRODUCTS.slice(0, 3);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+  const handleAddToCartClick = (product: Product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
 
   return (
     <div>
@@ -38,7 +46,7 @@ const HomePage: React.FC<HomePageProps> = ({ onAddToCart }) => {
           <h2 className="text-4xl font-bold font-serif text-center text-primary mb-12">Featured Products</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {featuredProducts.map(product => (
-              <ProductCard key={product.id} product={product} onAddToCart={onAddToCart} />
+              <ProductCard key={product.id} product={product} onAddToCartClick={handleAddToCartClick} />
             ))}
           </div>
           <div className="text-center mt-12">
@@ -48,6 +56,13 @@ const HomePage: React.FC<HomePageProps> = ({ onAddToCart }) => {
           </div>
         </div>
       </section>
+      
+      <AddToCartModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        product={selectedProduct}
+        onAddToCart={onAddToCart}
+      />
     </div>
   );
 };
