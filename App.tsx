@@ -9,6 +9,7 @@ import CartModal from './components/CartModal';
 import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import AboutUsPage from './pages/AboutUsPage';
+import ContactPage from './pages/ContactPage';
 
 const App: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -57,6 +58,7 @@ const App: React.FC = () => {
           <Route path="/" element={<HomePage onAddToCart={addToCart} />} />
           <Route path="/products" element={<ProductsPage products={PRODUCTS} onAddToCart={addToCart} />} />
           <Route path="/about" element={<AboutUsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </main>
       <Footer />

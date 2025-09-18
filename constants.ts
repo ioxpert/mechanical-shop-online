@@ -4,7 +4,7 @@ export const NAV_LINKS = [
   { name: 'Home', path: '/' },
   { name: 'Products', path: '/products' },
   { name: 'About Us', path: '/about' },
-  { name: 'Contact', path: '/#contact' },
+  { name: 'Contact', path: '/contact' },
 ];
 
 export const PRODUCTS: Product[] = [
@@ -144,3 +144,26 @@ export const TOOLS_MATERIALS = [
     imageUrl: 'https://picsum.photos/seed/tool1/600/400',
   },
 ];
+
+export const CONTACT_INFO = {
+  managers: [
+    { name: 'Hardeep Singh', phone: '+91 123-456-7890' },
+    { name: 'Manager 2', phone: '+91 098-765-4321' },
+  ],
+  email: 'contact.sgn@gmail.com',
+  instagram: {
+    handle: '@shri_guru_nanak_glass',
+    url: 'https://www.instagram.com/shri_guru_nanak_glass',
+  },
+  address: '123 Glass & Aluminium Lane, Industrial Area, City, State 12345',
+};
+
+export const DEVELOPER_INFO = {
+  name: 'Website Developer Name',
+  phone: '+1 555-555-5555',
+  email: 'developer@example.com',
+  website: {
+    name: 'developer-portfolio.com',
+    url: 'https://developer-portfolio.com',
+  },
+};

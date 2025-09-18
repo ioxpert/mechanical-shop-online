@@ -48,30 +48,6 @@ const HomePage: React.FC<HomePageProps> = ({ onAddToCart }) => {
           </div>
         </div>
       </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-light">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold font-serif text-primary mb-6">Get In Touch</h2>
-          <p className="text-gray-700 max-w-2xl mx-auto mb-10">
-            Have a project in mind or need a custom quote? Our team is ready to help you bring your vision to life. Contact us today!
-          </p>
-          <form className="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-            <div className="mb-4">
-              <input type="text" placeholder="Your Name" className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" />
-            </div>
-            <div className="mb-4">
-              <input type="email" placeholder="Your Email" className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" />
-            </div>
-            <div className="mb-6">
-              <textarea placeholder="Your Message" rows={5} className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
-            </div>
-            <button type="submit" className="w-full bg-secondary text-primary font-bold py-3 px-8 rounded-md hover:opacity-90 transition-all duration-300">
-              Send Message
-            </button>
-          </form>
-        </div>
-      </section>
     </div>
   );
 };
