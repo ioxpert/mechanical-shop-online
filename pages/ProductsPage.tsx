@@ -72,6 +72,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ products, onAddToCart }) =>
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         category={selectedCategory}
+        onAddToCart={onAddToCart}
       />
     </div>
   );

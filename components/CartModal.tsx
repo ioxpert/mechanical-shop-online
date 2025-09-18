@@ -1,4 +1,3 @@
-
 import React from 'react';
 import type { CartItem, Product } from '../types';
 
@@ -44,7 +43,11 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
                   <img src={item.imageUrl} alt={item.name} className="w-20 h-20 object-cover rounded-md" />
                   <div className="flex-grow">
                     <h3 className="font-semibold text-primary">{item.name}</h3>
-                    <p className="text-gray-500 text-sm">${item.price.toFixed(2)}</p>
+                    {item.id.startsWith('custom-') ? (
+                       <p className="text-gray-500 text-sm whitespace-pre-wrap mt-1">{item.description}</p>
+                    ) : (
+                      <p className="text-gray-500 text-sm">${item.price.toFixed(2)}</p>
+                    )}
                     <div className="flex items-center mt-2">
                       <button onClick={() => onRemoveFromCart(item.id)} className="px-2 py-1 border rounded-md">-</button>
                       <span className="px-3">{item.quantity}</span>
