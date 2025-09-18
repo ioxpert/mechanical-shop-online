@@ -44,6 +44,8 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
     }
   }, [isOpen]);
   
+  if (!isOpen) return null;
+
   const subtotal = cartItems.reduce((sum, item) => {
     const isCustomized = item.id.startsWith('custom-') || (item.customInfo && item.customInfo.trim() !== '') || item.customImageName;
     if (isCustomized) {
