@@ -1,5 +1,6 @@
 import React from 'react';
 import type { CartItem, Product } from '../types';
+import { CONTACT_INFO } from '../constants';
 
 interface CartModalProps {
   isOpen: boolean;
@@ -21,6 +22,41 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
 
   const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
+  const handleProceedToCheckout = () => {
+    if (cartItems.length === 0) return;
+
+    const standardItems = cartItems.filter(item => !item.id.startsWith('custom-'));
+    const customItems = cartItems.filter(item => item.id.startsWith('custom-'));
+
+    let message = 'New Order Request from Shri Guru Nanak Glass & Aluminium Website:\n\n';
+
+    if (standardItems.length > 0) {
+      message += '--- Standard Items ---\n';
+      standardItems.forEach(item => {
+        message += `- ${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}\n`;
+      });
+      message += '\n';
+    }
+
+    if (customItems.length > 0) {
+      message += '--- Custom Order Requests ---\n';
+      customItems.forEach(item => {
+        message += `*${item.name}*\n${item.description}\n\n`;
+      });
+    }
+
+    message += `--------------------\n`;
+    message += `*Subtotal: $${subtotal.toFixed(2)}*\n\n`;
+    message += `Please confirm this order and provide payment details.`;
+    
+    const whatsappNumber = CONTACT_INFO.managers[0].phone.replace(/\D/g, '');
+    
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-end" onClick={onClose}>
       <div className="w-full max-w-md h-full bg-white shadow-xl flex flex-col" onClick={e => e.stopPropagation()}>
@@ -37,26 +73,36 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
           </div>
         ) : (
           <div className="flex-grow overflow-y-auto p-6">
-            <div className="space-y-4">
-              {cartItems.map(item => (
-                <div key={item.id} className="flex items-center space-x-4">
-                  <img src={item.imageUrl} alt={item.name} className="w-20 h-20 object-cover rounded-md" />
-                  <div className="flex-grow">
-                    <h3 className="font-semibold text-primary">{item.name}</h3>
-                    {item.id.startsWith('custom-') ? (
-                       <p className="text-gray-500 text-sm whitespace-pre-wrap mt-1">{item.description}</p>
-                    ) : (
-                      <p className="text-gray-500 text-sm">${item.price.toFixed(2)}</p>
-                    )}
-                    <div className="flex items-center mt-2">
-                      <button onClick={() => onRemoveFromCart(item.id)} className="px-2 py-1 border rounded-md">-</button>
-                      <span className="px-3">{item.quantity}</span>
-                      <button onClick={() => onAddToCart(item)} className="px-2 py-1 border rounded-md">+</button>
+            <div className="space-y-6">
+              {cartItems.map(item => {
+                const isCustom = item.id.startsWith('custom-');
+                return (
+                  <div key={item.id} className="flex items-start space-x-4">
+                    <img src={item.imageUrl} alt={item.name} className="w-20 h-20 object-cover rounded-md" />
+                    <div className="flex-grow">
+                      <h3 className="font-semibold text-primary">{item.name}</h3>
+                      {isCustom ? (
+                        <>
+                          <p className="text-gray-500 text-sm whitespace-pre-wrap mt-1">{item.description}</p>
+                          <p className="text-xs text-secondary italic mt-2">
+                            The final price for this custom order will be provided after contacting us, as it depends on the size and specifications you've chosen.
+                          </p>
+                        </>
+                      ) : (
+                        <p className="text-gray-500 text-sm">${item.price.toFixed(2)}</p>
+                      )}
+                      <div className="flex items-center mt-2">
+                        <button onClick={() => onRemoveFromCart(item.id)} className="px-2 py-1 border rounded-md">-</button>
+                        <span className="px-3">{item.quantity}</span>
+                        <button onClick={() => onAddToCart(item)} className="px-2 py-1 border rounded-md">+</button>
+                      </div>
                     </div>
+                    {!isCustom && (
+                      <p className="font-semibold text-primary">${(item.price * item.quantity).toFixed(2)}</p>
+                    )}
                   </div>
-                  <p className="font-semibold text-primary">${(item.price * item.quantity).toFixed(2)}</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
             {cartItems.length > 0 && 
               <button onClick={onClearCart} className="text-sm text-red-500 hover:underline mt-6">
@@ -72,7 +118,9 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
               <span className="text-lg font-semibold text-gray-700">Subtotal:</span>
               <span className="text-xl font-bold text-primary">${subtotal.toFixed(2)}</span>
             </div>
-            <button className="w-full bg-secondary text-primary font-bold py-3 rounded-md hover:opacity-90 transition-opacity">
+            <button 
+              onClick={handleProceedToCheckout}
+              className="w-full bg-secondary text-primary font-bold py-3 rounded-md hover:opacity-90 transition-opacity">
               Proceed to Checkout
             </button>
           </div>

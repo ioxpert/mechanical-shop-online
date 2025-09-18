@@ -20,7 +20,7 @@ const CustomOrderModal: React.FC<CustomOrderModalProps> = ({ isOpen, onClose, ca
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
+    whatsapp: '',
     dimensions: '',
     details: '',
     fileName: '',
@@ -42,7 +42,7 @@ const CustomOrderModal: React.FC<CustomOrderModalProps> = ({ isOpen, onClose, ca
     const customProduct: Product = {
       id: `custom-${category.replace(/\s/g, '')}-${Date.now()}`,
       name: `Custom ${category} Request`,
-      description: `Customer: ${formData.name} (${formData.email})\nDimensions: ${formData.dimensions}\nDetails: ${formData.details}${formData.fileName ? `\nAttachment: ${formData.fileName}` : ''}`,
+      description: `Customer: ${formData.name} (WhatsApp: ${formData.whatsapp})\nDimensions: ${formData.dimensions}\nDetails: ${formData.details}${formData.fileName ? `\nAttachment: ${formData.fileName}` : ''}`,
       price: 0,
       imageUrl: 'https://picsum.photos/seed/custom/400/400',
       category: category,
@@ -82,8 +82,8 @@ const CustomOrderModal: React.FC<CustomOrderModalProps> = ({ isOpen, onClose, ca
                   <input type="text" id="name" name="name" required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" value={formData.name} onChange={handleInputChange} />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-primary font-semibold mb-2">Your Email</label>
-                  <input type="email" id="email" name="email" required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" value={formData.email} onChange={handleInputChange} />
+                  <label htmlFor="whatsapp" className="block text-primary font-semibold mb-2">Your WhatsApp Number</label>
+                  <input type="tel" id="whatsapp" name="whatsapp" required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" value={formData.whatsapp} onChange={handleInputChange} />
                 </div>
                 <div>
                   <label htmlFor="dimensions" className="block text-primary font-semibold mb-2">Dimensions (e.g., W x H)</label>
