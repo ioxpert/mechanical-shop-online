@@ -7,7 +7,7 @@ interface CartModalProps {
   onClose: () => void;
   cartItems: CartItem[];
   onRemoveFromCart: (productId: string) => void;
-  onAddToCart: (product: Product) => void;
+  onIncrementQuantity: (itemId: string) => void;
   onClearCart: () => void;
 }
 
@@ -17,7 +17,7 @@ const XMarkIcon: React.FC = () => (
   </svg>
 );
 
-const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRemoveFromCart, onAddToCart, onClearCart }) => {
+const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRemoveFromCart, onIncrementQuantity, onClearCart }) => {
   const [isCheckoutView, setIsCheckoutView] = useState(false);
   const [customerDetails, setCustomerDetails] = useState({
     name: '',
@@ -29,7 +29,14 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
 
   if (!isOpen) return null;
 
-  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const subtotal = cartItems.reduce((sum, item) => {
+    const isCustomized = item.id.startsWith('custom-') || (item.customInfo && item.customInfo.trim() !== '') || item.customImageName;
+    if (isCustomized) {
+      return sum;
+    }
+    return sum + item.price * item.quantity;
+  }, 0);
+  
   const isFormValid = customerDetails.name.trim() !== '' && customerDetails.phone.trim() !== '' && customerDetails.address.trim() !== '';
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -82,9 +89,18 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
 
     if (orderItems.length > 0) {
       orderItems.forEach(item => {
-        message += `- ${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}\n`;
+        const isCustomized = (item.customInfo && item.customInfo.trim() !== '') || item.customImageName;
+        message += `- ${item.name}`;
+        if (!isCustomized) {
+          message += ` (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}`;
+        }
+        message += '\n';
+        
         if (item.customInfo) {
           message += `  *Customization:* ${item.customInfo}\n`;
+        }
+        if (item.customImageName) {
+            message += `  *Attached Image:* ${item.customImageName}\n`;
         }
       });
       message += '\n';
@@ -97,10 +113,12 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
     }
 
     message += `--------------------\n`;
-    message += `*Subtotal: $${subtotal.toFixed(2)}*\n\n`;
+    if (subtotal > 0) {
+        message += `*Subtotal (Standard Items): $${subtotal.toFixed(2)}*\n\n`;
+    }
     
     const hasCustomizedItems = cartItems.some(
-      item => (item.customInfo && item.customInfo.trim() !== '') || item.id.startsWith('custom-')
+      item => (item.customInfo && item.customInfo.trim() !== '') || item.id.startsWith('custom-') || item.customImageName
     );
 
     if (hasCustomizedItems) {
@@ -182,37 +200,47 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
                 <div className="space-y-6">
                   {cartItems.map(item => {
                     const isCustomOrderRequest = item.id.startsWith('custom-');
-                    const hasCustomInfo = !!item.customInfo;
+                    const hasCustomInfo = item.customInfo && item.customInfo.trim() !== '';
+                    const hasCustomImage = !!item.customImageName;
+                    const isCustomized = isCustomOrderRequest || hasCustomInfo || hasCustomImage;
 
                     return (
                       <div key={item.id} className="flex items-start space-x-4">
                         <img src={item.imageUrl} alt={item.name} className="w-20 h-20 object-cover rounded-md" />
                         <div className="flex-grow">
                           <h3 className="font-semibold text-primary">{item.name}</h3>
-                          {isCustomOrderRequest ? (
-                            <>
-                              <p className="text-gray-500 text-sm whitespace-pre-wrap mt-1">{item.description}</p>
-                              <p className="text-xs text-secondary italic mt-2">
-                                The final price for this custom order will be provided after contacting us, as it depends on the size and specifications you've chosen.
-                              </p>
-                            </>
+
+                          {isCustomOrderRequest && (
+                            <p className="text-gray-500 text-sm whitespace-pre-wrap mt-1">{item.description}</p>
+                          )}
+                          
+                          {(hasCustomInfo || hasCustomImage) && (
+                            <div className="text-sm text-gray-700 mt-2 p-2 bg-accent rounded-md">
+                              {hasCustomInfo && (
+                                <p><span className="font-semibold">Your Notes:</span> {item.customInfo}</p>
+                              )}
+                              {hasCustomImage && (
+                                <p className="mt-1"><span className="font-semibold">Attached Image:</span> {item.customImageName}</p>
+                              )}
+                            </div>
+                          )}
+
+                          {isCustomized ? (
+                            <p className="text-xs text-secondary italic mt-2">
+                              Price will be provided on WhatsApp based on the item's size and design.
+                            </p>
                           ) : (
-                            <p className="text-gray-500 text-sm">${item.price.toFixed(2)}</p>
-                          )}
-                          {hasCustomInfo && (
-                              <p className="text-sm text-gray-700 mt-2 p-2 bg-accent rounded-md">
-                                <span className="font-semibold">Your Notes:</span> {item.customInfo}
-                              </p>
-                          )}
-                           {!isCustomOrderRequest && !hasCustomInfo && (
+                            <>
+                              <p className="text-gray-500 text-sm">${item.price.toFixed(2)}</p>
                               <div className="flex items-center mt-2">
                                 <button onClick={() => onRemoveFromCart(item.id)} className="px-2 py-1 border rounded-md">-</button>
                                 <span className="px-3">{item.quantity}</span>
-                                <button onClick={() => onAddToCart(item)} className="px-2 py-1 border rounded-md">+</button>
+                                <button onClick={() => onIncrementQuantity(item.id)} className="px-2 py-1 border rounded-md">+</button>
                               </div>
-                           )}
+                            </>
+                          )}
                         </div>
-                        {!isCustomOrderRequest && (
+                        {!isCustomized && (
                           <p className="font-semibold text-primary">${(item.price * item.quantity).toFixed(2)}</p>
                         )}
                       </div>

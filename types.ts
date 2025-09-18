@@ -1,4 +1,3 @@
-
 export interface Product {
   id: string;
   name: string;
@@ -11,4 +10,5 @@ export interface Product {
 export interface CartItem extends Product {
   quantity: number;
   customInfo?: string;
+  customImageName?: string;
 }

@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import type { CartItem, Product } from './types';
@@ -19,10 +18,11 @@ const App: React.FC = () => {
     return cartItems.reduce((sum, item) => sum + item.quantity, 0);
   }, [cartItems]);
 
-  const addToCart = (product: Product & { customInfo?: string }) => {
+  const addToCart = (product: Product & { customInfo?: string; customImageName?: string }) => {
     setCartItems(prevItems => {
-      // If there's custom info, always add it as a new, unique item in the cart.
-      if (product.customInfo && product.customInfo.trim() !== '') {
+      const hasCustomization = (product.customInfo && product.customInfo.trim() !== '') || product.customImageName;
+      
+      if (hasCustomization) {
         const newItem: CartItem = {
           ...product,
           id: `${product.id}-${Date.now()}`, // Create a unique ID for the customized item
@@ -32,7 +32,7 @@ const App: React.FC = () => {
       }
 
       // If there is no custom info, check if a standard version of the item already exists.
-      const existingItem = prevItems.find(item => item.id === product.id && (!item.customInfo || item.customInfo.trim() === ''));
+      const existingItem = prevItems.find(item => item.id === product.id && (!item.customInfo || item.customInfo.trim() === '') && !item.customImageName);
       
       if (existingItem) {
         // If it exists, just increment the quantity.
@@ -42,8 +42,16 @@ const App: React.FC = () => {
       }
       
       // Otherwise, add the new standard item to the cart.
-      return [...prevItems, { ...product, quantity: 1, customInfo: '' }];
+      return [...prevItems, { ...product, quantity: 1, customInfo: '', customImageName: undefined }];
     });
+  };
+
+  const incrementQuantity = (itemId: string) => {
+    setCartItems(prevItems =>
+      prevItems.map(item =>
+        item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
   };
 
   const removeFromCart = (productId: string) => {
@@ -82,7 +90,7 @@ const App: React.FC = () => {
         onClose={() => setIsCartOpen(false)}
         cartItems={cartItems}
         onRemoveFromCart={removeFromCart}
-        onAddToCart={addToCart}
+        onIncrementQuantity={incrementQuantity}
         onClearCart={clearCart}
       />
     </div>

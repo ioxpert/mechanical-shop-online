@@ -1,4 +1,3 @@
-
 import React, { useMemo, useState } from 'react';
 import type { Product } from '../types';
 import ProductCard from '../components/ProductCard';
@@ -7,7 +6,7 @@ import AddToCartModal from '../components/AddToCartModal';
 
 interface ProductsPageProps {
   products: Product[];
-  onAddToCart: (product: Product & { customInfo?: string }) => void;
+  onAddToCart: (product: Product & { customInfo?: string; customImageName?: string; }) => void;
 }
 
 const ProductsPage: React.FC<ProductsPageProps> = ({ products, onAddToCart }) => {

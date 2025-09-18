@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import type { Product } from '../types';
 
@@ -6,7 +5,7 @@ interface AddToCartModalProps {
   isOpen: boolean;
   onClose: () => void;
   product: Product | null;
-  onAddToCart: (product: Product & { customInfo?: string }) => void;
+  onAddToCart: (product: Product & { customInfo?: string; customImageName?: string; }) => void;
 }
 
 const XMarkIcon: React.FC = () => (
@@ -17,18 +16,27 @@ const XMarkIcon: React.FC = () => (
 
 const AddToCartModal: React.FC<AddToCartModalProps> = ({ isOpen, onClose, product, onAddToCart }) => {
   const [customInfo, setCustomInfo] = useState('');
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   useEffect(() => {
     if (!isOpen) {
-      // Reset custom info when modal is closed
+      // Reset custom info and file when modal is closed
       setCustomInfo('');
+      setSelectedFile(null);
     }
   }, [isOpen]);
 
   if (!isOpen || !product) return null;
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+    }
+  };
+
   const handleSubmit = () => {
-    onAddToCart({ ...product, customInfo });
+    onAddToCart({ ...product, customInfo, customImageName: selectedFile?.name });
     onClose();
   };
 
@@ -51,18 +59,32 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ isOpen, onClose, produc
             </div>
           </div>
           
-          <div>
-            <label htmlFor="customInfo" className="block text-primary font-semibold mb-2">Customization (Optional)</label>
-            <textarea 
-              id="customInfo" 
-              name="customInfo" 
-              rows={4} 
-              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" 
-              placeholder="e.g., Change dimensions to 30in x 40in, specific color request..."
-              value={customInfo}
-              onChange={(e) => setCustomInfo(e.target.value)}
-            ></textarea>
-            <p className="text-xs text-gray-500 mt-2">Leave blank to add the standard item to your cart.</p>
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="customInfo" className="block text-primary font-semibold mb-2">Customization Notes (Optional)</label>
+              <textarea 
+                id="customInfo" 
+                name="customInfo" 
+                rows={4} 
+                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" 
+                placeholder="e.g., Change dimensions to 30in x 40in, specific color request..."
+                value={customInfo}
+                onChange={(e) => setCustomInfo(e.target.value)}
+              ></textarea>
+            </div>
+             <div>
+              <label htmlFor="image-upload" className="block text-primary font-semibold mb-2">Add Image (Optional)</label>
+              <input 
+                type="file" 
+                id="image-upload" 
+                name="image-upload" 
+                accept="image/*"
+                className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-accent file:text-primary hover:file:bg-secondary/20"
+                onChange={handleFileChange}
+              />
+              {selectedFile && <p className="text-xs text-gray-600 mt-2">Selected: {selectedFile.name}</p>}
+            </div>
+            <p className="text-xs text-gray-500 pt-2">Leave both fields blank to add the standard item to your cart.</p>
           </div>
         </div>
         

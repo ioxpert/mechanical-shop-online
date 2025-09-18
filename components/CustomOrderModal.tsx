@@ -5,7 +5,7 @@ interface CustomOrderModalProps {
   isOpen: boolean;
   onClose: () => void;
   category: string | null;
-  onAddToCart: (product: Product) => void;
+  onAddToCart: (product: Product & { customInfo?: string; customImageName?: string; }) => void;
 }
 
 const XMarkIcon: React.FC = () => (
