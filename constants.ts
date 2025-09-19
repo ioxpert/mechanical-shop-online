@@ -111,23 +111,23 @@ export const PRODUCTS: Product[] = [
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    name: 'Baljinder Singh',
+    name: 'Hardeep Singh',
     roleKey: 'teamMember1Role',
     bioKey: 'teamMember1Bio',
     imageUrl: 'https://picsum.photos/seed/team1/400/400',
   },
   {
-    name: 'Sukhdeep Singh',
+    name: 'Priya Kaur',
     roleKey: 'teamMember2Role',
     bioKey: 'teamMember2Bio',
     imageUrl: 'https://picsum.photos/seed/team2/400/400',
   },
-  // {
-  //   name: 'Raj Patel',
-  //   roleKey: 'teamMember3Role',
-  //   bioKey: 'teamMember3Bio',
-  //   imageUrl: 'https://picsum.photos/seed/team3/400/400',
-  // },
+  {
+    name: 'Raj Patel',
+    roleKey: 'teamMember3Role',
+    bioKey: 'teamMember3Bio',
+    imageUrl: 'https://picsum.photos/seed/team3/400/400',
+  },
 ];
 
 export const TOOLS_MATERIALS: ToolMaterial[] = [
@@ -158,8 +158,7 @@ export const CONTACT_INFO = {
     handle: '@shri_gurunanak_glass',
     url: 'https://www.instagram.com/shri_gurunanak_glass?igsh=NHoyeTdhbWkxOGww',
   },
-  address: 
- 'In front of AAA Car Wash & Accessories, Padampur Gajsinghpur Road, Padampur, Rajasthan 335041.',
+  address: 'In front of AAA Car Wash & Accessories, Padampur Gajsinghpur Road, Padampur, Rajasthan 335041',
 };
 
 export const DEVELOPER_INFO = {
@@ -167,7 +166,7 @@ export const DEVELOPER_INFO = {
   phone: '+91 9166463479',
   email: 'sukh.meet9896@gmail.com',
   website: {
-    name: 'IOXPERT',
-    url: 'https://ioxpert.com',
+    name: 'developer-portfolio.com',
+    url: 'https://developer-portfolio.com',
   },
 };
