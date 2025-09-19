@@ -121,23 +121,29 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
             message += `${item.imageUrl}\n`;
         }
 
-        const isCustomized = item.customInfo || item.id.startsWith('custom-');
+        const isCustomized = (item.customInfo && item.customInfo.trim() !== '') || item.id.startsWith('custom-');
         message += `- ${t(item.nameKey)}`;
+
         if (!isCustomized) {
             message += ` (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}`;
         }
         if (item.id.startsWith('custom-') && item.description) {
             message += `\n${item.description}`;
         }
-        if (item.customInfo) message += `\n  *${t('customizationNotes')}:* ${item.customInfo}`;
+        if (item.customInfo) {
+            message += `\n  *${t('customizationNotes')}:* ${item.customInfo}`;
+        }
+        if (isCustomized) {
+            message += `\n  *${t('note')}:* _${t('whatsappItemCustomizationPrompt')}_`;
+        }
         message += `\n\n`;
     });
     message += `--------------------\n`;
     if (subtotal > 0) message += `*${t('subtotalStandardItems')}: $${subtotal.toFixed(2)}*\n\n`;
+    
     const hasCustomizedItems = cartItems.some(item => (item.customInfo && item.customInfo.trim() !== '') || item.id.startsWith('custom-'));
     if (hasCustomizedItems) {
-      message += `*${t('note')}:* ${t('customPriceNoteWhatsapp')}\n`;
-      message += `*${t('whatsappCustomOrderPrompt')}*\n\n`;
+      message += `*${t('note')}:* ${t('customPriceNoteWhatsapp')}\n\n`;
     }
     message += t('whatsappOrderConfirmation');
 
