@@ -144,7 +144,7 @@ const ContactPage: React.FC = () => {
                 <div className="mt-4 flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-gray-600">
                     <span className="flex items-center gap-2"><PhoneIcon /> {DEVELOPER_INFO.phone}</span>
                     <a href={`mailto:${DEVELOPER_INFO.email}`} className="flex items-center gap-2 hover:text-secondary transition-colors"><MailIcon />{DEVELOPER_INFO.email}</a>
-                    <a href={DEVELOPER_INFO.website.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-secondary transition-colors"><WebIcon />{DEVELOPER_INFO.website.name}</a>
+                    <a href={DEVELOPER_INFO.website.url} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors" title={DEVELOPER_INFO.website.name}><WebIcon /></a>
                 </div>
             </div>
         </div>
