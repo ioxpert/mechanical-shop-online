@@ -141,9 +141,12 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
     const hasCustomizedItems = cartItems.some(item => (item.customInfo && item.customInfo.trim() !== '') || item.id.startsWith('custom-'));
     if (hasCustomizedItems) {
       message += `*${t('note')}:* ${t('customPriceNoteWhatsapp')}\n\n`;
-      message += `*${t('whatsappCustomOrderPrompt')}*\n\n`;
     }
     message += t('whatsappOrderConfirmation');
+
+    if (hasCustomizedItems) {
+      message += `\n\n---\n*${t('whatsappCustomOrderPrompt')}*`;
+    }
 
     const whatsappNumber = CONTACT_INFO.managers[0].phone.replace(/\D/g, '');
     const encodedMessage = encodeURIComponent(message);

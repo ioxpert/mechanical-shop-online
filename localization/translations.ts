@@ -91,7 +91,7 @@ export const translations = {
     whatsappOrderItems: 'Order Items',
     customizationNotes: 'Customization',
     whatsappOrderConfirmation: 'Please confirm this order.',
-    whatsappCustomOrderPrompt: 'For your customized items, please share the design/image you want directly in this chat.',
+    whatsappCustomOrderPrompt: 'IMPORTANT: For your custom item(s), please reply in this chat with a design image after sending this message.',
     itemImage: 'Image',
     customerInfo: 'Customer Information',
 
@@ -246,7 +246,7 @@ export const translations = {
     whatsappOrderItems: 'ऑर्डर आइटम',
     customizationNotes: 'अनुकूलन',
     whatsappOrderConfirmation: 'कृपया इस आदेश की पुष्टि करें।',
-    whatsappCustomOrderPrompt: 'अपने अनुकूलित आइटम के लिए, कृपया अपना इच्छित डिज़ाइन/छवि सीधे इसी चैट में साझा करें।',
+    whatsappCustomOrderPrompt: 'महत्वपूर्ण: अपने कस्टम आइटम(s) के लिए, कृपया यह संदेश भेजने के बाद इस चैट में एक डिज़ाइन छवि के साथ उत्तर दें।',
     itemImage: 'छवि',
     customerInfo: 'ग्राहक जानकारी',
 
@@ -401,7 +401,7 @@ export const translations = {
     whatsappOrderItems: 'ਆਰਡਰ ਆਈਟਮਾਂ',
     customizationNotes: 'ਕਸਟਮਾਈਜ਼ੇਸ਼ਨ',
     whatsappOrderConfirmation: 'ਕਿਰਪਾ ਕਰਕੇ ਇਸ ਆਰਡਰ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ।',
-    whatsappCustomOrderPrompt: 'ਤੁਹਾਡੀਆਂ ਕਸਟਮਾਈਜ਼ਡ ਆਈਟਮਾਂ ਲਈ, ਕਿਰਪਾ ਕਰਕੇ ਇਸ ਚੈਟ ਵਿੱਚ ਸਿੱਧਾ ਉਹ ਡਿਜ਼ਾਈਨ/ਚਿੱਤਰ ਸਾਂਝਾ ਕਰੋ ਜੋ ਤੁਸੀਂ ਚਾਹੁੰਦੇ ਹੋ।',
+    whatsappCustomOrderPrompt: 'ਮਹੱਤਵਪੂਰਨ: ਤੁਹਾਡੀਆਂ ਕਸਟਮ ਆਈਟਮਾਂ ਲਈ, ਕਿਰਪਾ ਕਰਕੇ ਇਹ ਸੁਨੇਹਾ ਭੇਜਣ ਤੋਂ ਬਾਅਦ ਇਸ ਚੈਟ ਵਿੱਚ ਇੱਕ ਡਿਜ਼ਾਈਨ ਚਿੱਤਰ ਨਾਲ ਜਵਾਬ ਦਿਓ।',
     itemImage: 'ਚਿੱਤਰ',
     customerInfo: 'ਗਾਹਕ ਦੀ ਜਾਣਕਾਰੀ',
 
