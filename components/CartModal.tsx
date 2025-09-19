@@ -87,12 +87,6 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
 
     // 1. Compile Text Message
     let message = `*${t('whatsappOrderTitle')}*\n\n`;
-    
-    // Add the URL of the first standard product image for WhatsApp preview
-    const firstStandardItem = cartItems.find(item => item.imageUrl && !item.customImageBase64);
-    if (firstStandardItem) {
-        message += `${firstStandardItem.imageUrl}\n\n`;
-    }
 
     message += `--- *${t('customerInfo')}* ---\n`;
     message += `*${t('formNameLabel')}:* ${customerInfo.name}\n`;
@@ -106,6 +100,12 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
     // 2. Add Item list to message
     message += `--- *${t('whatsappOrderItems')}* ---\n`;
     cartItems.forEach(item => {
+        // Add the image URL for standard products.
+        // Custom order requests (id starts with 'custom-') have a placeholder image, which we don't want to include.
+        if (!item.id.startsWith('custom-')) {
+            message += `${item.imageUrl}\n`;
+        }
+
         const isCustomized = item.customInfo || item.customImageName || item.id.startsWith('custom-');
         message += `- ${t(item.nameKey)}`;
         if (!isCustomized) {
@@ -116,7 +116,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
         }
         if (item.customInfo) message += `\n  *${t('customizationNotes')}:* ${item.customInfo}`;
         if (item.customImageName) message += `\n  *${t('attachedImage')}:* ${item.customImageName}`;
-        message += `\n`;
+        message += `\n\n`; // Use two newlines to create a blank line between items
     });
     message += `--------------------\n`;
     if (subtotal > 0) message += `*${t('subtotalStandardItems')}: $${subtotal.toFixed(2)}*\n\n`;
