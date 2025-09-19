@@ -111,23 +111,23 @@ export const PRODUCTS: Product[] = [
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    name: 'Hardeep Singh',
+    name: 'Baljinder Singh',
     roleKey: 'teamMember1Role',
     bioKey: 'teamMember1Bio',
     imageUrl: 'https://picsum.photos/seed/team1/400/400',
   },
   {
-    name: 'Priya Kaur',
+    name: 'Sukhdeep Singh',
     roleKey: 'teamMember2Role',
     bioKey: 'teamMember2Bio',
     imageUrl: 'https://picsum.photos/seed/team2/400/400',
   },
-  {
-    name: 'Raj Patel',
-    roleKey: 'teamMember3Role',
-    bioKey: 'teamMember3Bio',
-    imageUrl: 'https://picsum.photos/seed/team3/400/400',
-  },
+  // {
+  //   name: 'Raj Patel',
+  //   roleKey: 'teamMember3Role',
+  //   bioKey: 'teamMember3Bio',
+  //   imageUrl: 'https://picsum.photos/seed/team3/400/400',
+  // },
 ];
 
 export const TOOLS_MATERIALS: ToolMaterial[] = [
@@ -150,23 +150,24 @@ export const TOOLS_MATERIALS: ToolMaterial[] = [
 
 export const CONTACT_INFO = {
   managers: [
-    { name: 'Hardeep Singh', phone: '+91 9610868884' },
-    { name: 'Manager 2', phone: '+91 098-765-4321' },
+    { name: 'Baljinder Singh', phone: '+91 9610868884' },
+    { name: 'Sukhdeep Singh', phone: '+91 9024844997' },
   ],
   email: 'contact.sgn@gmail.com',
   instagram: {
     handle: '@shri_gurunanak_glass',
     url: 'https://www.instagram.com/shri_gurunanak_glass?igsh=NHoyeTdhbWkxOGww',
   },
-  address: '123 Glass & Aluminium Lane, Industrial Area, City, State 12345',
+  address: 
+ 'In front of AAA Car Wash & Accessories, Padampur Gajsinghpur Road, Padampur, Rajasthan 335041.',
 };
 
 export const DEVELOPER_INFO = {
-  name: 'Website Developer Name',
-  phone: '+1 555-555-5555',
-  email: 'developer@example.com',
+  name: 'Sukh Ramghria',
+  phone: '+91 9166463479',
+  email: 'sukh.meet9896@gmail.com',
   website: {
-    name: 'developer-portfolio.com',
-    url: 'https://developer-portfolio.com',
+    name: 'IOXPERT',
+    url: 'https://ioxpert.com',
   },
 };
