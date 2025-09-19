@@ -21,23 +21,6 @@ const XMarkIcon: React.FC = () => (
   </svg>
 );
 
-// Helper to convert a data URL to a File object
-const dataURLtoFile = (dataurl: string, filename: string): File | null => {
-  const arr = dataurl.split(',');
-  if (arr.length < 2) return null;
-  const match = arr[0].match(/:(.*?);/);
-  if (!match) return null;
-  const mime = match[1];
-  const bstr = atob(arr[1]);
-  let n = bstr.length;
-  const u8arr = new Uint8Array(n);
-  while (n--) {
-    u8arr[n] = bstr.charCodeAt(n);
-  }
-  return new File([u8arr], filename, { type: mime });
-};
-
-
 const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRemoveFromCart, onIncrementQuantity, onClearCart }) => {
   const { t } = useTranslation();
   const [checkoutStep, setCheckoutStep] = useState<CheckoutStep>('cart');
@@ -104,6 +87,13 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
 
     // 1. Compile Text Message
     let message = `*${t('whatsappOrderTitle')}*\n\n`;
+    
+    // Add the URL of the first standard product image for WhatsApp preview
+    const firstStandardItem = cartItems.find(item => item.imageUrl && !item.customImageBase64);
+    if (firstStandardItem) {
+        message += `${firstStandardItem.imageUrl}\n\n`;
+    }
+
     message += `--- *${t('customerInfo')}* ---\n`;
     message += `*${t('formNameLabel')}:* ${customerInfo.name}\n`;
     message += `*${t('formPhoneLabel')}:* ${customerInfo.phone}\n`;
@@ -134,42 +124,17 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
     if (hasCustomizedItems) message += `*${t('note')}:* ${t('customPriceNoteWhatsapp')}\n\n`;
     message += t('whatsappOrderConfirmation');
 
-    // 3. Prepare All Image Files
-    const imageFetchPromises = cartItems.map(async (item) => {
-        try {
-            if (item.customImageBase64 && item.customImageName) {
-                const file = dataURLtoFile(item.customImageBase64, item.customImageName);
-                if(file) return { name: item.customImageName, base64: item.customImageBase64 };
-            }
-            // Fetch standard image
-            const response = await fetch(item.imageUrl);
-            const blob = await response.blob();
-            const filename = `${t(item.nameKey).replace(/ /g, '_')}.png`;
+    // 3. Prepare only custom user-uploaded images for manual attachment
+    const customImagesForDownload = cartItems
+        .filter(item => item.customImageBase64 && item.customImageName)
+        .map(item => ({ name: item.customImageName!, base64: item.customImageBase64! }));
 
-            const base64 = await new Promise<string>((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onloadend = () => resolve(reader.result as string);
-                reader.onerror = reject;
-                reader.readAsDataURL(blob);
-            });
-            return { name: filename, base64 };
-        } catch (error) {
-            console.error(`Failed to process image for ${t(item.nameKey)}:`, error);
-            return null;
-        }
-    });
-    
-    const allImageData = (await Promise.all(imageFetchPromises)).filter((img): img is { name: string, base64: string } => img !== null);
-
-    // 4. Generate WhatsApp link and handle images for manual attachment
     const whatsappNumber = CONTACT_INFO.managers[0].phone.replace(/\D/g, '');
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-    const imagesForDownload: CustomImage[] = allImageData.map(img => ({ name: img.name, base64: img.base64 }));
-
-    if (imagesForDownload.length > 0) {
-      setFinalOrderDetails({ whatsappUrl, images: imagesForDownload });
+    if (customImagesForDownload.length > 0) {
+      setFinalOrderDetails({ whatsappUrl, images: customImagesForDownload });
       setCheckoutStep('confirmation');
     } else {
       window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
@@ -178,11 +143,6 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
     }
     setIsSubmitting(false);
   };
-  
-  const handleFinalClose = () => {
-    onClearCart();
-    onClose();
-  }
 
   const renderTitle = () => {
     switch (checkoutStep) {
@@ -295,7 +255,13 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
                 <div className="text-center">
                     <h3 className="text-xl font-bold text-primary mb-4">{t('confirmationHeader')}</h3>
                     <p className="text-gray-600 mb-6">{t('confirmationSubheader')}</p>
-                    <a href={finalOrderDetails.whatsappUrl} target="_blank" rel="noopener noreferrer" className="w-full block bg-green-500 text-white font-bold py-3 px-4 rounded-md hover:bg-green-600 transition-colors mb-6 text-center">
+                    <a 
+                        href={finalOrderDetails.whatsappUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        onClick={() => setTimeout(() => { onClearCart(); onClose(); }, 500)}
+                        className="w-full block bg-green-500 text-white font-bold py-3 px-4 rounded-md hover:bg-green-600 transition-colors mb-6 text-center"
+                    >
                         {t('confirmationStep1')}
                     </a>
                     {finalOrderDetails.images.length > 0 && (
@@ -322,7 +288,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
           </div>
         )}
         
-        {cartItems.length > 0 && (
+        {cartItems.length > 0 && checkoutStep !== 'confirmation' && (
           <div className="p-6 border-t bg-gray-50">
             {checkoutStep === 'cart' && (
               <>
@@ -339,11 +305,6 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
               <button onClick={handleFinalSubmit} disabled={!isFormValid || isSubmitting} className="w-full bg-secondary text-primary font-bold py-3 rounded-md hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center h-12">
                 {proceedButtonContent()}
               </button>
-            )}
-            {checkoutStep === 'confirmation' && (
-                <button onClick={handleFinalClose} className="w-full bg-primary text-white font-bold py-3 rounded-md hover:opacity-90 transition-opacity">
-                    {t('done')}
-                </button>
             )}
           </div>
         )}
