@@ -155,8 +155,8 @@ export const CONTACT_INFO = {
   ],
   email: 'contact.sgn@gmail.com',
   instagram: {
-    handle: '@shri_guru_nanak_glass',
-    url: 'https://www.instagram.com/shri_guru_nanak_glass',
+    handle: '@shri_gurunanak_glass',
+    url: 'https://www.instagram.com/shri_gurunanak_glass?igsh=NHoyeTdhbWkxOGww',
   },
   address: '123 Glass & Aluminium Lane, Industrial Area, City, State 12345',
 };

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { useTranslation } from '../localization/useTranslation';
+import { CONTACT_INFO } from '../constants';
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -13,7 +14,7 @@ const Footer: React.FC = () => {
           <p className="text-center md:text-left">&copy; {year} {t('companyName')}. {t('footerRights')}</p>
           <div className="flex mt-4 md:mt-0 space-x-6">
             <a href="#" className="hover:text-secondary transition-colors duration-300">Facebook</a>
-            <a href="#" className="hover:text-secondary transition-colors duration-300">Instagram</a>
+            <a href={CONTACT_INFO.instagram.url} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors duration-300">Instagram</a>
             <a href="#" className="hover:text-secondary transition-colors duration-300">Twitter</a>
           </div>
         </div>
