@@ -12,8 +12,7 @@ interface CartModalProps {
   onClearCart: () => void;
 }
 
-type CheckoutStep = 'cart' | 'form' | 'confirmation';
-type CustomImage = { name: string; base64: string; };
+type CheckoutStep = 'cart' | 'form';
 
 const XMarkIcon: React.FC = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -28,7 +27,6 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
   const [location, setLocation] = useState<{ lat: number; lon: number } | null>(null);
   const [isFetchingLocation, setIsFetchingLocation] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [finalOrderDetails, setFinalOrderDetails] = useState<{ whatsappUrl: string; images: CustomImage[] } | null>(null);
 
   const isFormValid = customerInfo.name.trim() !== '' && customerInfo.phone.trim() !== '' && customerInfo.address.trim() !== '' && location !== null;
 
@@ -38,7 +36,6 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
         setCheckoutStep('cart');
         setCustomerInfo({ name: '', phone: '', address: '' });
         setLocation(null);
-        setFinalOrderDetails(null);
         setIsSubmitting(false);
       }, 300);
     }
@@ -47,7 +44,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
   if (!isOpen) return null;
 
   const subtotal = cartItems.reduce((sum, item) => {
-    const isCustomized = item.id.startsWith('custom-') || (item.customInfo && item.customInfo.trim() !== '') || item.customImageName;
+    const isCustomized = item.id.startsWith('custom-') || (item.customInfo && item.customInfo.trim() !== '') || item.customImageUrl;
     if (isCustomized) {
       return sum;
     }
@@ -85,9 +82,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
     if (!isFormValid) return;
     setIsSubmitting(true);
 
-    // 1. Compile Text Message
     let message = `*${t('whatsappOrderTitle')}*\n\n`;
-
     message += `--- *${t('customerInfo')}* ---\n`;
     message += `*${t('formNameLabel')}:* ${customerInfo.name}\n`;
     message += `*${t('formPhoneLabel')}:* ${customerInfo.phone}\n`;
@@ -97,16 +92,15 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
     }
     message += '\n';
     
-    // 2. Add Item list to message
     message += `--- *${t('whatsappOrderItems')}* ---\n`;
     cartItems.forEach(item => {
-        // Add the image URL for standard products, but only if no custom image is attached.
-        // Custom order requests (id starts with 'custom-') have a placeholder image, which we don't want to include.
-        if (!item.id.startsWith('custom-') && !item.customImageBase64) {
+        if (item.customImageUrl) {
+            message += `${item.customImageUrl}\n`;
+        } else if (!item.id.startsWith('custom-') && item.imageUrl) {
             message += `${item.imageUrl}\n`;
         }
 
-        const isCustomized = item.customInfo || item.customImageName || item.id.startsWith('custom-');
+        const isCustomized = item.customInfo || item.customImageUrl || item.id.startsWith('custom-');
         message += `- ${t(item.nameKey)}`;
         if (!isCustomized) {
             message += ` (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}`;
@@ -115,32 +109,21 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
             message += `\n${item.description}`;
         }
         if (item.customInfo) message += `\n  *${t('customizationNotes')}:* ${item.customInfo}`;
-        if (item.customImageName) message += `\n  *${t('attachedImage')}:* ${item.customImageName}`;
-        message += `\n\n`; // Use two newlines to create a blank line between items
+        message += `\n\n`;
     });
     message += `--------------------\n`;
     if (subtotal > 0) message += `*${t('subtotalStandardItems')}: $${subtotal.toFixed(2)}*\n\n`;
-    const hasCustomizedItems = cartItems.some(item => (item.customInfo && item.customInfo.trim() !== '') || item.id.startsWith('custom-') || item.customImageName);
+    const hasCustomizedItems = cartItems.some(item => (item.customInfo && item.customInfo.trim() !== '') || item.id.startsWith('custom-') || item.customImageUrl);
     if (hasCustomizedItems) message += `*${t('note')}:* ${t('customPriceNoteWhatsapp')}\n\n`;
     message += t('whatsappOrderConfirmation');
-
-    // 3. Prepare only custom user-uploaded images for manual attachment
-    const customImagesForDownload = cartItems
-        .filter(item => item.customImageBase64 && item.customImageName)
-        .map(item => ({ name: item.customImageName!, base64: item.customImageBase64! }));
 
     const whatsappNumber = CONTACT_INFO.managers[0].phone.replace(/\D/g, '');
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-    if (customImagesForDownload.length > 0) {
-      setFinalOrderDetails({ whatsappUrl, images: customImagesForDownload });
-      setCheckoutStep('confirmation');
-    } else {
-      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-      onClearCart();
-      onClose();
-    }
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    onClearCart();
+    onClose();
     setIsSubmitting(false);
   };
 
@@ -148,7 +131,6 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
     switch (checkoutStep) {
       case 'cart': return t('cartTitle');
       case 'form': return t('formTitle');
-      case 'confirmation': return t('confirmationTitle');
       default: return t('cartTitle');
     }
   };
@@ -178,7 +160,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
           </button>
         </div>
 
-        {cartItems.length === 0 && checkoutStep !== 'confirmation' ? (
+        {cartItems.length === 0 ? (
           <div className="flex-grow flex items-center justify-center">
             <p className="text-gray-500">{t('cartEmpty')}</p>
           </div>
@@ -190,7 +172,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
                   {cartItems.map(item => {
                     const isCustomOrderRequest = item.id.startsWith('custom-');
                     const hasCustomInfo = item.customInfo && item.customInfo.trim() !== '';
-                    const hasCustomImage = !!item.customImageName;
+                    const hasCustomImage = !!item.customImageUrl;
                     const isCustomized = isCustomOrderRequest || hasCustomInfo || hasCustomImage;
 
                     return (
@@ -202,7 +184,14 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
                           {(hasCustomInfo || hasCustomImage) && (
                             <div className="text-sm text-gray-700 mt-2 p-2 bg-accent rounded-md">
                               {hasCustomInfo && <p><span className="font-semibold">{t('yourNotes')}:</span> {item.customInfo}</p>}
-                              {hasCustomImage && <p className="mt-1"><span className="font-semibold">{t('attachedImage')}:</span> {item.customImageName}</p>}
+                              {hasCustomImage && (
+                                <p className="mt-1">
+                                  <span className="font-semibold">{t('attachedImage')}:</span> 
+                                  <a href={item.customImageUrl} target="_blank" rel="noopener noreferrer" className="text-secondary underline ml-1">
+                                    {t('viewImage')}
+                                  </a>
+                                </p>
+                              )}
                             </div>
                           )}
                           {isCustomized ? (
@@ -251,44 +240,10 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
                 </div>
               </div>
             )}
-            {checkoutStep === 'confirmation' && finalOrderDetails && (
-                <div className="text-center">
-                    <h3 className="text-xl font-bold text-primary mb-4">{t('confirmationHeader')}</h3>
-                    <p className="text-gray-600 mb-6">{t('confirmationSubheader')}</p>
-                    <a 
-                        href={finalOrderDetails.whatsappUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        onClick={() => setTimeout(() => { onClearCart(); onClose(); }, 500)}
-                        className="w-full block bg-green-500 text-white font-bold py-3 px-4 rounded-md hover:bg-green-600 transition-colors mb-6 text-center"
-                    >
-                        {t('confirmationStep1')}
-                    </a>
-                    {finalOrderDetails.images.length > 0 && (
-                        <div className="text-left border-t pt-6">
-                            <h4 className="font-bold text-primary mb-2">{t('confirmationStep2')}</h4>
-                            <p className="text-sm text-gray-500 mb-4">{t('confirmationStep2Subheader')}</p>
-                            <div className="space-y-4">
-                                {finalOrderDetails.images.map((image, index) => (
-                                    <div key={index} className="flex items-center justify-between bg-accent p-3 rounded-md">
-                                        <div className="flex items-center space-x-3">
-                                            <img src={image.base64} alt={image.name} className="w-12 h-12 object-cover rounded" />
-                                            <span className="text-sm text-primary truncate">{image.name}</span>
-                                        </div>
-                                        <a href={image.base64} download={image.name} className="bg-secondary text-primary font-semibold py-1 px-3 rounded-md text-sm hover:opacity-90">
-                                            {t('download')}
-                                        </a>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-                </div>
-            )}
           </div>
         )}
         
-        {cartItems.length > 0 && checkoutStep !== 'confirmation' && (
+        {cartItems.length > 0 && (
           <div className="p-6 border-t bg-gray-50">
             {checkoutStep === 'cart' && (
               <>

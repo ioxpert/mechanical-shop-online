@@ -13,6 +13,8 @@ export const translations = {
     selectedFile: 'Selected',
     optional: 'Optional',
     fieldRequired: '*',
+    uploading: 'Uploading...',
+    viewImage: 'View Image',
     
     // Navigation
     navHome: 'Home',
@@ -73,18 +75,12 @@ export const translations = {
     // Cart Modal
     cartTitle: 'Your Cart',
     formTitle: 'Your Information',
-    confirmationTitle: 'Final Step',
     cartEmpty: 'Your cart is empty.',
     yourNotes: 'Your Notes',
     attachedImage: 'Attached Image',
     customPriceNote: 'Price will be provided on WhatsApp based on the item\'s size and design.',
     clearCart: 'Clear Cart',
     subtotal: 'Subtotal',
-    confirmationHeader: 'Your order is ready!',
-    confirmationSubheader: 'Please complete the following two steps to submit your order.',
-    confirmationStep1: 'Step 1: Send Order Details on WhatsApp',
-    confirmationStep2: 'Step 2: Attach Your Images',
-    confirmationStep2Subheader: 'Download your design images below and attach them to the WhatsApp chat.',
     subtotalStandardItems: 'Subtotal (Standard Items)',
     customPriceNoteWhatsapp: 'Please provide the exact price for the customized items.',
     formNameLabel: 'Full Name',
@@ -104,7 +100,6 @@ export const translations = {
     // Custom Order Modal
     customOrderFor: 'Custom Order for {{category}}',
     customOrderSubmitted: 'Your custom order request has been added to your cart. Please proceed to checkout to submit it.',
-    // FIX: Add missing translation key 'formName'
     formName: 'Your Name',
     formWhatsapp: 'Your WhatsApp Number',
     formDimensions: 'Dimensions (e.g., W x H)',
@@ -177,6 +172,8 @@ export const translations = {
     selectedFile: 'चयनित',
     optional: 'वैकल्पिक',
     fieldRequired: '*',
+    uploading: 'अपलोड हो रहा है...',
+    viewImage: 'छवि देखें',
     
     // Navigation
     navHome: 'होम',
@@ -237,18 +234,12 @@ export const translations = {
     // Cart Modal
     cartTitle: 'आपकी कार्ट',
     formTitle: 'आपकी जानकारी',
-    confirmationTitle: 'अंतिम चरण',
     cartEmpty: 'आपकी कार्ट खाली है।',
     yourNotes: 'आपकी टिप्पणियाँ',
     attachedImage: 'संलग्न छवि',
     customPriceNote: 'आइटम के आकार और डिज़ाइन के आधार पर व्हाट्सएप पर मूल्य प्रदान किया जाएगा।',
     clearCart: 'कार्ट साफ़ करें',
     subtotal: 'उप-योग',
-    confirmationHeader: 'आपका ऑर्डर तैयार है!',
-    confirmationSubheader: 'अपना ऑर्डर जमा करने के लिए कृपया निम्नलिखित दो चरण पूरे करें।',
-    confirmationStep1: 'चरण 1: व्हाट्सएप पर ऑर्डर विवरण भेजें',
-    confirmationStep2: 'चरण 2: अपनी छवियां संलग्न करें',
-    confirmationStep2Subheader: 'नीचे अपनी डिज़ाइन छवियां डाउनलोड करें और उन्हें व्हाट्सएप चैट में संलग्न करें।',
     subtotalStandardItems: 'उप-योग (मानक आइटम)',
     customPriceNoteWhatsapp: 'कृपया अनुकूलित वस्तुओं के लिए सटीक मूल्य प्रदान करें।',
     formNameLabel: 'पूरा नाम',
@@ -268,7 +259,6 @@ export const translations = {
     // Custom Order Modal
     customOrderFor: '{{category}} के लिए कस्टम ऑर्डर',
     customOrderSubmitted: 'आपका कस्टम ऑर्डर अनुरोध आपकी कार्ट में जोड़ दिया गया है। इसे जमा करने के लिए कृपया चेकआउट के लिए आगे बढ़ें।',
-    // FIX: Add missing translation key 'formName'
     formName: 'आपका नाम',
     formWhatsapp: 'आपका व्हाट्सएप नंबर',
     formDimensions: 'आयाम (जैसे, चौड़ाई x ऊंचाई)',
@@ -341,6 +331,8 @@ export const translations = {
     selectedFile: 'ਚੁਣੀ ਗਈ',
     optional: 'ਵਿਕਲਪਿਕ',
     fieldRequired: '*',
+    uploading: 'ਅੱਪਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...',
+    viewImage: 'ਚਿੱਤਰ ਵੇਖੋ',
     
     // Navigation
     navHome: 'ਮੁੱਖ ਪੰਨਾ',
@@ -363,7 +355,7 @@ export const translations = {
 
     // HomePage
     heroTitle: 'ਸ਼ੀਸ਼ੇ ਅਤੇ ਐਲੂਮੀਨੀਅਮ ਵਿੱਚ ਦ੍ਰਿਸ਼ਟੀਕੋਣ ਤਿਆਰ ਕਰਨਾ',
-    heroSubtitle: 'ਤੁਹਾਡੀਆਂ ਆਰਕੀਟੈਕਚਰਲ ਲੋੜਾਂ ਲਈ ਸ਼ੁੱਧ ਇੰਜੀਨੀਅਰਿੰਗ ਅਤੇ ਸ਼ਾਨਦਾਰ ਡਿਜ਼ਾਈਨ।',
+    heroSubtitle: 'ਤੁਹਾਡੀਆਂ ਆਰਕੀਟੈਕਚਰਲ ਲੋੜਾਂ ਲਈ ਸ਼ੁੱਧ ਇੰਜਨੀਅਰਿੰਗ ਅਤੇ ਸ਼ਾਨਦਾਰ ਡਿਜ਼ਾਈਨ।',
     featuredProducts: 'ਵਿਸ਼ੇਸ਼ ਉਤਪਾਦ',
 
     // ProductsPage
@@ -401,18 +393,12 @@ export const translations = {
     // Cart Modal
     cartTitle: 'ਤੁਹਾਡੀ ਕਾਰਟ',
     formTitle: 'ਤੁਹਾਡੀ ਜਾਣਕਾਰੀ',
-    confirmationTitle: 'ਅੰਤਿਮ ਕਦਮ',
     cartEmpty: 'ਤੁਹਾਡੀ ਕਾਰਟ ਖਾਲੀ ਹੈ।',
     yourNotes: 'ਤੁਹਾਡੇ ਨੋਟਸ',
     attachedImage: 'ਨੱਥੀ ਚਿੱਤਰ',
     customPriceNote: 'ਆਈਟਮ ਦੇ ਆਕਾਰ ਅਤੇ ਡਿਜ਼ਾਈਨ ਦੇ ਆਧਾਰ ਤੇ ਕੀਮਤ WhatsApp ਤੇ ਪ੍ਰਦਾਨ ਕੀਤੀ ਜਾਵੇਗੀ।',
     clearCart: 'ਕਾਰਟ ਸਾਫ਼ ਕਰੋ',
     subtotal: 'ਉਪ-ਜੋੜ',
-    confirmationHeader: 'ਤੁਹਾਡਾ ਆਰਡਰ ਤਿਆਰ ਹੈ!',
-    confirmationSubheader: 'ਆਪਣਾ ਆਰਡਰ ਜਮ੍ਹਾਂ ਕਰਨ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਹੇਠਾਂ ਦਿੱਤੇ ਦੋ ਕਦਮ ਪੂਰੇ ਕਰੋ।',
-    confirmationStep1: 'ਕਦਮ 1: WhatsApp ਤੇ ਆਰਡਰ ਦੇ ਵੇਰਵੇ ਭੇਜੋ',
-    confirmationStep2: 'ਕਦਮ 2: ਆਪਣੀਆਂ ਤਸਵੀਰਾਂ ਨੱਥੀ ਕਰੋ',
-    confirmationStep2Subheader: 'ਹੇਠਾਂ ਆਪਣੇ ਡਿਜ਼ਾਈਨ ਚਿੱਤਰਾਂ ਨੂੰ ਡਾਊਨਲੋਡ ਕਰੋ ਅਤੇ ਉਹਨਾਂ ਨੂੰ WhatsApp ਚੈਟ ਨਾਲ ਨੱਥੀ ਕਰੋ।',
     subtotalStandardItems: 'ਉਪ-ਜੋੜ (ਮਿਆਰੀ ਵਸਤੂਆਂ)',
     customPriceNoteWhatsapp: 'ਕਿਰਪਾ ਕਰਕੇ ਅਨੁਕੂਲਿਤ ਆਈਟਮਾਂ ਲਈ ਸਹੀ ਕੀਮਤ ਪ੍ਰਦਾਨ ਕਰੋ।',
     formNameLabel: 'ਪੂਰਾ ਨਾਂਮ',
@@ -432,7 +418,6 @@ export const translations = {
     // Custom Order Modal
     customOrderFor: '{{category}} ਲਈ ਕਸਟਮ ਆਰਡਰ',
     customOrderSubmitted: 'ਤੁਹਾਡੀ ਕਸਟਮ ਆਰਡਰ ਬੇਨਤੀ ਤੁਹਾਡੀ ਕਾਰਟ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰ ਦਿੱਤੀ ਗਈ ਹੈ। ਇਸ ਨੂੰ ਜਮ੍ਹਾਂ ਕਰਨ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਚੈੱਕਆਉਟ ਲਈ ਅੱਗੇ ਵਧੋ।',
-    // FIX: Add missing translation key 'formName'
     formName: 'ਤੁਹਾਡਾ ਨਾਮ',
     formWhatsapp: 'ਤੁਹਾਡਾ ਵਟਸਐਪ ਨੰਬਰ',
     formDimensions: 'ਮਾਪ (ਜਿਵੇਂ, W x H)',

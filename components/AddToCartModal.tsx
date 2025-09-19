@@ -20,31 +20,65 @@ const XMarkIcon: React.FC = () => (
 const AddToCartModal: React.FC<AddToCartModalProps> = ({ isOpen, onClose, product, onAddToCart }) => {
   const { t } = useTranslation();
   const [customInfo, setCustomInfo] = useState('');
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [customImageBase64, setCustomImageBase64] = useState<string | undefined>(undefined);
+  const [customImageUrl, setCustomImageUrl] = useState<string | undefined>(undefined);
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
+
 
   useEffect(() => {
     if (!isOpen) {
       setCustomInfo('');
-      setSelectedFile(null);
-      setCustomImageBase64(undefined);
+      setCustomImageUrl(undefined);
+      setIsUploading(false);
+      setUploadError(null);
+      setSelectedFileName(null);
     }
   }, [isOpen]);
 
   if (!isOpen || !product) return null;
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      setSelectedFile(file);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setCustomImageBase64(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    } else {
-        setSelectedFile(null);
-        setCustomImageBase64(undefined);
+    if (!file) {
+      setSelectedFileName(null);
+      setCustomImageUrl(undefined);
+      setUploadError(null);
+      return;
+    }
+
+    setSelectedFileName(file.name);
+    setIsUploading(true);
+    setUploadError(null);
+    setCustomImageUrl(undefined);
+
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+      // This assumes a backend endpoint exists at `/api/upload-image`
+      // to handle the file upload and return a public URL.
+      const response = await fetch('/api/upload-image', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Upload failed with status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      if (result.url) {
+        setCustomImageUrl(result.url);
+      } else {
+        throw new Error('Invalid response from server.');
+      }
+    } catch (error) {
+      console.error('Image upload error:', error);
+      setUploadError('Failed to upload image. Please try again.');
+      setSelectedFileName(null);
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -52,8 +86,7 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ isOpen, onClose, produc
     onAddToCart({ 
         ...product, 
         customInfo, 
-        customImageName: selectedFile?.name,
-        customImageBase64 
+        customImageUrl,
     });
     onClose();
   };
@@ -99,8 +132,11 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ isOpen, onClose, produc
                 accept="image/*"
                 className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-accent file:text-primary hover:file:bg-secondary/20"
                 onChange={handleFileChange}
+                disabled={isUploading}
               />
-              {selectedFile && <p className="text-xs text-gray-600 mt-2">{t('selectedFile')}: {selectedFile.name}</p>}
+              {isUploading && <p className="text-xs text-gray-600 mt-2">Uploading {selectedFileName}...</p>}
+              {uploadError && <p className="text-xs text-red-500 mt-2">{uploadError}</p>}
+              {customImageUrl && <p className="text-xs text-green-600 mt-2">✅ Image uploaded successfully.</p>}
             </div>
             <p className="text-xs text-gray-500 pt-2">{t('customizationTip')}</p>
           </div>
@@ -109,9 +145,10 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ isOpen, onClose, produc
         <div className="p-6 border-t bg-gray-50 text-right">
           <button 
             onClick={handleSubmit} 
-            className="w-full md:w-auto bg-primary text-white font-bold py-3 px-8 rounded-md hover:bg-opacity-90 transition-all duration-300"
+            disabled={isUploading}
+            className="w-full md:w-auto bg-primary text-white font-bold py-3 px-8 rounded-md hover:bg-opacity-90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {t('addToCart')}
+            {isUploading ? t('uploading') : t('addToCart')}
           </button>
         </div>
       </div>
