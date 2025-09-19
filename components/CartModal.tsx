@@ -139,13 +139,12 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
         try {
             if (item.customImageBase64 && item.customImageName) {
                 const file = dataURLtoFile(item.customImageBase64, item.customImageName);
-                if(file) return { file, name: item.customImageName, base64: item.customImageBase64 };
+                if(file) return { name: item.customImageName, base64: item.customImageBase64 };
             }
             // Fetch standard image
             const response = await fetch(item.imageUrl);
             const blob = await response.blob();
             const filename = `${t(item.nameKey).replace(/ /g, '_')}.png`;
-            const file = new File([blob], filename, { type: blob.type });
 
             const base64 = await new Promise<string>((resolve, reject) => {
                 const reader = new FileReader();
@@ -153,32 +152,16 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
                 reader.onerror = reject;
                 reader.readAsDataURL(blob);
             });
-            return { file, name: filename, base64 };
+            return { name: filename, base64 };
         } catch (error) {
             console.error(`Failed to process image for ${t(item.nameKey)}:`, error);
             return null;
         }
     });
     
-    const allImageData = (await Promise.all(imageFetchPromises)).filter((img): img is { file: File, name: string, base64: string } => img !== null);
-    const allImageFiles = allImageData.map(img => img.file);
+    const allImageData = (await Promise.all(imageFetchPromises)).filter((img): img is { name: string, base64: string } => img !== null);
 
-    // 4. Attempt to Share via Web Share API
-    const canShareFiles = allImageFiles.length > 0 && navigator.canShare && navigator.canShare({ files: allImageFiles });
-    if (navigator.share && canShareFiles) {
-      try {
-        await navigator.share({ title: t('whatsappOrderTitle'), text: message, files: allImageFiles });
-        onClearCart();
-        onClose();
-      } catch (err) {
-        console.error('User cancelled share or error:', err);
-      } finally {
-        setIsSubmitting(false);
-      }
-      return;
-    }
-    
-    // 5. Fallback Logic
+    // 4. Generate WhatsApp link and handle images for manual attachment
     const whatsappNumber = CONTACT_INFO.managers[0].phone.replace(/\D/g, '');
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
