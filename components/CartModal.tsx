@@ -100,9 +100,9 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
     // 2. Add Item list to message
     message += `--- *${t('whatsappOrderItems')}* ---\n`;
     cartItems.forEach(item => {
-        // Add the image URL for standard products.
+        // Add the image URL for standard products, but only if no custom image is attached.
         // Custom order requests (id starts with 'custom-') have a placeholder image, which we don't want to include.
-        if (!item.id.startsWith('custom-')) {
+        if (!item.id.startsWith('custom-') && !item.customImageBase64) {
             message += `${item.imageUrl}\n`;
         }
 
