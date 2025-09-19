@@ -133,9 +133,6 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
         if (item.customInfo) {
             message += `\n  *${t('customizationNotes')}:* ${item.customInfo}`;
         }
-        if (isCustomized) {
-            message += `\n  *${t('note')}:* _${t('whatsappItemCustomizationPrompt')}_`;
-        }
         message += `\n\n`;
     });
     message += `--------------------\n`;
@@ -144,6 +141,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
     const hasCustomizedItems = cartItems.some(item => (item.customInfo && item.customInfo.trim() !== '') || item.id.startsWith('custom-'));
     if (hasCustomizedItems) {
       message += `*${t('note')}:* ${t('customPriceNoteWhatsapp')}\n\n`;
+      message += `*${t('whatsappCustomOrderPrompt')}*\n\n`;
     }
     message += t('whatsappOrderConfirmation');
 
