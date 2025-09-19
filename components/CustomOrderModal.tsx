@@ -23,8 +23,6 @@ const CustomOrderModal: React.FC<CustomOrderModalProps> = ({ isOpen, onClose, ca
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    whatsapp: '',
     dimensions: '',
     details: '',
     fileName: '',
@@ -49,7 +47,7 @@ const CustomOrderModal: React.FC<CustomOrderModalProps> = ({ isOpen, onClose, ca
       id: `custom-${category.replace(/\s/g, '')}-${Date.now()}`,
       nameKey: 'customOrderRequest' as const, // A generic key for "Custom Request"
       descriptionKey: 'customOrderRequest' as const, // A dummy key to satisfy the Product type.
-      description: `${t('formName')}: ${formData.name}\n${t('formWhatsapp')}: ${formData.whatsapp}\n${t('formDimensions')}: ${formData.dimensions}\n${t('formDetails')}: ${formData.details}${formData.fileName ? `\n${t('attachedImage')}: ${formData.fileName}` : ''}`,
+      description: `${t('formDimensions')}: ${formData.dimensions}\n${t('formDetails')}: ${formData.details}${formData.fileName ? `\n${t('attachedImage')}: ${formData.fileName}` : ''}`,
       price: 0,
       imageUrl: 'https://picsum.photos/seed/custom/400/400',
       category: category,
@@ -88,14 +86,6 @@ const CustomOrderModal: React.FC<CustomOrderModalProps> = ({ isOpen, onClose, ca
           ) : (
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-primary font-semibold mb-2">{t('formName')}</label>
-                  <input type="text" id="name" name="name" required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" value={formData.name} onChange={handleInputChange} />
-                </div>
-                <div>
-                  <label htmlFor="whatsapp" className="block text-primary font-semibold mb-2">{t('formWhatsapp')}</label>
-                  <input type="tel" id="whatsapp" name="whatsapp" required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" value={formData.whatsapp} onChange={handleInputChange} />
-                </div>
                 <div>
                   <label htmlFor="dimensions" className="block text-primary font-semibold mb-2">{t('formDimensions')}</label>
                   <input type="text" id="dimensions" name="dimensions" placeholder={t('formDimensionsPlaceholder')} required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" value={formData.dimensions} onChange={handleInputChange}/>
