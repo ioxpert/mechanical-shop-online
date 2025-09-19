@@ -1,3 +1,4 @@
+
 export const translations = {
   en: {
     // General
@@ -62,10 +63,12 @@ export const translations = {
     contactManager: 'Manager Contacts',
     contactEmail: 'Email',
     contactLocation: 'Shop Location',
-    contactFormTitle: 'Send Us a Message',
+    contactFormTitle: 'Send Us a Message via Instagram',
     contactFormName: 'Your Name',
     contactFormEmail: 'Your Email',
     contactFormMessage: 'Message',
+    contactFormButton: 'Copy Message & Open Instagram',
+    contactFormSuccess: 'Message copied! Please paste it into a new DM on Instagram.',
     developerTitle: 'Website Inquiries',
     developerSubtitle: 'For questions or issues related to the website, please contact:',
 
@@ -217,10 +220,12 @@ export const translations = {
     contactManager: 'प्रबंधक संपर्क',
     contactEmail: 'ईमेल',
     contactLocation: 'दुकान का स्थान',
-    contactFormTitle: 'हमें एक संदेश भेजें',
+    contactFormTitle: 'हमें इंस्टाग्राम के माध्यम से एक संदेश भेजें',
     contactFormName: 'आपका नाम',
     contactFormEmail: 'आपका ईमेल',
     contactFormMessage: 'संदेश',
+    contactFormButton: 'संदेश कॉपी करें और इंस्टाग्राम खोलें',
+    contactFormSuccess: 'संदेश कॉपी हो गया! कृपया इसे इंस्टाग्राम पर एक नए डीएम में पेस्ट करें।',
     developerTitle: 'वेबसाइट पूछताछ',
     developerSubtitle: 'वेबसाइट से संबंधित प्रश्नों या मुद्दों के लिए, कृपया संपर्क करें:',
 
@@ -372,10 +377,12 @@ export const translations = {
     contactManager: 'ਮੈਨੇਜਰ ਸੰਪਰਕ',
     contactEmail: 'ਈ - ਮੇਲ',
     contactLocation: 'ਦੁਕਾਨ ਦੀ ਸਥਿਤੀ',
-    contactFormTitle: 'ਸਾਨੂੰ ਇੱਕ ਸੁਨੇਹਾ ਭੇਜੋ',
+    contactFormTitle: 'ਸਾਨੂੰ ਇੰਸਟਾਗ੍ਰਾਮ ਰਾਹੀਂ ਸੁਨੇਹਾ ਭੇਜੋ',
     contactFormName: 'ਤੁਹਾਡਾ ਨਾਮ',
     contactFormEmail: 'ਤੁਹਾਡੀ ਈਮੇਲ',
     contactFormMessage: 'ਸੁਨੇਹਾ',
+    contactFormButton: 'ਸੁਨੇਹਾ ਕਾਪੀ ਕਰੋ ਅਤੇ ਇੰਸਟਾਗ੍ਰਾਮ ਖੋਲ੍ਹੋ',
+    contactFormSuccess: 'ਸੁਨੇਹਾ ਕਾਪੀ ਹੋ ਗਿਆ! ਕਿਰਪਾ ਕਰਕੇ ਇਸਨੂੰ ਇੰਸਟਾਗ੍ਰਾਮ ਤੇ ਇੱਕ ਨਵੇਂ ਡੀਐਮ ਵਿੱਚ ਪੇਸਟ ਕਰੋ।',
     developerTitle: 'ਵੈੱਬਸਾਈਟ ਪੁੱਛਗਿੱਛ',
     developerSubtitle: 'ਵੈੱਬਸਾਈਟ ਨਾਲ ਸਬੰਧਤ ਸਵਾਲਾਂ ਜਾਂ ਮੁੱਦਿਆਂ ਲਈ, ਕਿਰਪਾ ਕਰਕੇ ਸੰਪਰਕ ਕਰੋ:',
 

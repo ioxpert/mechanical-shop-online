@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, FormEvent } from 'react';
 import { CONTACT_INFO, DEVELOPER_INFO } from '../constants';
 import { useTranslation } from '../localization/useTranslation';
 
@@ -21,6 +21,32 @@ const WebIcon: React.FC = () => (
 
 const ContactPage: React.FC = () => {
   const { t } = useTranslation();
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [copySuccessMessage, setCopySuccessMessage] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleFormSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.message) {
+      alert('Please fill in your name and message.');
+      return;
+    }
+
+    const messageToCopy = `From: ${formData.name}\nEmail: ${formData.email}\n\nMessage: ${formData.message}`;
+    
+    navigator.clipboard.writeText(messageToCopy).then(() => {
+      setCopySuccessMessage(t('contactFormSuccess'));
+      window.open(CONTACT_INFO.instagram.url, '_blank', 'noopener,noreferrer');
+      setTimeout(() => setCopySuccessMessage(''), 5000); // Clear message after 5 seconds
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+      alert('Failed to copy message. Please try again.');
+    });
+  };
 
   return (
     <div className="bg-light">
@@ -83,22 +109,25 @@ const ContactPage: React.FC = () => {
             {/* Contact Form */}
             <div className="bg-white p-8 rounded-lg shadow-lg">
               <h2 className="text-3xl font-bold font-serif text-primary mb-6">{t('contactFormTitle')}</h2>
-              <form>
+              <form onSubmit={handleFormSubmit}>
                 <div className="mb-4">
                   <label htmlFor="name" className="block text-primary font-semibold mb-2">{t('contactFormName')}</label>
-                  <input type="text" id="name" name="name" className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" />
+                  <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" />
                 </div>
                 <div className="mb-4">
                   <label htmlFor="email" className="block text-primary font-semibold mb-2">{t('contactFormEmail')}</label>
-                  <input type="email" id="email" name="email" className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" />
+                  <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" />
                 </div>
                 <div className="mb-6">
                   <label htmlFor="message" className="block text-primary font-semibold mb-2">{t('contactFormMessage')}</label>
-                  <textarea id="message" name="message" rows={5} className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
+                  <textarea id="message" name="message" rows={5} value={formData.message} onChange={handleInputChange} required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
                 </div>
                 <button type="submit" className="w-full bg-secondary text-primary font-bold py-3 px-8 rounded-md hover:opacity-90 transition-all duration-300">
-                  {t('submit')}
+                  {t('contactFormButton')}
                 </button>
+                {copySuccessMessage && (
+                  <p className="mt-4 text-center text-green-600 bg-green-100 p-3 rounded-md">{copySuccessMessage}</p>
+                )}
               </form>
             </div>
           </div>
