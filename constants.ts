@@ -166,7 +166,7 @@ export const DEVELOPER_INFO = {
   phone: '+91 9166463479',
   email: 'sukh.meet9896@gmail.com',
   website: {
-    name: 'developer-portfolio.com',
-    url: 'https://developer-portfolio.com',
+    name: 'IOXPERT',
+    url: 'https://ioxpert.com',
   },
 };
