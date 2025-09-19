@@ -23,7 +23,7 @@ const App: React.FC = () => {
   // FIX: Use the AddToCartProduct type for the product parameter.
   const addToCart = (product: AddToCartProduct) => {
     setCartItems(prevItems => {
-      const hasCustomization = (product.customInfo && product.customInfo.trim() !== '') || product.customImageUrl || product.description;
+      const hasCustomization = (product.customInfo && product.customInfo.trim() !== '') || product.description;
       
       if (hasCustomization) {
         const newItem: CartItem = {
@@ -35,7 +35,7 @@ const App: React.FC = () => {
       }
 
       // If there is no custom info, check if a standard version of the item already exists.
-      const existingItem = prevItems.find(item => item.id === product.id && (!item.customInfo || item.customInfo.trim() === '') && !item.customImageUrl);
+      const existingItem = prevItems.find(item => item.id === product.id && (!item.customInfo || item.customInfo.trim() === ''));
       
       if (existingItem) {
         // If it exists, just increment the quantity.
@@ -45,7 +45,7 @@ const App: React.FC = () => {
       }
       
       // Otherwise, add the new standard item to the cart.
-      return [...prevItems, { ...product, quantity: 1, customInfo: '', customImageUrl: undefined }];
+      return [...prevItems, { ...product, quantity: 1, customInfo: '' }];
     });
   };
 

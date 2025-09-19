@@ -10,11 +10,8 @@ export const translations = {
     download: 'Download',
     done: 'Done',
     thankYou: 'Thank You!',
-    selectedFile: 'Selected',
     optional: 'Optional',
     fieldRequired: '*',
-    uploading: 'Uploading...',
-    viewImage: 'View Image',
     
     // Navigation
     navHome: 'Home',
@@ -77,7 +74,6 @@ export const translations = {
     formTitle: 'Your Information',
     cartEmpty: 'Your cart is empty.',
     yourNotes: 'Your Notes',
-    attachedImage: 'Attached Image',
     customPriceNote: 'Price will be provided on WhatsApp based on the item\'s size and design.',
     clearCart: 'Clear Cart',
     subtotal: 'Subtotal',
@@ -88,12 +84,14 @@ export const translations = {
     formAddressLabel: 'Delivery Address',
     formLocationLabel: 'Live Location',
     fetchingLocation: 'Fetching location...',
+    invalidWhatsappNumber: 'Please enter a valid 10-digit WhatsApp number.',
 
     // WhatsApp Message
     whatsappOrderTitle: 'New Order from Shri Guru Nanak Glass & Aluminium Website',
     whatsappOrderItems: 'Order Items',
     customizationNotes: 'Customization',
     whatsappOrderConfirmation: 'Please confirm this order.',
+    whatsappCustomOrderPrompt: 'For customized items, please send your design/image directly in this chat.',
     itemImage: 'Image',
     customerInfo: 'Customer Information',
 
@@ -104,7 +102,6 @@ export const translations = {
     formWhatsapp: 'Your WhatsApp Number',
     formDimensions: 'Dimensions (e.g., W x H)',
     formDimensionsPlaceholder: 'e.g., 24in x 36in',
-    formUpload: 'Upload Design (Optional)',
     formDetails: 'Design Details & Requirements',
     customOrderPlaceholder: 'Please describe the custom {{category}} you need...',
     customOrderRequest: 'Custom Order Request',
@@ -113,8 +110,7 @@ export const translations = {
     customizeItemTitle: 'Customize Your Item',
     customizationNotesOptional: 'Customization Notes (Optional)',
     customizationPlaceholder: 'e.g., Change dimensions to 30in x 40in, specific color request...',
-    addImageOptional: 'Add Image (Optional)',
-    customizationTip: 'Leave both fields blank to add the standard item to your cart.',
+    customizationTip: 'Leave the field blank to add the standard item to your cart.',
     
     // Products
     product1Name: 'Tempered Glass Panel',
@@ -169,11 +165,8 @@ export const translations = {
     download: 'डाउनलोड करें',
     done: 'हो गया',
     thankYou: 'धन्यवाद!',
-    selectedFile: 'चयनित',
     optional: 'वैकल्पिक',
     fieldRequired: '*',
-    uploading: 'अपलोड हो रहा है...',
-    viewImage: 'छवि देखें',
     
     // Navigation
     navHome: 'होम',
@@ -236,7 +229,6 @@ export const translations = {
     formTitle: 'आपकी जानकारी',
     cartEmpty: 'आपकी कार्ट खाली है।',
     yourNotes: 'आपकी टिप्पणियाँ',
-    attachedImage: 'संलग्न छवि',
     customPriceNote: 'आइटम के आकार और डिज़ाइन के आधार पर व्हाट्सएप पर मूल्य प्रदान किया जाएगा।',
     clearCart: 'कार्ट साफ़ करें',
     subtotal: 'उप-योग',
@@ -247,12 +239,14 @@ export const translations = {
     formAddressLabel: 'वितरण का पता',
     formLocationLabel: 'लाइव लोकेशन',
     fetchingLocation: 'स्थान प्राप्त किया जा रहा है...',
+    invalidWhatsappNumber: 'कृपया एक मान्य 10-अंकीय व्हाट्सएप नंबर दर्ज करें।',
 
     // WhatsApp Message
     whatsappOrderTitle: 'श्री गुरु नानक ग्लास और एल्युमीनियम वेबसाइट से नया ऑर्डर',
     whatsappOrderItems: 'ऑर्डर आइटम',
     customizationNotes: 'अनुकूलन',
     whatsappOrderConfirmation: 'कृपया इस आदेश की पुष्टि करें।',
+    whatsappCustomOrderPrompt: 'अनुकूलित वस्तुओं के लिए, कृपया अपना डिज़ाइन/छवि सीधे इसी चैट में भेजें।',
     itemImage: 'छवि',
     customerInfo: 'ग्राहक जानकारी',
 
@@ -263,7 +257,6 @@ export const translations = {
     formWhatsapp: 'आपका व्हाट्सएप नंबर',
     formDimensions: 'आयाम (जैसे, चौड़ाई x ऊंचाई)',
     formDimensionsPlaceholder: 'उदा., 24 इंच x 36 इंच',
-    formUpload: 'डिज़ाइन अपलोड करें (वैकल्पिक)',
     formDetails: 'डिज़ाइन विवरण और आवश्यकताएँ',
     customOrderPlaceholder: 'कृपया आपको आवश्यक कस्टम {{category}} का वर्णन करें...',
     customOrderRequest: 'कस्टम ऑर्डर अनुरोध',
@@ -272,8 +265,7 @@ export const translations = {
     customizeItemTitle: 'अपना आइटम अनुकूलित करें',
     customizationNotesOptional: 'अनुकूलन नोट्स (वैकल्पिक)',
     customizationPlaceholder: 'उदा., आयामों को 30 इंच x 40 इंच में बदलें, विशिष्ट रंग अनुरोध...',
-    addImageOptional: 'छवि जोड़ें (वैकल्पिक)',
-    customizationTip: 'मानक आइटम को अपनी कार्ट में जोड़ने के लिए दोनों फ़ील्ड खाली छोड़ दें।',
+    customizationTip: 'मानक आइटम को अपनी कार्ट में जोड़ने के लिए फ़ील्ड खाली छोड़ दें।',
 
     // Products
     product1Name: 'टेम्पर्ड ग्लास पैनल',
@@ -328,11 +320,8 @@ export const translations = {
     download: 'ਡਾਊਨਲੋਡ ਕਰੋ',
     done: 'ਹੋ ਗਿਆ',
     thankYou: 'ਧੰਨਵਾਦ!',
-    selectedFile: 'ਚੁਣੀ ਗਈ',
     optional: 'ਵਿਕਲਪਿਕ',
     fieldRequired: '*',
-    uploading: 'ਅੱਪਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...',
-    viewImage: 'ਚਿੱਤਰ ਵੇਖੋ',
     
     // Navigation
     navHome: 'ਮੁੱਖ ਪੰਨਾ',
@@ -395,7 +384,6 @@ export const translations = {
     formTitle: 'ਤੁਹਾਡੀ ਜਾਣਕਾਰੀ',
     cartEmpty: 'ਤੁਹਾਡੀ ਕਾਰਟ ਖਾਲੀ ਹੈ।',
     yourNotes: 'ਤੁਹਾਡੇ ਨੋਟਸ',
-    attachedImage: 'ਨੱਥੀ ਚਿੱਤਰ',
     customPriceNote: 'ਆਈਟਮ ਦੇ ਆਕਾਰ ਅਤੇ ਡਿਜ਼ਾਈਨ ਦੇ ਆਧਾਰ ਤੇ ਕੀਮਤ WhatsApp ਤੇ ਪ੍ਰਦਾਨ ਕੀਤੀ ਜਾਵੇਗੀ।',
     clearCart: 'ਕਾਰਟ ਸਾਫ਼ ਕਰੋ',
     subtotal: 'ਉਪ-ਜੋੜ',
@@ -406,12 +394,14 @@ export const translations = {
     formAddressLabel: 'ਡਿਲਿਵਰੀ ਦਾ ਪਤਾ',
     formLocationLabel: 'ਲਾਈਵ ਸਥਾਨ',
     fetchingLocation: 'ਸਥਾਨ ਪ੍ਰਾਪਤ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...',
+    invalidWhatsappNumber: 'ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਵੈਧ 10-ਅੰਕਾਂ ਦਾ WhatsApp ਨੰਬਰ ਦਾਖਲ ਕਰੋ।',
     
     // WhatsApp Message
     whatsappOrderTitle: 'ਸ਼੍ਰੀ ਗੁਰੂ ਨਾਨਕ ਗਲਾਸ ਅਤੇ ਐਲੂਮੀਨੀਅਮ ਵੈੱਬਸਾਈਟ ਤੋਂ ਨਵਾਂ ਆਰਡਰ',
     whatsappOrderItems: 'ਆਰਡਰ ਆਈਟਮਾਂ',
     customizationNotes: 'ਕਸਟਮਾਈਜ਼ੇਸ਼ਨ',
     whatsappOrderConfirmation: 'ਕਿਰਪਾ ਕਰਕੇ ਇਸ ਆਰਡਰ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ।',
+    whatsappCustomOrderPrompt: 'ਕਸਟਮਾਈਜ਼ ਕੀਤੀਆਂ ਆਈਟਮਾਂ ਲਈ, ਕਿਰਪਾ ਕਰਕੇ ਆਪਣਾ ਡਿਜ਼ਾਈਨ/ਚਿੱਤਰ ਸਿੱਧਾ ਇਸ ਚੈਟ ਵਿੱਚ ਭੇਜੋ।',
     itemImage: 'ਚਿੱਤਰ',
     customerInfo: 'ਗਾਹਕ ਦੀ ਜਾਣਕਾਰੀ',
 
@@ -422,7 +412,6 @@ export const translations = {
     formWhatsapp: 'ਤੁਹਾਡਾ ਵਟਸਐਪ ਨੰਬਰ',
     formDimensions: 'ਮਾਪ (ਜਿਵੇਂ, W x H)',
     formDimensionsPlaceholder: 'ਜਿਵੇਂ, 24in x 36in',
-    formUpload: 'ਡਿਜ਼ਾਈਨ ਅੱਪਲੋਡ ਕਰੋ (ਵਿਕਲਪਿਕ)',
     formDetails: 'ਡਿਜ਼ਾਈਨ ਵੇਰਵੇ ਅਤੇ ਲੋੜਾਂ',
     customOrderPlaceholder: 'ਕਿਰਪਾ ਕਰਕੇ ਤੁਹਾਨੂੰ ਲੋੜੀਂਦੇ ਕਸਟਮ {{category}} ਦਾ ਵਰਣਨ ਕਰੋ...',
     customOrderRequest: 'ਕਸਟਮ ਆਰਡਰ ਬੇਨਤੀ',
@@ -431,8 +420,7 @@ export const translations = {
     customizeItemTitle: 'ਆਪਣੀ ਆਈਟਮ ਨੂੰ ਅਨੁਕੂਲਿਤ ਕਰੋ',
     customizationNotesOptional: 'ਕਸਟਮਾਈਜ਼ੇਸ਼ਨ ਨੋਟਸ (ਵਿਕਲਪਿਕ)',
     customizationPlaceholder: 'ਜਿਵੇਂ, ਮਾਪਾਂ ਨੂੰ 30in x 40in ਵਿੱਚ ਬਦਲੋ, ਖਾਸ ਰੰਗ ਦੀ ਬੇਨਤੀ...',
-    addImageOptional: 'ਚਿੱਤਰ ਸ਼ਾਮਲ ਕਰੋ (ਵਿਕਲਪਿਕ)',
-    customizationTip: 'ਮਿਆਰੀ ਆਈਟਮ ਨੂੰ ਆਪਣੀ ਕਾਰਟ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰਨ ਲਈ ਦੋਵੇਂ ਖੇਤਰ ਖਾਲੀ ਛੱਡੋ।',
+    customizationTip: 'ਮਿਆਰੀ ਆਈਟਮ ਨੂੰ ਆਪਣੀ ਕਾਰਟ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰਨ ਲਈ ਖੇਤਰ ਨੂੰ ਖਾਲੀ ਛੱਡੋ।',
 
     // Products
     product1Name: 'ਟੈਂਪਰਡ ਗਲਾਸ ਪੈਨਲ',

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import type { CartItem } from '../types';
 import { CONTACT_INFO } from '../constants';
 import { useTranslation } from '../localization/useTranslation';
@@ -27,8 +27,16 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
   const [location, setLocation] = useState<{ lat: number; lon: number } | null>(null);
   const [isFetchingLocation, setIsFetchingLocation] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [phoneError, setPhoneError] = useState('');
 
-  const isFormValid = customerInfo.name.trim() !== '' && customerInfo.phone.trim() !== '' && customerInfo.address.trim() !== '' && location !== null;
+  const validatePhoneNumber = (phone: string): boolean => {
+    const phoneRegex = /^[6-9]\d{9}$/;
+    return phoneRegex.test(phone.trim());
+  };
+
+  const isPhoneValid = useMemo(() => validatePhoneNumber(customerInfo.phone), [customerInfo.phone]);
+
+  const isFormValid = customerInfo.name.trim() !== '' && isPhoneValid && customerInfo.address.trim() !== '' && location !== null;
 
   useEffect(() => {
     if (!isOpen) {
@@ -37,6 +45,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
         setCustomerInfo({ name: '', phone: '', address: '' });
         setLocation(null);
         setIsSubmitting(false);
+        setPhoneError('');
       }, 300);
     }
   }, [isOpen]);
@@ -44,7 +53,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
   if (!isOpen) return null;
 
   const subtotal = cartItems.reduce((sum, item) => {
-    const isCustomized = item.id.startsWith('custom-') || (item.customInfo && item.customInfo.trim() !== '') || item.customImageUrl;
+    const isCustomized = item.id.startsWith('custom-') || (item.customInfo && item.customInfo.trim() !== '');
     if (isCustomized) {
       return sum;
     }
@@ -54,6 +63,17 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setCustomerInfo(prev => ({ ...prev, [name]: value }));
+    if (name === 'phone' && phoneError) {
+      setPhoneError('');
+    }
+  };
+
+  const handlePhoneBlur = () => {
+    if (customerInfo.phone.trim() !== '' && !isPhoneValid) {
+      setPhoneError(t('invalidWhatsappNumber'));
+    } else {
+      setPhoneError('');
+    }
   };
 
   const handleLocationRequest = () => {
@@ -79,7 +99,10 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
   };
 
   const handleFinalSubmit = async () => {
-    if (!isFormValid) return;
+    if (!isFormValid) {
+        handlePhoneBlur();
+        return;
+    };
     setIsSubmitting(true);
 
     let message = `*${t('whatsappOrderTitle')}*\n\n`;
@@ -94,13 +117,11 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
     
     message += `--- *${t('whatsappOrderItems')}* ---\n`;
     cartItems.forEach(item => {
-        if (item.customImageUrl) {
-            message += `${item.customImageUrl}\n`;
-        } else if (!item.id.startsWith('custom-') && item.imageUrl) {
+        if (!item.id.startsWith('custom-') && item.imageUrl) {
             message += `${item.imageUrl}\n`;
         }
 
-        const isCustomized = item.customInfo || item.customImageUrl || item.id.startsWith('custom-');
+        const isCustomized = item.customInfo || item.id.startsWith('custom-');
         message += `- ${t(item.nameKey)}`;
         if (!isCustomized) {
             message += ` (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}`;
@@ -113,8 +134,11 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
     });
     message += `--------------------\n`;
     if (subtotal > 0) message += `*${t('subtotalStandardItems')}: $${subtotal.toFixed(2)}*\n\n`;
-    const hasCustomizedItems = cartItems.some(item => (item.customInfo && item.customInfo.trim() !== '') || item.id.startsWith('custom-') || item.customImageUrl);
-    if (hasCustomizedItems) message += `*${t('note')}:* ${t('customPriceNoteWhatsapp')}\n\n`;
+    const hasCustomizedItems = cartItems.some(item => (item.customInfo && item.customInfo.trim() !== '') || item.id.startsWith('custom-'));
+    if (hasCustomizedItems) {
+      message += `*${t('note')}:* ${t('customPriceNoteWhatsapp')}\n`;
+      message += `*${t('whatsappCustomOrderPrompt')}*\n\n`;
+    }
     message += t('whatsappOrderConfirmation');
 
     const whatsappNumber = CONTACT_INFO.managers[0].phone.replace(/\D/g, '');
@@ -172,8 +196,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
                   {cartItems.map(item => {
                     const isCustomOrderRequest = item.id.startsWith('custom-');
                     const hasCustomInfo = item.customInfo && item.customInfo.trim() !== '';
-                    const hasCustomImage = !!item.customImageUrl;
-                    const isCustomized = isCustomOrderRequest || hasCustomInfo || hasCustomImage;
+                    const isCustomized = isCustomOrderRequest || hasCustomInfo;
 
                     return (
                       <div key={item.id} className="flex items-start space-x-4">
@@ -181,17 +204,9 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
                         <div className="flex-grow">
                           <h3 className="font-semibold text-primary">{t(item.nameKey)}</h3>
                           {isCustomOrderRequest && <p className="text-gray-500 text-sm whitespace-pre-wrap mt-1">{item.description}</p>}
-                          {(hasCustomInfo || hasCustomImage) && (
+                          {hasCustomInfo && (
                             <div className="text-sm text-gray-700 mt-2 p-2 bg-accent rounded-md">
                               {hasCustomInfo && <p><span className="font-semibold">{t('yourNotes')}:</span> {item.customInfo}</p>}
-                              {hasCustomImage && (
-                                <p className="mt-1">
-                                  <span className="font-semibold">{t('attachedImage')}:</span> 
-                                  <a href={item.customImageUrl} target="_blank" rel="noopener noreferrer" className="text-secondary underline ml-1">
-                                    {t('viewImage')}
-                                  </a>
-                                </p>
-                              )}
                             </div>
                           )}
                           {isCustomized ? (
@@ -225,7 +240,17 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, cartItems, onRem
                 </div>
                 <div>
                   <label htmlFor="phone" className="block text-primary font-semibold mb-2">{t('formPhoneLabel')} <span className="text-red-500">{t('fieldRequired')}</span></label>
-                  <input type="tel" id="phone" name="phone" value={customerInfo.phone} onChange={handleInputChange} required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" />
+                  <input 
+                    type="tel" 
+                    id="phone" 
+                    name="phone" 
+                    value={customerInfo.phone} 
+                    onChange={handleInputChange} 
+                    onBlur={handlePhoneBlur}
+                    required 
+                    className={`w-full p-3 border rounded-md focus:outline-none focus:ring-2 ${phoneError ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-secondary'}`}
+                    />
+                    {phoneError && <p className="text-red-500 text-xs mt-1">{phoneError}</p>}
                 </div>
                 <div>
                   <label htmlFor="address" className="block text-primary font-semibold mb-2">{t('formAddressLabel')} <span className="text-red-500">{t('fieldRequired')}</span></label>

@@ -15,7 +15,6 @@ export interface Product {
 export interface CartItem extends Product {
   quantity: number;
   customInfo?: string;
-  customImageUrl?: string;
   // FIX: Add optional description for custom order text.
   description?: string;
 }
@@ -40,6 +39,5 @@ export interface ToolMaterial {
 // FIX: Add a reusable type for the product object passed to onAddToCart.
 export type AddToCartProduct = Product & {
   customInfo?: string;
-  customImageUrl?: string;
   description?: string;
 };

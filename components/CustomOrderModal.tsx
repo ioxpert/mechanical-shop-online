@@ -22,20 +22,12 @@ const CustomOrderModal: React.FC<CustomOrderModalProps> = ({ isOpen, onClose, ca
   
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({ dimensions: '', details: '' });
-  const [customImageUrl, setCustomImageUrl] = useState<string | undefined>(undefined);
-  const [isUploading, setIsUploading] = useState(false);
-  const [uploadError, setUploadError] = useState<string | null>(null);
-  const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
 
   useEffect(() => {
     if (!isOpen) {
       // Reset state when modal closes
       setIsSubmitted(false);
       setFormData({ dimensions: '', details: '' });
-      setCustomImageUrl(undefined);
-      setIsUploading(false);
-      setUploadError(null);
-      setSelectedFileName(null);
     }
   }, [isOpen]);
 
@@ -46,53 +38,10 @@ const CustomOrderModal: React.FC<CustomOrderModalProps> = ({ isOpen, onClose, ca
     setFormData(prev => ({...prev, [name]: value}));
   };
 
-  const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) {
-      setSelectedFileName(null);
-      setCustomImageUrl(undefined);
-      setUploadError(null);
-      return;
-    }
-
-    setSelectedFileName(file.name);
-    setIsUploading(true);
-    setUploadError(null);
-    setCustomImageUrl(undefined);
-
-    const formData = new FormData();
-    formData.append('image', file);
-
-    try {
-      const response = await fetch('/api/upload-image', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (!response.ok) throw new Error('Upload failed');
-      const result = await response.json();
-
-      if (result.url) {
-        setCustomImageUrl(result.url);
-      } else {
-        throw new Error('Invalid response from server');
-      }
-    } catch (error) {
-      console.error(error);
-      setUploadError('Image upload failed. Please try again.');
-      setSelectedFileName(null);
-    } finally {
-      setIsUploading(false);
-    }
-  };
-
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     
-    let description = `${t('formDimensions')}: ${formData.dimensions}\n${t('formDetails')}: ${formData.details}`;
-    if (customImageUrl) {
-        description += `\n${t('attachedImage')}: Image uploaded`;
-    }
+    const description = `${t('formDimensions')}: ${formData.dimensions}\n${t('formDetails')}: ${formData.details}`;
 
     const customProduct = {
       id: `custom-${category.replace(/\s/g, '')}-${Date.now()}`,
@@ -100,9 +49,8 @@ const CustomOrderModal: React.FC<CustomOrderModalProps> = ({ isOpen, onClose, ca
       descriptionKey: 'customOrderRequest' as const,
       description,
       price: 0,
-      imageUrl: customImageUrl || 'https://picsum.photos/seed/custom/400/400',
+      imageUrl: 'https://picsum.photos/seed/custom/400/400',
       category: category,
-      customImageUrl: customImageUrl,
     };
     
     onAddToCart(customProduct);
@@ -137,26 +85,17 @@ const CustomOrderModal: React.FC<CustomOrderModalProps> = ({ isOpen, onClose, ca
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="dimensions" className="block text-primary font-semibold mb-2">{t('formDimensions')}</label>
-                  <input type="text" id="dimensions" name="dimensions" placeholder={t('formDimensionsPlaceholder')} required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" value={formData.dimensions} onChange={handleInputChange}/>
-                </div>
-                <div>
-                  <label htmlFor="file-upload" className="block text-primary font-semibold mb-2">{t('formUpload')}</label>
-                  <input type="file" id="file-upload" name="file-upload" className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-accent file:text-primary hover:file:bg-secondary/20" onChange={handleFileChange} disabled={isUploading} />
-                  {isUploading && <p className="text-xs text-gray-600 mt-2">Uploading {selectedFileName}...</p>}
-                  {uploadError && <p className="text-xs text-red-500 mt-2">{uploadError}</p>}
-                  {customImageUrl && <p className="text-xs text-green-600 mt-2">✅ Image uploaded successfully.</p>}
-                </div>
+              <div className="mb-6">
+                <label htmlFor="dimensions" className="block text-primary font-semibold mb-2">{t('formDimensions')}</label>
+                <input type="text" id="dimensions" name="dimensions" placeholder={t('formDimensionsPlaceholder')} required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" value={formData.dimensions} onChange={handleInputChange}/>
               </div>
               <div className="mt-6">
                 <label htmlFor="details" className="block text-primary font-semibold mb-2">{t('formDetails')}</label>
                 <textarea id="details" name="details" rows={5} required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary" placeholder={detailsPlaceholder} value={formData.details} onChange={handleInputChange}></textarea>
               </div>
               <div className="mt-8 text-right">
-                <button type="submit" className="w-full md:w-auto bg-primary text-white font-bold py-3 px-8 rounded-md hover:bg-opacity-90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed" disabled={isUploading}>
-                  {isUploading ? t('uploading') : t('submitRequest')}
+                <button type="submit" className="w-full md:w-auto bg-primary text-white font-bold py-3 px-8 rounded-md hover:bg-opacity-90 transition-all duration-300">
+                  {t('submitRequest')}
                 </button>
               </div>
             </form>
