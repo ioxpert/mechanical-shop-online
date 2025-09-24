@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 // FIX: Import AddToCartProduct type.
-import type { Product, AddToCartProduct } from '../types';
-import { PRODUCTS } from '../constants';
-import ProductCard from '../components/ProductCard';
-import AddToCartModal from '../components/AddToCartModal';
-import { useTranslation } from '../localization/useTranslation';
+import type { Product, AddToCartProduct } from "../types";
+import { PRODUCTS } from "../constants";
+import ProductCard from "../components/ProductCard";
+import AddToCartModal from "../components/AddToCartModal";
+import { useTranslation } from "../localization/useTranslation";
 
 interface HomePageProps {
   // FIX: Use the AddToCartProduct type for the onAddToCart prop.
@@ -26,19 +26,22 @@ const HomePage: React.FC<HomePageProps> = ({ onAddToCart }) => {
   return (
     <div>
       {/* Hero Section */}
-      <section 
-        className="relative bg-cover bg-center h-[60vh] text-white flex items-center justify-center" 
-        style={{ backgroundImage: 'url(https://picsum.photos/seed/hero/1600/900)' }}
+      <section
+        className="relative bg-cover bg-center h-[60vh] text-white flex items-center justify-center"
+        style={{ backgroundImage: "url(workshop_img/shope_inside.jpg)" }} //https://picsum.photos/seed/hero/1600/900
       >
         <div className="absolute inset-0 bg-primary bg-opacity-60"></div>
         <div className="relative z-10 text-center p-6">
-          <h1 className="text-5xl md:text-6xl font-bold font-serif mb-4 drop-shadow-lg">{t('heroTitle')}</h1>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto drop-shadow-md">{t('heroSubtitle')}</p>
-          <Link 
-            to="/products" 
-            className="bg-secondary text-primary font-bold py-3 px-8 rounded-md hover:opacity-90 transition-all duration-300 text-lg"
-          >
-            {t('exploreProducts')}
+          <h1 className="text-5xl md:text-6xl font-bold font-serif mb-4 drop-shadow-lg">
+            {t("heroTitle")}
+          </h1>
+          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto drop-shadow-md">
+            {t("heroSubtitle")}
+          </p>
+          <Link
+            to="/products"
+            className="bg-secondary text-primary font-bold py-3 px-8 rounded-md hover:opacity-90 transition-all duration-300 text-lg">
+            {t("exploreProducts")}
           </Link>
         </div>
       </section>
@@ -46,20 +49,28 @@ const HomePage: React.FC<HomePageProps> = ({ onAddToCart }) => {
       {/* Featured Products */}
       <section className="py-20 bg-accent">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-bold font-serif text-center text-primary mb-12">{t('featuredProducts')}</h2>
+          <h2 className="text-4xl font-bold font-serif text-center text-primary mb-12">
+            {t("featuredProducts")}
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {featuredProducts.map(product => (
-              <ProductCard key={product.id} product={product} onAddToCartClick={handleAddToCartClick} />
+            {featuredProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onAddToCartClick={handleAddToCartClick}
+              />
             ))}
           </div>
           <div className="text-center mt-12">
-            <Link to="/products" className="bg-primary text-white font-bold py-3 px-8 rounded-md hover:bg-opacity-90 transition-all duration-300">
-              {t('viewAllProducts')}
+            <Link
+              to="/products"
+              className="bg-primary text-white font-bold py-3 px-8 rounded-md hover:bg-opacity-90 transition-all duration-300">
+              {t("viewAllProducts")}
             </Link>
           </div>
         </div>
       </section>
-      
+
       <AddToCartModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

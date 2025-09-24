@@ -16,15 +16,15 @@ export const PRODUCTS: Product[] = [
     nameKey: 'product1Name',
     descriptionKey: 'product1Desc',
     price: 150.00,
-    imageUrl: 'https://picsum.photos/seed/glass1/600/400',
+    imageUrl: 'product_img/colored_etched_glass.png',
     category: 'Glass',
   },
   {
     id: '2',
     nameKey: 'product2Name',
     descriptionKey: 'product2Desc',
-    price: 220.50,
-    imageUrl: 'https://picsum.photos/seed/frame2/600/400',
+    price: 11000.00,
+    imageUrl: 'product_img/grey_aluminum_door.png', //https://picsum.photos/seed/frame2/600/400
     category: 'Aluminum',
   },
   {
@@ -32,7 +32,7 @@ export const PRODUCTS: Product[] = [
     nameKey: 'product3Name',
     descriptionKey: 'product3Desc',
     price: 180.75,
-    imageUrl: 'https://picsum.photos/seed/glass3/600/400',
+    imageUrl: 'product_img/thoughen_door-frame.png',  //https://picsum.photos/seed/glass3/600/400
     category: 'Glass',
   },
   {
@@ -40,7 +40,7 @@ export const PRODUCTS: Product[] = [
     nameKey: 'product4Name',
     descriptionKey: 'product4Desc',
     price: 750.00,
-    imageUrl: 'https://picsum.photos/seed/door4/600/400',
+    imageUrl: 'product_img/grey_aluminum_window_frame.png',  // https://picsum.photos/seed/door4/600/400
     category: 'Aluminum',
   },
   {
@@ -48,7 +48,7 @@ export const PRODUCTS: Product[] = [
     nameKey: 'product5Name',
     descriptionKey: 'product5Desc',
     price: 320.00,
-    imageUrl: 'https://picsum.photos/seed/glass5/600/400',
+    imageUrl: 'product_img/HD_print_glass(table-top).jpg',   //https://picsum.photos/seed/glass5/600/400
     category: 'Glass',
   },
   {
@@ -56,7 +56,7 @@ export const PRODUCTS: Product[] = [
     nameKey: 'product6Name',
     descriptionKey: 'product6Desc',
     price: 1200.00,
-    imageUrl: 'https://picsum.photos/seed/wall6/600/400',
+    imageUrl: 'product_img/front_side_door_frame.png',  //https://picsum.photos/seed/wall6/600/400
     category: 'Aluminum',
   },
     {
@@ -64,7 +64,7 @@ export const PRODUCTS: Product[] = [
     nameKey: 'product7Name',
     descriptionKey: 'product7Desc',
     price: 280.00,
-    imageUrl: 'https://picsum.photos/seed/glass7/600/400',
+    imageUrl: 'product_img/flower_etching_full_size_glass.png',  //https://picsum.photos/seed/glass7/600/400
     category: 'Glass',
   },
   {
@@ -72,15 +72,15 @@ export const PRODUCTS: Product[] = [
     nameKey: 'product8Name',
     descriptionKey: 'product8Desc',
     price: 45.99,
-    imageUrl: 'https://picsum.photos/seed/handle8/600/400',
+    imageUrl: 'product_img/aluminum_window_door_frame.png',  //https://picsum.photos/seed/handle8/600/400
     category: 'Aluminum',
   },
   {
     id: '9',
     nameKey: 'product9Name',
     descriptionKey: 'product9Desc',
-    price: 125.00,
-    imageUrl: 'https://picsum.photos/seed/mirror9/600/400',
+    price: 2200.00,
+    imageUrl: 'product_img/squoval_light_mirror.png',  // https://picsum.photos/seed/mirror9/600/400
     category: 'Mirrors',
   },
   {
@@ -88,7 +88,7 @@ export const PRODUCTS: Product[] = [
     nameKey: 'product10Name',
     descriptionKey: 'product10Desc',
     price: 299.99,
-    imageUrl: 'https://picsum.photos/seed/mirror10/600/400',
+    imageUrl: 'product_img/jeweled_mirror.png',  //https://picsum.photos/seed/mirror10/600/400
     category: 'Mirrors',
   },
   {
@@ -96,7 +96,7 @@ export const PRODUCTS: Product[] = [
     nameKey: 'product11Name',
     descriptionKey: 'product11Desc',
     price: 210.50,
-    imageUrl: 'https://picsum.photos/seed/mirror11/600/400',
+    imageUrl: 'product_img/rectangular_mirror_with_floral_carvings_border_lines.png',  //https://picsum.photos/seed/mirror11/600/400
     category: 'Mirrors',
   },
   {
@@ -104,29 +104,53 @@ export const PRODUCTS: Product[] = [
     nameKey: 'product12Name',
     descriptionKey: 'product12Desc',
     price: 350.00,
-    imageUrl: 'https://picsum.photos/seed/railing12/600/400',
-    category: 'Aluminum',
+    imageUrl: 'product_img/moon_type_rounded_led_mirror.png',      // https://picsum.photos/seed/railing12/600/400
+    category: 'Mirrors',
+  },
+  {
+    id: '13',
+    nameKey: 'product13Name',
+    descriptionKey: 'product13Desc',
+    price: 4999.99,
+    imageUrl: 'product_img/diffrent_type_of_etching.png',
+    category: 'Glass',
+  },
+  {
+    id: '14',
+    nameKey: 'product14Name',
+    descriptionKey: 'product14Desc',
+    price: 0.00,
+    imageUrl: 'product_img/flower_etching_glass.png',  //https://picsum.photos/seed/placeholder14/600/400
+    category: 'Glass',
+  },
+  {
+    id: '15',
+    nameKey: 'product15Name',
+  descriptionKey: 'product15Desc',
+    price: 0.00,
+    imageUrl: 'product_img/window_glass.png',  //https://picsum.photos/seed/placeholder15/600/400
+    category: 'Glass',
   },
 ];
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    name: 'Hardeep Singh',
+    name: 'Baljinder Singh',
     roleKey: 'teamMember1Role',
     bioKey: 'teamMember1Bio',
-    imageUrl: 'https://picsum.photos/seed/team1/400/400',
+    imageUrl: 'team\\baljinder singh.jpg',  //https://picsum.photos/seed/team1/400/400
   },
+  // {
+  //   name: 'Priya Kaur',
+  //   roleKey: 'teamMember2Role',
+  //   bioKey: 'teamMember2Bio',
+  //   imageUrl: 'https://picsum.photos/seed/team2/400/400',
+  // },
   {
-    name: 'Priya Kaur',
-    roleKey: 'teamMember2Role',
-    bioKey: 'teamMember2Bio',
-    imageUrl: 'https://picsum.photos/seed/team2/400/400',
-  },
-  {
-    name: 'Raj Patel',
+    name: 'Sukhdeep Singh',
     roleKey: 'teamMember3Role',
     bioKey: 'teamMember3Bio',
-    imageUrl: 'https://picsum.photos/seed/team3/400/400',
+    imageUrl: 'team\\sukhdeep singh.jpg',  //https://picsum.photos/seed/team3/400/400
   },
 ];
 
@@ -134,17 +158,17 @@ export const TOOLS_MATERIALS: ToolMaterial[] = [
   {
     nameKey: 'tool1Name',
     descriptionKey: 'tool1Desc',
-    imageUrl: 'https://picsum.photos/seed/material1/600/400',
+    imageUrl: 'workshop_img/aluminum img.png',  //https://picsum.photos/seed/material1/600/400
   },
   {
     nameKey: 'tool2Name',
     descriptionKey: 'tool2Desc',
-    imageUrl: 'https://picsum.photos/seed/material2/600/400',
+    imageUrl: 'workshop_img/whiteBlack glass sheets.jpg',  //https://picsum.photos/seed/material2/600/400
   },
   {
     nameKey: 'tool3Name',
     descriptionKey: 'tool3Desc',
-    imageUrl: 'https://picsum.photos/seed/tool1/600/400',
+    imageUrl: 'workshop_img/tools.png',  //https://picsum.photos/seed/tool1/600/400
   },
 ];
 

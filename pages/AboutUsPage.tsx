@@ -11,8 +11,7 @@ const AboutUsPage: React.FC = () => {
       <section
         className="relative bg-cover bg-center py-24 text-white text-center"
         style={{
-          backgroundImage:
-            "url(https://picsum.photos/seed/about-hero/1600/900)",
+          backgroundImage: "url(workshop_img/counter.jpg)", //https://picsum.photos/seed/about-hero/1600/900
         }}>
         <div className="absolute inset-0 bg-primary bg-opacity-70"></div>
         <div className="relative z-10 container mx-auto px-6">
@@ -30,9 +29,9 @@ const AboutUsPage: React.FC = () => {
         <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/2">
             <img
-              src="https://picsum.photos/seed/about-workshop/800/600"
+              src="workshop_img\front side shop edit.png"
               alt={t("ourWorkshopAlt")}
-              className="rounded-lg shadow-xl w-full"
+              className=" w-full h-full"
             />
           </div>
           <div className="md:w-1/2">
