@@ -27,7 +27,7 @@ const ShoppingCartIcon: React.FC = () => (
 
 const Header: React.FC<HeaderProps> = ({ cartItemCount, onCartClick }) => {
   const { t } = useTranslation();
-  const logoSrc = "icons/shop_logo.png"; // Replace with your logo path
+  const logoSrc = "icons/shop_logo_ga.png"; // Replace with your logo path
 
   return (
     <header className="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-md">

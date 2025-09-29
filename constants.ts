@@ -15,7 +15,7 @@ export const PRODUCTS: Product[] = [
     id: '1',
     nameKey: 'product1Name',
     descriptionKey: 'product1Desc',
-    price: 150.00,
+    price: 995.00,
     imageUrl: 'product_img/colored_etched_glass.png',
     category: 'Glass',
   },
@@ -63,7 +63,7 @@ export const PRODUCTS: Product[] = [
     id: '7',
     nameKey: 'product7Name',
     descriptionKey: 'product7Desc',
-    price: 280.00,
+    price: 1960.00,
     imageUrl: 'product_img/flower_etching_full_size_glass.png',  //https://picsum.photos/seed/glass7/600/400
     category: 'Glass',
   },
@@ -87,7 +87,7 @@ export const PRODUCTS: Product[] = [
     id: '10',
     nameKey: 'product10Name',
     descriptionKey: 'product10Desc',
-    price: 299.99,
+    price: 550.00,
     imageUrl: 'product_img/jeweled_mirror.png',  //https://picsum.photos/seed/mirror10/600/400
     category: 'Mirrors',
   },
@@ -95,7 +95,7 @@ export const PRODUCTS: Product[] = [
     id: '11',
     nameKey: 'product11Name',
     descriptionKey: 'product11Desc',
-    price: 210.50,
+    price: 570.00,
     imageUrl: 'product_img/rectangular_mirror_with_floral_carvings_border_lines.png',  //https://picsum.photos/seed/mirror11/600/400
     category: 'Mirrors',
   },
@@ -103,7 +103,7 @@ export const PRODUCTS: Product[] = [
     id: '12',
     nameKey: 'product12Name',
     descriptionKey: 'product12Desc',
-    price: 350.00,
+    price: 2500.00,
     imageUrl: 'product_img/moon_type_rounded_led_mirror.png',      // https://picsum.photos/seed/railing12/600/400
     category: 'Mirrors',
   },
@@ -126,9 +126,34 @@ export const PRODUCTS: Product[] = [
   {
     id: '15',
     nameKey: 'product15Name',
-  descriptionKey: 'product15Desc',
+   descriptionKey: 'product15Desc',
     price: 0.00,
     imageUrl: 'product_img/window_glass.png',  //https://picsum.photos/seed/placeholder15/600/400
+    category: 'Glass',
+  },
+  {
+    id: '16',
+    nameKey: 'product16Name',
+    descriptionKey: 'product16Desc',
+    price: 0.00,
+    imageUrl: 'product_img/rounded_glass_table.png',  //https://picsum.photos/seed/placeholder16/600/400
+    category: 'Glass',
+  },
+  {
+    id: '17',
+    nameKey: 'product17Name',
+    descriptionKey: 'product17Desc',
+    price: 0.00,
+    imageUrl: 'product_img/frosted_glass_pannel_with_leaf_etching.png',
+    //https://picsum.photos/seed/placeholder17/600/400
+    category: 'Glass',
+  },
+  {
+    id: '18',
+    nameKey: 'product18Name',
+    descriptionKey: 'product18Desc',
+    price: 0.00,
+    imageUrl: 'product_img/guru_nanak_devji_hd_print.png',  //https://picsum.photos/seed/placeholder18/600/400
     category: 'Glass',
   },
 ];
@@ -177,7 +202,8 @@ export const CONTACT_INFO = {
     { name: 'Baljinder Singh', phone: '+91 9610868884' },
     { name: 'Sukhdeep Singh', phone: '+91 9024844997' },
   ],
-  email: 'contact.sgn@gmail.com',
+  whatsapp: '+91 8505019663',
+  email: 'sggh0843@gmail.com',
   instagram: {
     handle: '@shri_gurunanak_glass',
     url: 'https://www.instagram.com/shri_gurunanak_glass?igsh=NHoyeTdhbWkxOGww',

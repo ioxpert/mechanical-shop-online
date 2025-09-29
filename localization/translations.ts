@@ -114,6 +114,15 @@ export const translations = {
     customizationNotesOptional: 'Customization Notes (Optional)',
     customizationPlaceholder: 'e.g., Change dimensions to 30in x 40in, specific color request...',
     customizationTip: 'Leave the field blank to add the standard item to your cart.',
+
+    // Notice Boards
+    noticeMirrorsTitle: 'About Our Mirrors',
+    noticeMirrorsContent: 'We offer a variety of mirrors, including frameless, LED-backlit, and custom-framed designs and accessories. All mirrors can be cut to your exact size specifications. Ideal for bathrooms, living rooms, and commercial spaces. Our mirror pricing is as follows: 3mm mirror at ₹72 per square foot, 5mm mirror at ₹85 per square foot. We also offer design services at ₹30 per square foot, grinding at ₹10 per running foot, and hole drilling at ₹10 per hole. Additional work will be charged extra. Please note that these prices may vary based on market fluctuations.',
+    noticeAluminumTitle: 'Why Choose Aluminum?',
+    noticeAluminumContent: 'Our aluminum products are known for their strength, durability, and resistance to corrosion. They are lightweight yet robust, making them perfect for window frames, doors, and railing systems with a modern, sleek finish. Aluminum Rates: 325/kg (without color), 350/kg (with color), 360/kg (special type of aluminum). Aluminum items: without color: 300 per sq ft, with color: 350 per sq ft, special type of aluminum: 350 per sq ft. Accessories and glass will be charged separately if used. Additional work will be charged extra. Please note that these prices may vary based on market fluctuations.',
+    noticeGlassTitle: 'Glass for Every Need',
+    noticeGlassContent: 'From tempered safety glass for doors to insulated units for energy efficiency, we provide high-quality glass solutions. We also offer decorative options like frosted and laminated glass for privacy and style.Our Glass Products & Rates: 5mm Sheet: ₹43 per sq ft, 5mm Black: ₹54 per sq ft, 8mm Plain: ₹83 per sq ft, 8mm Black: ₹100 per sq ft, 10mm Plain: ₹103 per sq ft, 12mm Plain: ₹130 per sq ft. Design Charges: Light: ₹25 per sq ft, Heavy: ₹50-80 per sq ft, Colored: ₹80-120 per sq ft. Additional Charges: Grinding: ₹10 per running ft, Per Hole: ₹10. Thoughened Glass: 12mm sheet: ₹155 per sq ft, 10mm sheet: ₹145 sq ft, 8mm sheet: ₹133 sq ft, 5mm sheet: ₹120 sq ft. HD Printed: ₹200 per sq ft. Additional work will be charged extra. Please note that these prices may vary based on market fluctuations. ',
+
     
     // Products
     product1Name: 'Color Etching Glass ',
@@ -129,7 +138,7 @@ export const translations = {
     product6Name: 'White Aluminum Swing Door Frame',
     product6Desc: 'Stylish swing aluminum door with a durable frame and clear glass, perfect for modern spaces.',
     product7Name: 'Etched Glass with Floral Design',
-    product7Desc: 'This stunning piece of etched glass features a beautiful and intricate floral design. The delicate etching creates a frosted, matte effect against the clear glass, making the bold, artistic flower and flowing vines stand out. The design is both elegant and modern, perfect for a decorative door panel, a window, or a partition.',
+    product7Desc: 'Size: 4*3 ft, 8mm stunning piece of etched glass features a beautiful and intricate floral design. The delicate etching creates a frosted, matte effect against the clear glass, making the bold, artistic flower and flowing vines stand out. The design is both elegant and modern, perfect for a decorative door panel, a window, or a partition.',
     product8Name: 'Aluminum Grid Window and Door Frame',
     product8Desc: 'These durable and lightweight aluminum frames are designed for both windows and doors, featuring a multi-pane grid structure. This design provides robust support for glass panels and is ideal for commercial storefronts, clinics, and offices, offering a clean, modern aesthetic. The frames are resistant to rust and corrosion, making them a long-lasting and low-maintenance solution for any space.',
     product9Name: 'LED Squoval Light Mirror',
@@ -146,6 +155,16 @@ export const translations = {
     product14Desc: "This decorative glass panel features a beautiful etched floral design, combining privacy with an elegant artistic touch. The intricate pattern of flowers and vines provides a stylish way to obscure the view while still allowing natural light to pass through. It's a perfect choice for doors, windows, or partitions to add a sophisticated, natural element to any space.",
     product15Name: 'Designer Etched Window Glass',
     product15Desc: 'This beautiful window glass features a modern, etched botanical design with a mix of transparent and frosted textures. The elegant pattern offers a stylish way to enhance privacy while allowing natural light to fill your space. Perfect for homes, offices, or any area where you want to add an artistic, personalized touch.',
+    product16Name: 'Round Accent Table-Top with Etched Glass',
+    product16Desc: 'A clear, rounded glass table top with an elegant, frosted floral design etched onto the surface. The intricate pattern adds a touch of sophistication, making it perfect for a coffee table, side table, or even a plant stand, simply as a standalone piece of art.',
+    product17Name: 'Frosted Glass Panel with Leaf Etching',
+    product17Desc: 'A rectangular pane of glass with a stylish frosted design. The etching features a pattern of clear horizontal stripes, surrounding a central band with a graceful leaf motif. This panel is ideal for adding privacy and a touch of modern elegance to doors, windows, or room dividers.',
+    product18Name: '',
+    product18Desc: '',
+    product19Name: '', 
+    product19Desc: '',
+    product20Name: '',
+    product20Desc: '',
 
     // Team Members
     teamMember1Role: 'Founder & Lead Glazier',
@@ -278,6 +297,15 @@ export const translations = {
     customizationPlaceholder: 'उदा., आयामों को 30 इंच x 40 इंच में बदलें, विशिष्ट रंग अनुरोध...',
     customizationTip: 'मानक आइटम को अपनी कार्ट में जोड़ने के लिए फ़ील्ड खाली छोड़ दें।',
 
+    // Notice Boards
+    noticeMirrorsTitle: 'हमारे आईनों के बारे में',
+    noticeMirrorsContent: 'हम विभिन्न प्रकार के दर्पण (मिरर) प्रदान करते हैं, जिनमें फ्रेमलेस, एलईडी-बैकलिट, और कस्टम-फ्रेम वाले डिज़ाइन और सहायक उपकरण शामिल हैं। सभी दर्पणों को आपके सटीक आकार के अनुसार काटा जा सकता है। ये बाथरूम, लिविंग रूम और व्यावसायिक स्थानों के लिए आदर्श हैं। हमारे दर्पणों की कीमतें इस प्रकार हैं: 3 मिमी दर्पण: ₹72 प्रति वर्ग फुट, 5 मिमी दर्पण: ₹85 प्रति वर्ग फुट, हम अतिरिक्त सेवाएँ भी प्रदान करते हैं: डिज़ाइन सेवाएँ: ₹30 प्रति वर्ग फुट, ग्राइंडिंग (घिसाई): ₹10 प्रति रनिंग फुट, छेद करना (ड्रिलिंग): ₹10 प्रति छेद | अतिरिक्त कार्य के लिए अतिरिक्त शुल्क लिया जाएगा। कृपया ध्यान दें कि बाज़ार में उतार-चढ़ाव के कारण इन कीमतों में बदलाव हो सकता है।',
+    noticeAluminumTitle: 'एल्यूमीनियम क्यों चुनें?',
+    noticeAluminumContent: 'हमारे एल्यूमीनियम उत्पाद अपनी मज़बूती, टिकाऊपन और जंग प्रतिरोधी क्षमता के लिए जाने जाते हैं। ये हल्के होने के बावजूद मजबूत होते हैं, जो इन्हें खिड़की के फ्रेम, दरवाजों और रेलिंग सिस्टम के लिए एक आधुनिक और आकर्षक फिनिश के साथ एकदम सही बनाते हैं। एल्यूमीनियम की दरें: बिना रंग वाला: ₹325 प्रति किलो, रंग वाला: ₹350 प्रति किलो, विशेष प्रकार का एल्यूमीनियम: ₹360 प्रति किलो| एल्यूमीनियम वस्तुओं की दरें: बिना रंग वाला: ₹300 प्रति वर्ग फुट, रंग वाला: ₹350 प्रति वर्ग फुट, विशेष प्रकार का एल्यूमीनियम: ₹350 प्रति वर्ग फुट| सामान (एक्सेसरीज़) और ग्लास का उपयोग होने पर उनका शुल्क अलग से लिया जाएगा। अतिरिक्त कार्य का शुल्क अतिरिक्त होगा। कृपया ध्यान दें कि बाज़ार में उतार-चढ़ाव के कारण इन कीमतों में बदलाव हो सकता है।',
+    noticeGlassTitle: 'हर जरूरत के लिए ग्लास',
+    noticeGlassContent: 'हम दरवाजों के लिए टेम्पर्ड सेफ्टी ग्लास से लेकर ऊर्जा दक्षता के लिए इंसुलेटेड यूनिट तक, उच्च-गुणवत्ता वाले ग्लास समाधान प्रदान करते हैं। हम गोपनीयता और स्टाइल के लिए फ्रॉस्टेड और लैमिनेटेड ग्लास जैसे सजावटी विकल्प भी देते हैं। हमारे ग्लास उत्पाद और दरें: 5 मिमी शीट: ₹43 प्रति वर्ग फुट, 5 मिमी काला: ₹54 प्रति वर्ग फुट, 8 मिमी सादा: ₹83 प्रति वर्ग फुट, 8 मिमी काला: ₹100 प्रति वर्ग फुट, 10 मिमी सादा: ₹103 प्रति वर्ग फुट, 12 मिमी सादा: ₹130 प्रति वर्ग फुट| डिज़ाइन शुल्क: हल्का: ₹25 प्रति वर्ग फुट, भारी: ₹50-80 प्रति वर्ग फुट, रंगीन: ₹80-120 प्रति वर्ग फुट| अतिरिक्त शुल्क: ग्राइंडिंग: ₹10 प्रति रनिंग फुट, प्रति छेद: ₹10| टफन्ड ग्लास (Thoughened Glass): 12 मिमी शीट: ₹155 प्रति वर्ग फुट, 10 मिमी शीट: ₹145 प्रति वर्ग फुट, 8 मिमी शीट: ₹133 प्रति वर्ग फुट, 5 मिमी शीट: ₹120 प्रति वर्ग फुट| HD प्रिंटेड: ₹200 प्रति वर्ग फुट| अतिरिक्त कार्य का शुल्क अतिरिक्त होगा। कृपया ध्यान दें कि बाज़ार में उतार-चढ़ाव के कारण इन कीमतों में बदलाव हो सकता है।',
+
+
     // Products
     product1Name: 'रंगीन नक़्क़ाशीदार काँच',
     product1Desc: 'खिड़कियों, दरवाजों और विभाजनों के लिए उच्च शक्ति, गर्मी प्रतिरोधी सुरक्षा ग्लास।',
@@ -292,7 +320,7 @@ export const translations = {
     product6Name: 'सफेद एल्युमिनियम स्विंग दरवाज़े का फ्रेम',
     product6Desc: 'आधुनिक स्थानों के लिए एक स्टाइलिश स्विंग दरवाज़ा, जिसमें एक टिकाऊ फ्रेम और स्पष्ट कांच है।',
     product7Name: 'फूलों की नक्काशीदार कांच',
-    product7Desc: ' यह एक खूबसूरत नक्काशीदार कांच का टुकड़ा है, जिस पर एक जटिल और आकर्षक फूलों का डिज़ाइन बना हुआ है। कांच पर की गई बारीक नक्काशी एक मैट फिनिश बनाती है, जिससे फूल और बेलें बहुत ही स्पष्ट और सुंदर दिखती हैं। यह डिज़ाइन आधुनिक और आकर्षक है, जो इसे दरवाज़े, खिड़की या रूम-पार्टीशन के लिए उपयुक्त बनाता है।',
+    product7Desc: ' Size: 4*3 ft, 8mm एक खूबसूरत नक्काशीदार कांच का टुकड़ा है, जिस पर एक जटिल और आकर्षक फूलों का डिज़ाइन बना हुआ है। कांच पर की गई बारीक नक्काशी एक मैट फिनिश बनाती है, जिससे फूल और बेलें बहुत ही स्पष्ट और सुंदर दिखती हैं। यह डिज़ाइन आधुनिक और आकर्षक है, जो इसे दरवाज़े, खिड़की या रूम-पार्टीशन के लिए उपयुक्त बनाता है।',
     product8Name: 'एल्युमिनियम ग्रिड विंडो और डोर फ्रेम',
     product8Desc: 'ये टिकाऊ और हल्के एल्युमिनियम फ्रेम खिड़कियों और दरवाजों दोनों के लिए डिज़ाइन किए गए हैं, जिनमें एक मल्टी-पैन ग्रिड संरचना है। यह डिज़ाइन ग्लास पैनलों को मजबूत सहारा प्रदान करता है और व्यावसायिक दुकानों, क्लीनिकों और कार्यालयों के लिए एकदम सही है, जो एक साफ़ और आधुनिक रूप देता है। ये फ्रेम जंग और क्षरण (corrosion) प्रतिरोधी होते हैं, जो इन्हें किसी भी जगह के लिए एक टिकाऊ और कम रखरखाव वाला समाधान बनाता है।',
     product9Name: 'LED स्क्वोवल लाइट मिरर',
@@ -309,7 +337,17 @@ export const translations = {
     product14Desc: 'इस सजावटी ग्लास पैनल में एक सुंदर नक्काशीदार फूलों का डिज़ाइन है, जो निजता के साथ एक कलात्मक स्पर्श भी देता है। फूल और बेलों का यह जटिल पैटर्न दृश्य को धुंधला करने का एक स्टाइलिश तरीका है, जबकि यह प्राकृतिक रोशनी को भी अंदर आने देता है। यह दरवाजों, खिड़कियों या विभाजनों के लिए एक बेहतरीन विकल्प है, जो किसी भी जगह में एक परिष्कृत और प्राकृतिक सुंदरता जोड़ता है।',
     product15Name: 'डिज़ाइनर नक्काशीदार विंडो ग्लास',
     product15Desc: 'यह सुंदर विंडो ग्लास आधुनिक, नक्काशीदार फूलों के डिज़ाइन के साथ पारदर्शी और फ्रॉस्टेड बनावट का मिश्रण पेश करता है। इसका सुरुचिपूर्ण पैटर्न आपकी निजता को बनाए रखने का एक स्टाइलिश तरीका है, जबकि यह प्राकृतिक रोशनी को भी अंदर आने देता है। यह घरों, कार्यालयों या किसी भी जगह के लिए एकदम सही है जहाँ आप एक कलात्मक, व्यक्तिगत स्पर्श जोड़ना चाहते हैं।',
-    
+    product16Name: 'नक़्क़ाशीदार शीशे की गोल ऐक्सेंट टेबल-टॉप',
+    product16Desc: 'एक सुंदर, गोल आकार की पारदर्शी काँच की टेबल-टॉप जिस पर एक सुंदर, जमी हुई फूलों की डिज़ाइन उकेरी गई है। यह जटिल पैटर्न इसे और भी ख़ूबसूरत बनाता है, जो इसे कॉफ़ी टेबल, साइड टेबल, या यहाँ तक कि एक प्लांट स्टैंड के लिए भी एकदम सही बनाता है, या बस एक कलाकृति के रूप में भी।',
+    product17Name: 'पत्तियों की नक़्क़ाशी वाला फ़्रॉस्टेड ग्लास पैनल',
+    product17Desc: 'स्टाइलिश फ्रॉस्टेड डिज़ाइन वाला एक आयताकार काँच का पैनल। नक़्क़ाशी में एक पैटर्न है जिसमें पारदर्शी क्षैतिज धारियाँ हैं, जिसके बीच में पत्तियों का ख़ूबसूरत डिज़ाइन बना है। यह पैनल दरवाज़ों, खिड़कियों या कमरे के डिवाइडर में गोपनीयता और आधुनिक सुंदरता जोड़ने के लिए एकदम सही है।',
+    product18Name: 'पत्तियों की नक़्क़ाशी वाला फ़्रॉस्टेड ग्लास पैनल',
+    product18Desc: 'स्टाइलिश फ्रॉस्टेड डिज़ाइन वाला एक आयताकार काँच का पैनल। नक़्क़ाशी में एक पैटर्न है जिसमें पारदर्शी क्षैतिज धारियाँ हैं, जिसके बीच में पत्तियों का ख़ूबसूरत डिज़ाइन बना है। यह पैनल दरवाज़ों, खिड़कियों या कमरे के डिवाइडर में गोपनीयता और आधुनिक सुंदरता जोड़ने के लिए एकदम सही है।',
+    product19Name: '', 
+    product19Desc: '',
+    product20Name: '',
+    product20Desc: '',
+
     // Team Members
     teamMember1Role: 'संस्थापक और प्रमुख ग्लेज़ियर',
     teamMember1Bio: '20 से अधिक वर्षों के अनुभव के साथ, हरदीप ने गुणवत्ता और सटीकता की दृष्टि से कंपनी की स्थापना की। उनकी विशेषज्ञता हर परियोजना का मार्गदर्शन करती है।',
@@ -441,6 +479,15 @@ export const translations = {
     customizationPlaceholder: 'ਜਿਵੇਂ, ਮਾਪਾਂ ਨੂੰ 30in x 40in ਵਿੱਚ ਬਦਲੋ, ਖਾਸ ਰੰਗ ਦੀ ਬੇਨਤੀ...',
     customizationTip: 'ਮਿਆਰੀ ਆਈਟਮ ਨੂੰ ਆਪਣੀ ਕਾਰਟ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰਨ ਲਈ ਖੇਤਰ ਨੂੰ ਖਾਲੀ ਛੱਡੋ।',
 
+    // Notice Boards
+    noticeMirrorsTitle: 'ਸਾਡੇ ਸ਼ੀਸ਼ਿਆਂ ਬਾਰੇ',
+    noticeMirrorsContent: 'ਅਸੀਂ ਕਈ ਤਰ੍ਹਾਂ ਦੇ ਸ਼ੀਸ਼ੇ (ਮਿਰਰ) ਪੇਸ਼ ਕਰਦੇ ਹਾਂ, ਜਿਸ ਵਿੱਚ ਫਰੇਮ ਰਹਿਤ, LED-ਬੈਕਲਿਟ, ਅਤੇ ਕਸਟਮ-ਫਰੇਮਡ ਡਿਜ਼ਾਈਨ ਅਤੇ ਸਹਾਇਕ ਉਪਕਰਣ ਸ਼ਾਮਲ ਹਨ। ਸਾਰੇ ਸ਼ੀਸ਼ੇ ਤੁਹਾਡੇ ਸਹੀ ਆਕਾਰ ਅਨੁਸਾਰ ਕੱਟੇ ਜਾ ਸਕਦੇ ਹਨ। ਇਹ ਬਾਥਰੂਮਾਂ, ਲਿਵਿੰਗ ਰੂਮਾਂ, ਅਤੇ ਵਪਾਰਕ ਥਾਵਾਂ ਲਈ ਬਹੁਤ ਵਧੀਆ ਹਨ। ਸਾਡੇ ਸ਼ੀਸ਼ਿਆਂ ਦੀਆਂ ਕੀਮਤਾਂ ਇਸ ਤਰ੍ਹਾਂ ਹਨ: 3 ਮਿਮੀ ਸ਼ੀਸ਼ਾ: ₹72 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ, 5 ਮਿਮੀ ਸ਼ੀਸ਼ਾ: ₹85 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ| ਅਸੀਂ ਹੋਰ ਸੇਵਾਵਾਂ ਵੀ ਪੇਸ਼ ਕਰਦੇ ਹਾਂ: ਡਿਜ਼ਾਈਨ ਸੇਵਾਵਾਂ: ₹30 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ, ਗ੍ਰਾਈਂਡਿੰਗ: ₹10 ਪ੍ਰਤੀ ਰਨਿੰਗ ਫੁੱਟ, ਮੋਰੀ ਕਰਨੀ (ਡ੍ਰਿਲਿੰਗ): ₹10 ਪ੍ਰਤੀ ਮੋਰੀ| ਕਿਸੇ ਵੀ ਵਾਧੂ ਕੰਮ ਲਈ ਵਾਧੂ ਖਰਚਾ ਲਿਆ ਜਾਵੇਗਾ। ਕਿਰਪਾ ਕਰਕੇ ਨੋਟ ਕਰੋ ਕਿ ਮਾਰਕੀਟ ਵਿੱਚ ਉਤਰਾਅ-ਚੜ੍ਹਾਅ ਕਾਰਨ ਇਹਨਾਂ ਕੀਮਤਾਂ ਵਿੱਚ ਬਦਲਾਅ ਹੋ ਸਕਦਾ ਹੈ।',                               
+    noticeAluminumTitle: 'ਐਲੂਮੀਨੀਅਮ ਕਿਉਂ ਚੁਣੋ?',
+    noticeAluminumContent: 'ਸਾਡੇ ਐਲੂਮੀਨੀਅਮ ਉਤਪਾਦ ਆਪਣੀ ਤਾਕਤ, ਟਿਕਾਊਤਾ ਅਤੇ ਖੋਰ (ਜੰਗ) ਪ੍ਰਤੀ ਰੋਧਕਤਾ ਲਈ ਜਾਣੇ ਜਾਂਦੇ ਹਨ। ਇਹ ਹਲਕੇ ਹੋਣ ਦੇ ਬਾਵਜੂਦ ਮਜ਼ਬੂਤ ਹੁੰਦੇ ਹਨ, ਜੋ ਇਹਨਾਂ ਨੂੰ ਖਿੜਕੀਆਂ ਦੇ ਫਰੇਮਾਂ, ਦਰਵਾਜ਼ਿਆਂ ਅਤੇ ਰੇਲਿੰਗ ਸਿਸਟਮਾਂ ਲਈ ਆਧੁਨਿਕ ਅਤੇ ਸਾਫ਼ ਦਿੱਖ ਦੇ ਨਾਲ ਬਿਹਤਰੀਨ ਬਣਾਉਂਦੇ ਹਨ। ਐਲੂਮੀਨੀਅਮ ਦੀਆਂ ਦਰਾਂ: ਬਿਨਾਂ ਰੰਗ ਵਾਲਾ: ₹325 ਪ੍ਰਤੀ ਕਿਲੋ, ਰੰਗ ਵਾਲਾ: ₹350 ਪ੍ਰਤੀ ਕਿਲੋ, ਖਾਸ ਕਿਸਮ ਦਾ ਐਲੂਮੀਨੀਅਮ: ₹360 ਪ੍ਰਤੀ ਕਿਲੋ| ਐਲੂਮੀਨੀਅਮ ਦੀਆਂ ਚੀਜ਼ਾਂ ਦੀਆਂ ਦਰਾਂ: ਬਿਨਾਂ ਰੰਗ ਵਾਲਾ:** ₹300 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ, ਰੰਗ ਵਾਲਾ: ₹350 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ, ਖਾਸ ਕਿਸਮ ਦਾ ਐਲੂਮੀਨੀਅਮ: ₹350 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ| ਐਕਸੈਸਰੀਜ਼ ਅਤੇ ਸ਼ੀਸ਼ੇ (ਗਲਾਸ) ਦੀ ਵਰਤੋਂ ਹੋਣ ਤੇ ਉਹਨਾਂ ਦਾ ਖਰਚਾ ਵੱਖਰਾ ਲਿਆ ਜਾਵੇਗਾ। ਵਾਧੂ ਕੰਮ ਦਾ ਖਰਚਾ ਵਾਧੂ ਲਿਆ ਜਾਵੇਗਾ। ਕਿਰਪਾ ਕਰਕੇ ਨੋਟ ਕਰੋ ਕਿ ਮਾਰਕੀਟ ਵਿੱਚ ਉਤਰਾਅ-ਚੜ੍ਹਾਅ ਕਾਰਨ ਇਹਨਾਂ ਕੀਮਤਾਂ ਵਿੱਚ ਬਦਲਾਅ ਹੋ ਸਕਦਾ ਹੈ।',
+    noticeGlassTitle: 'ਹਰ ਲੋੜ ਲਈ ਗਲਾਸ',
+    noticeGlassContent: 'ਅਸੀਂ ਦਰਵਾਜ਼ਿਆਂ ਲਈ ਟੈਂਪਰਡ ਸੇਫਟੀ ਗਲਾਸ ਤੋਂ ਲੈ ਕੇ ਊਰਜਾ ਬਚਾਉਣ ਲਈ ਇਨਸੂਲੇਟਿਡ ਯੂਨਿਟਾਂ ਤੱਕ, ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੇ ਗਲਾਸ ਹੱਲ ਪ੍ਰਦਾਨ ਕਰਦੇ ਹਾਂ। ਅਸੀਂ ਗੋਪਨੀਯਤਾ ਅਤੇ ਸਟਾਈਲ ਲਈ ਫਰੋਸਟੇਡ ਅਤੇ ਲੈਮੀਨੇਟਿਡ ਗਲਾਸ ਵਰਗੇ ਸਜਾਵਟੀ ਵਿਕਲਪ ਵੀ ਪੇਸ਼ ਕਰਦੇ ਹਾਂ। ਸਾਡੇ ਗਲਾਸ ਉਤਪਾਦ ਅਤੇ ਦਰਾਂ: 5 ਮਿਮੀ ਸ਼ੀਟ: ₹43 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ, 5 ਮਿਮੀ ਕਾਲਾ: ₹54 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ, 8 ਮਿਮੀ ਸਾਦਾ: ₹83 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ, 8 ਮਿਮੀ ਕਾਲਾ: ₹100 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ,  10 ਮਿਮੀ ਸਾਦਾ: ₹103 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ, 12 ਮਿਮੀ ਸਾਦਾ: ₹130 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ| ਡਿਜ਼ਾਈਨ ਖਰਚੇ: ਹਲਕਾ: ₹25 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ, ਭਾਰਾ: ₹50-80 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ, ਰੰਗੀਨ: ₹80-120 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ| ਵਾਧੂ ਖਰਚੇ: ਗ੍ਰਾਈਂਡਿੰਗ: ₹10 ਪ੍ਰਤੀ ਰਨਿੰਗ ਫੁੱਟ, ਪ੍ਰਤੀ ਮੋਰੀ: ₹10| ਟਫਨਡ ਗਲਾਸ (Toughened Glass): 12 ਮਿਮੀ ਸ਼ੀਟ: ₹155 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ, 10 ਮਿਮੀ ਸ਼ੀਟ: ₹145 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ, 8 ਮਿਮੀ ਸ਼ੀਟ: ₹133 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ, 5 ਮਿਮੀ ਸ਼ੀਟ: ₹120 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ| HD ਪ੍ਰਿੰਟਡ: ₹200 ਪ੍ਰਤੀ ਵਰਗ ਫੁੱਟ| ਵਾਧੂ ਕੰਮ ਦਾ ਖਰਚਾ ਵਾਧੂ ਲਿਆ ਜਾਵੇਗਾ। ਕਿਰਪਾ ਕਰਕੇ ਨੋਟ ਕਰੋ ਕਿ ਮਾਰਕੀਟ ਵਿੱਚ ਉਤਰਾਅ-ਚੜ੍ਹਾਅ ਕਾਰਨ ਇਹਨਾਂ ਕੀਮਤਾਂ ਵਿੱਚ ਬਦਲਾਅ ਹੋ ਸਕਦਾ ਹੈ।',
+
+
     // Products
     product1Name: 'ਰੰਗਦਾਰ ਨੱਕਾਸ਼ੀਦਾਰ ਕੱਚ',
     product1Desc: 'ਖਿੜਕੀਆਂ, ਦਰਵਾਜ਼ਿਆਂ ਅਤੇ ਭਾਗਾਂ ਲਈ ਉੱਚ-ਸ਼ਕਤੀ, ਗਰਮੀ-ਰੋਧਕ ਸੁਰੱਖਿਆ ਗਲਾਸ।',
@@ -455,7 +502,7 @@ export const translations = {
     product6Name: 'ਚਿੱਟਾ ਐਲੂਮੀਨੀਅਮ ਸਵਿੰਗ ਦਰਵਾਜ਼ੇ ਦਾ ਫਰੇਮ',
     product6Desc: 'ਸਟਾਈਲਿਸ਼ ਸਵਿੰਗ ਐਲੂਮੀਨੀਅਮ ਦਰਵਾਜ਼ਾ, ਮਜ਼ਬੂਤ ਫਰੇਮ ਅਤੇ ਸਾਫ਼ ਕੱਚ ਨਾਲ, ਆਧੁਨਿਕ ਥਾਵਾਂ ਲਈ ਬਿਹਤਰ।',
     product7Name: 'ਫੁੱਲਾਂ ਦੀ ਨੱਕਾਸ਼ੀ ਵਾਲਾ ਸ਼ੀਸ਼ਾ',
-    product7Desc: 'ਇਹ ਇੱਕ ਸ਼ਾਨਦਾਰ ਨੱਕਾਸ਼ੀ ਵਾਲਾ ਸ਼ੀਸ਼ਾ ਹੈ, ਜਿਸ ਉੱਤੇ ਇੱਕ ਬਹੁਤ ਹੀ ਖੂਬਸੂਰਤ ਅਤੇ ਬਾਰੀਕ ਫੁੱਲਾਂ ਦਾ ਡਿਜ਼ਾਈਨ ਬਣਿਆ ਹੋਇਆ ਹੈ। ਸ਼ੀਸ਼ੇ ਤੇ ਕੀਤੀ ਗਈ ਨੱਕਾਸ਼ੀ ਇੱਕ ਮੈਟ ਪ੍ਰਭਾਵ ਦਿੰਦੀ ਹੈ, ਜਿਸ ਕਾਰਨ ਫੁੱਲ ਅਤੇ ਵੇਲ ਬਹੁਤ ਹੀ ਸੁੰਦਰ ਅਤੇ ਪ੍ਰਭਾਵਸ਼ਾਲੀ ਲੱਗਦੇ ਹਨ। ਇਹ ਡਿਜ਼ਾਈਨ ਸੁੰਦਰ ਅਤੇ ਆਧੁਨਿਕ ਦੋਵੇਂ ਹੈ, ਜੋ ਇਸਨੂੰ ਦਰਵਾਜ਼ੇ, ਖਿੜਕੀ ਜਾਂ ਰੂਮ-ਪਾਰਟੀਸ਼ਨ ਲਈ ਬਿਲਕੁਲ ਸਹੀ ਬਣਾਉਂਦਾ ਹੈ।',
+    product7Desc: 'Size: 4*3 ft, 8mm ਇੱਕ ਸ਼ਾਨਦਾਰ ਨੱਕਾਸ਼ੀ ਵਾਲਾ ਸ਼ੀਸ਼ਾ ਹੈ, ਜਿਸ ਉੱਤੇ ਇੱਕ ਬਹੁਤ ਹੀ ਖੂਬਸੂਰਤ ਅਤੇ ਬਾਰੀਕ ਫੁੱਲਾਂ ਦਾ ਡਿਜ਼ਾਈਨ ਬਣਿਆ ਹੋਇਆ ਹੈ। ਸ਼ੀਸ਼ੇ ਤੇ ਕੀਤੀ ਗਈ ਨੱਕਾਸ਼ੀ ਇੱਕ ਮੈਟ ਪ੍ਰਭਾਵ ਦਿੰਦੀ ਹੈ, ਜਿਸ ਕਾਰਨ ਫੁੱਲ ਅਤੇ ਵੇਲ ਬਹੁਤ ਹੀ ਸੁੰਦਰ ਅਤੇ ਪ੍ਰਭਾਵਸ਼ਾਲੀ ਲੱਗਦੇ ਹਨ। ਇਹ ਡਿਜ਼ਾਈਨ ਸੁੰਦਰ ਅਤੇ ਆਧੁਨਿਕ ਦੋਵੇਂ ਹੈ, ਜੋ ਇਸਨੂੰ ਦਰਵਾਜ਼ੇ, ਖਿੜਕੀ ਜਾਂ ਰੂਮ-ਪਾਰਟੀਸ਼ਨ ਲਈ ਬਿਲਕੁਲ ਸਹੀ ਬਣਾਉਂਦਾ ਹੈ।',
     product8Name: 'ਐਲੂਮੀਨੀਅਮ ਗਰਿੱਡ ਵਿੰਡੋ ਅਤੇ ਡੋਰ ਫਰੇਮ',
     product8Desc: 'ਇਹ ਟਿਕਾਊ ਅਤੇ ਹਲਕੇ ਐਲੂਮੀਨੀਅਮ ਫਰੇਮ ਵਿੰਡੋਜ਼ ਅਤੇ ਦਰਵਾਜ਼ਿਆਂ ਦੋਵਾਂ ਲਈ ਤਿਆਰ ਕੀਤੇ ਗਏ ਹਨ, ਜਿਨ੍ਹਾਂ ਵਿੱਚ ਇੱਕ ਮਲਟੀ-ਪੈਨ ਗਰਿੱਡ ਬਣਤਰ ਹੈ। ਇਹ ਡਿਜ਼ਾਈਨ ਗਲਾਸ ਪੈਨਲਾਂ ਲਈ ਮਜ਼ਬੂਤ ​​ਸਪੋਰਟ ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ ਅਤੇ ਵਪਾਰਕ ਸਟੋਰਫਰੰਟਾਂ, ਕਲੀਨਿਕਾਂ ਅਤੇ ਦਫ਼ਤਰਾਂ ਲਈ ਆਦਰਸ਼ ਹੈ, ਇੱਕ ਸਾਫ਼ ਅਤੇ ਆਧੁਨਿਕ ਦਿੱਖ ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ। ਇਹ ਫਰੇਮ ਜੰਗਾਲ ਅਤੇ ਖੋਰ (corrosion) ਪ੍ਰਤੀ ਰੋਧਕ ਹੁੰਦੇ ਹਨ, ਜੋ ਉਹਨਾਂ ਨੂੰ ਕਿਸੇ ਵੀ ਥਾਂ ਲਈ ਇੱਕ ਲੰਬੇ ਸਮੇਂ ਤੱਕ ਚੱਲਣ ਵਾਲਾ ਅਤੇ ਘੱਟ ਰੱਖ-ਰਖਾਅ ਵਾਲਾ ਹੱਲ ਬਣਾਉਂਦਾ ਹੈ।',
     product9Name: 'LED ਸਕੇਅਰ ਲਾਈਟ ਮਿਰਰ',
@@ -472,7 +519,17 @@ export const translations = {
     product14Desc: 'ਇਸ ਸਜਾਵਟੀ ਗਲਾਸ ਪੈਨਲ ਵਿੱਚ ਇੱਕ ਸੁੰਦਰ ਨੱਕਾਸ਼ੀਦਾਰ ਫੁੱਲਾਂ ਦਾ ਡਿਜ਼ਾਈਨ ਹੈ, ਜੋ ਗੋਪਨੀਯਤਾ ਦੇ ਨਾਲ-ਨਾਲ ਇੱਕ ਸ਼ਾਨਦਾਰ ਕਲਾਤਮਕ ਛੋਹ ਦਿੰਦਾ ਹੈ। ਫੁੱਲਾਂ ਅਤੇ ਵੇਲਾਂ ਦਾ ਇਹ ਗੁੰਝਲਦਾਰ ਪੈਟਰਨ ਦ੍ਰਿਸ਼ ਨੂੰ ਅਸਪਸ਼ਟ ਕਰਨ ਦਾ ਇੱਕ ਸਟਾਈਲਿਸ਼ ਤਰੀਕਾ ਹੈ, ਜਦੋਂ ਕਿ ਇਹ ਕੁਦਰਤੀ ਰੋਸ਼ਨੀ ਨੂੰ ਵੀ ਅੰਦਰ ਆਉਣ ਦਿੰਦਾ ਹੈ। ਇਹ ਦਰਵਾਜ਼ਿਆਂ, ਖਿੜਕੀਆਂ, ਜਾਂ ਪਾਰਟੀਸ਼ਨਾਂ ਲਈ ਇੱਕ ਵਧੀਆ ਵਿਕਲਪ ਹੈ, ਜੋ ਕਿਸੇ ਵੀ ਜਗ੍ਹਾ ਵਿੱਚ ਇੱਕ ਸੂਝਵਾਨ ਅਤੇ ਕੁਦਰਤੀ ਤੱਤ ਜੋੜਦਾ ਹੈ।',
     product15Name: 'ਡਿਜ਼ਾਈਨਰ ਨੱਕਾਸ਼ੀਦਾਰ ਵਿੰਡੋ ਗਲਾਸ',
     product15Desc: 'ਇਹ ਸੁੰਦਰ ਵਿੰਡੋ ਗਲਾਸ ਇੱਕ ਆਧੁਨਿਕ, ਨੱਕਾਸ਼ੀਦਾਰ ਬੋਟੈਨੀਕਲ ਡਿਜ਼ਾਈਨ ਦੇ ਨਾਲ ਪਾਰਦਰਸ਼ੀ ਅਤੇ ਫ੍ਰੌਸਟੇਡ ਟੈਕਸਚਰ ਦਾ ਮਿਸ਼ਰਣ ਪੇਸ਼ ਕਰਦਾ ਹੈ। ਇਸਦਾ ਸ਼ਾਨਦਾਰ ਪੈਟਰਨ ਤੁਹਾਡੀ ਗੋਪਨੀਯਤਾ ਨੂੰ ਵਧਾਉਣ ਦਾ ਇੱਕ ਸਟਾਈਲਿਸ਼ ਤਰੀਕਾ ਹੈ, ਜਦੋਂ ਕਿ ਇਹ ਕੁਦਰਤੀ ਰੌਸ਼ਨੀ ਨੂੰ ਵੀ ਅੰਦਰ ਆਉਣ ਦਿੰਦਾ ਹੈ। ਇਹ ਘਰਾਂ, ਦਫ਼ਤਰਾਂ, ਜਾਂ ਕਿਸੇ ਵੀ ਥਾਂ ਲਈ ਸੰਪੂਰਨ ਹੈ ਜਿੱਥੇ ਤੁਸੀਂ ਇੱਕ ਕਲਾਤਮਕ, ਵਿਅਕਤੀਗਤ ਛੋਹ ਦੇਣਾ ਚਾਹੁੰਦੇ ਹੋ।',
-    
+    product16Name: 'ਨੱਕਾਸ਼ੀਦਾਰ ਸ਼ੀਸ਼ੇ ਦੀ ਗੋਲ ਐਕਸੈਂਟ ਟੇਬਲ-ਟਾਪ',
+    product16Desc: ' ਇੱਕ ਸਾਫ਼, ਗੋਲ ਆਕਾਰ ਦੀ ਸ਼ੀਸ਼ੇ ਦੀ ਟੇਬਲ-ਟਾਪ ਜਿਸ ਉੱਤੇ ਇੱਕ ਸ਼ਾਨਦਾਰ, ਜੰਮੇ ਹੋਏ ਫੁੱਲਾਂ ਦਾ ਡਿਜ਼ਾਈਨ ਉੱਕਰਿਆ ਹੋਇਆ ਹੈ। ਇਹ ਗੁੰਝਲਦਾਰ ਨਮੂਨਾ ਇਸਨੂੰ ਹੋਰ ਵੀ ਖ਼ੂਬਸੂਰਤ ਬਣਾਉਂਦਾ ਹੈ, ਜਿਸ ਨਾਲ ਇਹ ਕੌਫ਼ੀ ਟੇਬਲ, ਸਾਈਡ ਟੇਬਲ, ਜਾਂ ਇੱਥੋਂ ਤੱਕ ਕਿ ਇੱਕ ਪਲਾਂਟ ਸਟੈਂਡ ਲਈ ਵੀ ਢੁਕਵਾਂ ਹੈ, ਜਾਂ ਸਿਰਫ਼ ਇੱਕ ਕਲਾ ਦੇ ਟੁਕੜੇ ਵਜੋਂ ਵੀ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।',
+    product17Name: 'ਫ੍ਰੌਸਟੇਡ ਗਲਾਸ ਪੈਨਲ ਨਾਲ ਪੱਤੇ ਦੀ ਨੱਕਾਸ਼ੀ',
+    product17Desc: 'ਇੱਕ ਆਇਤਾਕਾਰ ਕাঁচ ਦਾ ਪੈਨਲ ਜਿਸ ਵਿੱਚ ਇੱਕ ਸ਼ਾਨਦਾਰ ਫ੍ਰੌਸਟੇਡ ਡਿਜ਼ਾਈਨ ਹੈ। ਨੱਕਾਸ਼ੀ ਵਿੱਚ ਸਾਫ਼ ਆਵਰੋਹੀ ਲਾਈਨਾਂ ਦਾ ਇੱਕ ਪੈਟਰਨ ਹੈ, ਜੋ ਇੱਕ ਕੇਂਦਰੀ ਬੈਂਡ ਦੇ ਆਲੇ-ਦੁਆਲੇ ਹੈ ਜਿਸ ਵਿੱਚ ਇੱਕ ਸੁੰਦਰ ਪੱਤੇ ਦਾ ਮੋਟੀਫ਼ ਹੈ। ਇਹ ਪੈਨਲ ਦਰਵਾਜ਼ਿਆਂ, ਖਿੜਕੀਆਂ ਜਾਂ ਕਮਰੇ ਦੇ ਵੰਡਕਾਂ ਵਿੱਚ ਗੋਪਨੀਯਤਾ ਅਤੇ ਆਧੁਨਿਕ ਸ਼ਾਨ ਦਾ ਇੱਕ ਛੋਟਾ ਜੋੜਨ ਲਈ ਆਦਰਸ਼ ਹੈ।',
+    product18Name: 'ਪੱਤਿਆਂ ਦੀ ਨੱਕਾਸ਼ੀ ਵਾਲਾ ਫਰੌਸਟਡ ਸ਼ੀਸ਼ੇ ਦਾ ਪੈਨਲ',
+    product18Desc: 'ਸਟਾਈਲਿਸ਼ ਫਰੌਸਟਡ ਡਿਜ਼ਾਈਨ ਵਾਲਾ ਇੱਕ ਆਇਤਾਕਾਰ ਸ਼ੀਸ਼ੇ ਦਾ ਪੈਨਲ। ਨੱਕਾਸ਼ੀ ਵਿੱਚ ਪਾਰਦਰਸ਼ੀ ਖਿਤਿਜੀ ਧਾਰੀਆਂ ਦਾ ਇੱਕ ਨਮੂਨਾ ਹੈ, ਜਿਸਦੇ ਕੇਂਦਰ ਵਿੱਚ ਇੱਕ ਸੁੰਦਰ ਪੱਤਿਆਂ ਦਾ ਡਿਜ਼ਾਈਨ ਬਣਿਆ ਹੋਇਆ ਹੈ। ਇਹ ਪੈਨਲ ਦਰਵਾਜ਼ਿਆਂ, ਖਿੜਕੀਆਂ, ਜਾਂ ਕਮਰੇ ਨੂੰ ਵੰਡਣ ਲਈ ਗੋਪਨੀਯਤਾ ਅਤੇ ਆਧੁਨਿਕ ਸੁੰਦਰਤਾ ਜੋੜਨ ਲਈ ਬਹੁਤ ਵਧੀਆ ਹੈ।',
+    product19Name: '', 
+    product19Desc: '',
+    product20Name: '',
+    product20Desc: '',
+
     // Team Members
     teamMember1Role: 'ਸੰਸਥਾਪਕ ਅਤੇ ਲੀਡ ਗਲੇਜ਼ੀਅਰ',
     teamMember1Bio: '20 ਸਾਲਾਂ ਤੋਂ ਵੱਧ ਦੇ ਤਜ਼ਰਬੇ ਦੇ ਨਾਲ, ਹਰਦੀਪ ਨੇ ਗੁਣਵੱਤਾ ਅਤੇ ਸ਼ੁੱਧਤਾ ਦੇ ਦ੍ਰਿਸ਼ਟੀਕੋਣ ਨਾਲ ਕੰਪਨੀ ਦੀ ਸਥਾਪਨਾ ਕੀਤੀ। ਉਸਦੀ ਮੁਹਾਰਤ ਹਰ ਪ੍ਰੋਜੈਕਟ ਦਾ ਮਾਰਗਦਰਸ਼ਨ ਕਰਦੀ ਹੈ।',
