@@ -31,7 +31,7 @@ export const PRODUCTS: Product[] = [
     id: '3',
     nameKey: 'product3Name',
     descriptionKey: 'product3Desc',
-    price: 180.75,
+    price: 49999.99,
     imageUrl: 'product_img/thoughen_door-frame.png',  //https://picsum.photos/seed/glass3/600/400
     category: 'Glass',
   },
@@ -39,7 +39,7 @@ export const PRODUCTS: Product[] = [
     id: '4',
     nameKey: 'product4Name',
     descriptionKey: 'product4Desc',
-    price: 750.00,
+    price: 8400.00,
     imageUrl: 'product_img/grey_aluminum_window_frame.png',  // https://picsum.photos/seed/door4/600/400
     category: 'Aluminum',
   },
@@ -47,7 +47,7 @@ export const PRODUCTS: Product[] = [
     id: '5',
     nameKey: 'product5Name',
     descriptionKey: 'product5Desc',
-    price: 320.00,
+    price: 2817.90,
     imageUrl: 'product_img/HD_print_glass(table-top).jpg',   //https://picsum.photos/seed/glass5/600/400
     category: 'Glass',
   },
@@ -55,7 +55,7 @@ export const PRODUCTS: Product[] = [
     id: '6',
     nameKey: 'product6Name',
     descriptionKey: 'product6Desc',
-    price: 1200.00,
+    price: 24299.90,
     imageUrl: 'product_img/front_side_door_frame.png',  //https://picsum.photos/seed/wall6/600/400
     category: 'Aluminum',
   },
@@ -63,7 +63,7 @@ export const PRODUCTS: Product[] = [
     id: '7',
     nameKey: 'product7Name',
     descriptionKey: 'product7Desc',
-    price: 1960.00,
+    price: 2705.00,
     imageUrl: 'product_img/flower_etching_full_size_glass.png',  //https://picsum.photos/seed/glass7/600/400
     category: 'Glass',
   },
@@ -71,7 +71,7 @@ export const PRODUCTS: Product[] = [
     id: '8',
     nameKey: 'product8Name',
     descriptionKey: 'product8Desc',
-    price: 45.99,
+    price: 29998.99,
     imageUrl: 'product_img/aluminum_window_door_frame.png',  //https://picsum.photos/seed/handle8/600/400
     category: 'Aluminum',
   },
@@ -111,7 +111,7 @@ export const PRODUCTS: Product[] = [
     id: '13',
     nameKey: 'product13Name',
     descriptionKey: 'product13Desc',
-    price: 4999.99,
+    price: 669.99,
     imageUrl: 'product_img/diffrent_type_of_etching.png',
     category: 'Glass',
   },
@@ -119,7 +119,7 @@ export const PRODUCTS: Product[] = [
     id: '14',
     nameKey: 'product14Name',
     descriptionKey: 'product14Desc',
-    price: 0.00,
+    price: 330.00,
     imageUrl: 'product_img/flower_etching_glass.png',  //https://picsum.photos/seed/placeholder14/600/400
     category: 'Glass',
   },
@@ -127,7 +127,7 @@ export const PRODUCTS: Product[] = [
     id: '15',
     nameKey: 'product15Name',
    descriptionKey: 'product15Desc',
-    price: 0.00,
+    price: 648.50,
     imageUrl: 'product_img/window_glass.png',  //https://picsum.photos/seed/placeholder15/600/400
     category: 'Glass',
   },
@@ -135,15 +135,15 @@ export const PRODUCTS: Product[] = [
     id: '16',
     nameKey: 'product16Name',
     descriptionKey: 'product16Desc',
-    price: 0.00,
-    imageUrl: 'product_img/rounded_glass_table.png',  //https://picsum.photos/seed/placeholder16/600/400
+    price: 512.00,
+    imageUrl: 'product_img/rounded_table_glass.png',  //https://picsum.photos/seed/placeholder16/600/400
     category: 'Glass',
   },
   {
     id: '17',
     nameKey: 'product17Name',
     descriptionKey: 'product17Desc',
-    price: 0.00,
+    price: 649.00,
     imageUrl: 'product_img/frosted_glass_pannel_with_leaf_etching.png',
     //https://picsum.photos/seed/placeholder17/600/400
     category: 'Glass',
@@ -152,10 +152,35 @@ export const PRODUCTS: Product[] = [
     id: '18',
     nameKey: 'product18Name',
     descriptionKey: 'product18Desc',
-    price: 0.00,
+    price: 739.40,
     imageUrl: 'product_img/guru_nanak_devji_hd_print.png',  //https://picsum.photos/seed/placeholder18/600/400
     category: 'Glass',
   },
+  {
+    id: '19',
+    nameKey: 'product19Name',
+    descriptionKey: 'product19Desc',
+    price: 408.00,
+    imageUrl: 'product_img/butterfly_and_flower_etched_glass.png',  //https://picsum.photos/seed/placeholder19/600/400
+    category: 'Glass',
+  },
+  {
+    id: '20',
+    nameKey: 'product20Name',
+    descriptionKey: 'product20Desc',
+    price: 450.00,
+    imageUrl: 'product_img/decorative_frosted_glass_mirror_with_etched_floral_border.png',  //https://picsum.photos/seed/placeholder20/600/400
+    category: 'Mirrors',
+  },
+  {
+    id: '21',
+    nameKey: 'product21Name',
+    descriptionKey: 'product21Desc',
+    price: 1249.50,
+    imageUrl: 'product_img/sunflower_etching_long_pieces.png',  //https://picsum.photos/seed/placeholder21/600/400
+    category: 'Glass',
+  }
+  //
 ];
 
 export const TEAM_MEMBERS: TeamMember[] = [
