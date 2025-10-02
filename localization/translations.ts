@@ -167,8 +167,8 @@ export const translations = {
     product20Desc: 'This stylish rectangular mirror features a beautifully frosted glass frame. The border is adorned with intricate etched floral and leaf patterns, giving it an elegant and classic look. The smooth, polished edges and circular accents add a modern touch, making it a perfect decorative piece for any bathroom, living room, or hallway. It can be easily mounted on a wall and is designed to enhance the aesthetic of your space while providing a clear reflection.',
      product21Name: 'Decorative Frosted Glass Panels with Etched Floral Design',
     product21Desc: 'These beautiful frosted glass panels feature an intricate, etched floral and leaf pattern. The design extends across multiple panels, allowing them to be arranged together to create a continuous, decorative partition or a stunning backdrop. The combination of the translucent frosted glass and the detailed artwork creates a modern and elegant look. These panels are ideal for use as sliding doors, room dividers, or as a decorative accent in a home or office to add privacy and style.',
-    product22Name: '',
-    product22Desc: '',
+    product22Name: 'Custom-Cut Apple Logo Mirror',
+    product22Desc: 'This is a mirror that has been custom-cut into the shape of the Apple brand logo. It appears to be a unique, decorative piece, likely intended for a tech enthusiast\'s room, a modern office, or an Apple-themed space. The mirror reflects a person\'s hand taking the photo and the interior of what looks like a workshop or retail space with other glass or mirror pieces visible.',
 
     // Team Members
     teamMember1Role: 'Founder & Lead Glazier',
@@ -353,8 +353,8 @@ export const translations = {
     product20Desc: 'यह सुंदर आयताकार दर्पण एक आकर्षक फ्रॉस्टेड ग्लास फ्रेम से बना है। इसकी बॉर्डर पर बारीक नक्काशीदार फूलों और पत्तियों का डिज़ाइन है, जो इसे एक सुरुचिपूर्ण और क्लासिक रूप देता है। इसके चिकने, पॉलिश किए गए किनारे और गोलाकार सजावट इसे एक आधुनिक स्पर्श देते हैं, जिससे यह किसी भी बाथरूम, लिविंग रूम या हॉलवे के लिए एक उत्तम सजावटी वस्तु बन जाता है। इसे आसानी से दीवार पर लगाया जा सकता है और यह स्पष्ट प्रतिबिंब प्रदान करते हुए आपके स्थान की सुंदरता को बढ़ाने के लिए डिज़ाइन किया गया है।',
      product21Name: 'नक्काशीदार फूलों के डिज़ाइन वाले सजावटी फ्रॉस्टेड ग्लास पैनल',
     product21Desc: 'ये सुंदर फ्रॉस्टेड ग्लास पैनल एक जटिल, नक्काशीदार फूलों और पत्तियों के पैटर्न को दर्शाते हैं। डिज़ाइन कई पैनलों पर फैला हुआ है, जिससे उन्हें एक साथ व्यवस्थित करके एक निरंतर, सजावटी विभाजन या एक शानदार बैकड्रॉप बनाया जा सकता है। पारभासी फ्रॉस्टेड ग्लास और विस्तृत कलाकृति का संयोजन एक आधुनिक और सुरुचिपूर्ण रूप देता है। ये पैनल घरों या कार्यालयों में स्लाइडिंग दरवाजे, कमरे के विभाजक, या सजावटी स्पर्श के रूप में उपयोग के लिए आदर्श हैं जो गोपनीयता और शैली प्रदान करते हैं।',
-    product22Name: '',
-    product22Desc: '',
+    product22Name: 'Apple लोगो डिज़ाइन वाला शीशा',
+    product22Desc: 'इस अनोखे Apple लोगो वाले शीशे के साथ अपने कमरे को आधुनिक और स्टाइलिश लुक दें। यह टेक पसंद करने वालों के लिए या किसी भी दीवार को आकर्षक सजावट देने के लिए एकदम सही है।',
 
     // Team Members
     teamMember1Role: 'संस्थापक और प्रमुख ग्लेज़ियर',
@@ -539,8 +539,8 @@ export const translations = {
     product20Desc: 'ਇਹ ਸਟਾਈਲਿਸ਼ ਆਇਤਾਕਾਰ ਸ਼ੀਸ਼ਾ ਇੱਕ ਸੁੰਦਰ ਫਰੌਸਟੇਡ ਗਲਾਸ ਫਰੇਮ ਨਾਲ ਬਣਿਆ ਹੈ। ਇਸਦੀ ਬਾਰਡਰ ਨੂੰ ਗੁੰਝਲਦਾਰ ਨੱਕਾਸ਼ੀਦਾਰ ਫੁੱਲਾਂ ਅਤੇ ਪੱਤਿਆਂ ਦੇ ਪੈਟਰਨਾਂ ਨਾਲ ਸਜਾਇਆ ਗਿਆ ਹੈ, ਜੋ ਇਸਨੂੰ ਇੱਕ ਸ਼ਾਨਦਾਰ ਅਤੇ ਕਲਾਸਿਕ ਦਿੱਖ ਦਿੰਦੇ ਹਨ। ਇਸਦੇ ਨਿਰਵਿਘਨ, ਪਾਲਿਸ਼ ਕੀਤੇ ਕਿਨਾਰੇ ਅਤੇ ਗੋਲਾਕਾਰ ਐਕਸੈਂਟ ਇੱਕ ਆਧੁਨਿਕ ਛੋਹ ਜੋੜਦੇ ਹਨ, ਜੋ ਇਸਨੂੰ ਕਿਸੇ ਵੀ ਬਾਥਰੂਮ, ਲਿਵਿੰਗ ਰੂਮ, ਜਾਂ ਹਾਲਵੇਅ ਲਈ ਇੱਕ ਵਧੀਆ ਸਜਾਵਟੀ ਟੁਕੜਾ ਬਣਾਉਂਦਾ ਹੈ। ਇਸਨੂੰ ਆਸਾਨੀ ਨਾਲ ਕੰਧ ਤੇ ਲਗਾਇਆ ਜਾ ਸਕਦਾ ਹੈ ਅਤੇ ਇਹ ਸਪੱਸ਼ਟ ਪ੍ਰਤੀਬਿੰਬ ਪ੍ਰਦਾਨ ਕਰਦੇ ਹੋਏ ਤੁਹਾਡੀ ਜਗ੍ਹਾ ਦੀ ਸੁੰਦਰਤਾ ਨੂੰ ਵਧਾਉਣ ਲਈ ਤਿਆਰ ਕੀਤਾ ਗਿਆ ਹੈ।',
      product21Name: 'ਨੱਕਾਸ਼ੀਦਾਰ ਫੁੱਲਾਂ ਦੇ ਡਿਜ਼ਾਈਨ ਵਾਲੇ ਸਜਾਵਟੀ ਫਰੌਸਟੇਡ ਗਲਾਸ ਪੈਨਲ',
     product21Desc: 'ਇਹ ਸੁੰਦਰ ਫਰੌਸਟੇਡ ਗਲਾਸ ਪੈਨਲ ਇੱਕ ਗੁੰਝਲਦਾਰ, ਨੱਕਾਸ਼ੀਦਾਰ ਫੁੱਲਾਂ ਅਤੇ ਪੱਤਿਆਂ ਦੇ ਪੈਟਰਨ ਨੂੰ ਦਰਸਾਉਂਦੇ ਹਨ। ਡਿਜ਼ਾਈਨ ਕਈ ਪੈਨਲਾਂ ਤੇ ਫੈਲਿਆ ਹੋਇਆ ਹੈ, ਜਿਸ ਨਾਲ ਉਹਨਾਂ ਨੂੰ ਇਕੱਠੇ ਕਰਕੇ ਇੱਕ ਨਿਰੰਤਰ, ਸਜਾਵਟੀ ਪਾਰਟੀਸ਼ਨ ਜਾਂ ਇੱਕ ਸ਼ਾਨਦਾਰ ਬੈਕਡ੍ਰੌਪ ਬਣਾਇਆ ਜਾ ਸਕਦਾ ਹੈ। ਅਰਧ-ਪਾਰਦਰਸ਼ੀ ਫਰੌਸਟੇਡ ਗਲਾਸ ਅਤੇ ਵਿਸਤ੍ਰਿਤ ਕਲਾਕ੍ਰਿਤੀ ਦਾ ਸੁਮੇਲ ਇੱਕ ਆਧੁਨਿਕ ਅਤੇ ਸ਼ਾਨਦਾਰ ਦਿੱਖ ਦਿੰਦਾ ਹੈ। ਇਹ ਪੈਨਲ ਘਰ ਜਾਂ ਦਫ਼ਤਰ ਵਿੱਚ ਸਲਾਈਡਿੰਗ ਦਰਵਾਜ਼ਿਆਂ, ਕਮਰਿਆਂ ਦੇ ਵਿਭਾਜਕ, ਜਾਂ ਸਜਾਵਟੀ ਟੁਕੜੇ ਵਜੋਂ ਵਰਤਣ ਲਈ ਆਦਰਸ਼ ਹਨ ਜੋ ਗੋਪਨੀਅਤਾ ਅਤੇ ਸ਼ੈਲੀ ਜੋੜਦੇ ਹਨ।',
-    product22Name: '',
-    product22Desc: '',
+    product22Name: 'ਐਪਲ (Apple) ਲੋਗੋ ਡਿਜ਼ਾਈਨ ਵਾਲਾ ਸ਼ੀਸ਼ਾ',
+    product22Desc: 'ਇਸ ਅਨੋਖੇ Apple ਲੋਗੋ ਵਾਲੇ ਸ਼ੀਸ਼ੇ ਦੇ ਨਾਲ ਆਪਣੇ ਕਮਰੇ ਨੂੰ ਆਧੁਨਿਕ ਅਤੇ ਸਟਾਈਲਿਸ਼ ਲੁੱਕ ਦਿਓ। ਇਹ ਟੈਕ ਪਸੰਦ ਕਰਨ ਵਾਲਿਆਂ ਲਈ ਜਾਂ ਕਿਸੇ ਵੀ ਦੀਵਾਰ ਨੂੰ ਆਕਰਸ਼ਕ ਸਜਾਵਟ ਦੇਣ ਲਈ ਇੱਕਦਮ ਸਹੀ ਹੈ।',
 
     // Team Members
     teamMember1Role: 'ਸੰਸਥਾਪਕ ਅਤੇ ਲੀਡ ਗਲੇਜ਼ੀਅਰ',

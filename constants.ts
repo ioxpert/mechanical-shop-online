@@ -179,8 +179,15 @@ export const PRODUCTS: Product[] = [
     price: 1249.50,
     imageUrl: 'product_img/sunflower_etching_long_pieces.png',  //https://picsum.photos/seed/placeholder21/600/400
     category: 'Glass',
+  },
+  {
+    id: '22',
+    nameKey: 'product22Name',
+    descriptionKey: 'product22Desc',
+    price: 760.00,
+    imageUrl: 'product_img/apple_logo_mirror.png',  //https://picsum.photos/seed/placeholder22/600/400
+    category: 'Mirrors',
   }
-  //
 ];
 
 export const TEAM_MEMBERS: TeamMember[] = [
