@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // FIX: Import AddToCartProduct type.
-import type { Product, AddToCartProduct } from "../types";
-import { PRODUCTS } from "../constants";
+import type { Product, AddToCartProduct } from "../../types";
+import { PRODUCTS } from "../constant/constants";
 import ProductCard from "../components/ProductCard";
 import AddToCartModal from "../components/AddToCartModal";
 import { useTranslation } from "../localization/useTranslation";

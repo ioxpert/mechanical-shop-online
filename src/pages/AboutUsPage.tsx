@@ -1,5 +1,5 @@
 import React from "react";
-import { TEAM_MEMBERS, TOOLS_MATERIALS } from "../constants";
+import { TEAM_MEMBERS, TOOLS_MATERIALS } from "../constant/constants";
 import { useTranslation } from "../localization/useTranslation";
 
 const AboutUsPage: React.FC = () => {

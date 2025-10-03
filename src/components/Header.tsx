@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { NAV_LINKS } from "../constants";
+import { NAV_LINKS } from "../constant/constants";
 import { useTranslation } from "../localization/useTranslation";
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -27,7 +27,7 @@ const ShoppingCartIcon: React.FC = () => (
 
 const Header: React.FC<HeaderProps> = ({ cartItemCount, onCartClick }) => {
   const { t } = useTranslation();
-  const logoSrc = "icons/shop_logo_ga.png"; // Replace with your logo path
+  const logoSrc = "../public/icons/shop_logo_ga.png"; // Replace with your logo path
 
   return (
     <header className="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-md">

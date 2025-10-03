@@ -1,5 +1,5 @@
 // FIX: Import TranslationKey for strong typing of translation keys.
-import type { TranslationKey } from './localization/LanguageContext';
+import type { TranslationKey } from './src/localization/LanguageContext';
 
 export interface Product {
   id: string;

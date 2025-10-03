@@ -1,5 +1,5 @@
 import React, { useState, FormEvent } from "react";
-import { CONTACT_INFO, DEVELOPER_INFO } from "../constants";
+import { CONTACT_INFO, DEVELOPER_INFO } from "../constant/constants";
 import { useTranslation } from "../localization/useTranslation";
 
 const PhoneIcon: React.FC = () => (

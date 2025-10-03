@@ -1,6 +1,6 @@
-import type { Product, TeamMember, ToolMaterial } from './types';
+import type { Product, TeamMember, ToolMaterial } from '../../types';
 // FIX: Import TranslationKey for strong typing.
-import type { TranslationKey } from './localization/LanguageContext';
+import type { TranslationKey } from '../localization/LanguageContext';
 
 // FIX: Add explicit type to ensure nameKey is a valid TranslationKey.
 export const NAV_LINKS: { nameKey: TranslationKey; path: string }[] = [

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
-import type { CartItem } from "../types";
-import { CONTACT_INFO } from "../constants";
+import type { CartItem } from "../../types";
+import { CONTACT_INFO } from "../constant/constants";
 import { useTranslation } from "../localization/useTranslation";
 
 interface CartModalProps {

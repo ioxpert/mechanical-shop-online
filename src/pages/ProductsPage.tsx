@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 // FIX: Import AddToCartProduct type.
-import type { Product, AddToCartProduct } from "../types";
+import type { Product, AddToCartProduct } from "../../types";
 import ProductCard from "../components/ProductCard";
 import CustomOrderModal from "../components/CustomOrderModal";
 import AddToCartModal from "../components/AddToCartModal";

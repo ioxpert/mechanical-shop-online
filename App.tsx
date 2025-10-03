@@ -1,16 +1,16 @@
-import React, { useState, useMemo } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useState, useMemo } from "react";
+import { Routes, Route } from "react-router-dom";
 // FIX: Import AddToCartProduct type.
-import type { CartItem, Product, AddToCartProduct } from './types';
-import { PRODUCTS } from './constants';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import CartModal from './components/CartModal';
-import HomePage from './pages/HomePage';
-import ProductsPage from './pages/ProductsPage';
-import AboutUsPage from './pages/AboutUsPage';
-import ContactPage from './pages/ContactPage';
-import { LanguageProvider } from './localization/LanguageContext';
+import type { CartItem, Product, AddToCartProduct } from "./types";
+import { PRODUCTS } from "./src/constant/constants";
+import Header from "./src/components/Header";
+import Footer from "./src/components/Footer";
+import CartModal from "./src/components/CartModal";
+import HomePage from "./src/pages/HomePage";
+import ProductsPage from "./src/pages/ProductsPage";
+import AboutUsPage from "./src/pages/AboutUsPage";
+import ContactPage from "./src/pages/ContactPage";
+import { LanguageProvider } from "./src/localization/LanguageContext";
 
 const App: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -22,9 +22,11 @@ const App: React.FC = () => {
 
   // FIX: Use the AddToCartProduct type for the product parameter.
   const addToCart = (product: AddToCartProduct) => {
-    setCartItems(prevItems => {
-      const hasCustomization = (product.customInfo && product.customInfo.trim() !== '') || product.description;
-      
+    setCartItems((prevItems) => {
+      const hasCustomization =
+        (product.customInfo && product.customInfo.trim() !== "") ||
+        product.description;
+
       if (hasCustomization) {
         const newItem: CartItem = {
           ...product,
@@ -35,30 +37,36 @@ const App: React.FC = () => {
       }
 
       // If there is no custom info, check if a standard version of the item already exists.
-      const existingItem = prevItems.find(item => item.id === product.id && (!item.customInfo || item.customInfo.trim() === ''));
-      
+      const existingItem = prevItems.find(
+        (item) =>
+          item.id === product.id &&
+          (!item.customInfo || item.customInfo.trim() === "")
+      );
+
       if (existingItem) {
         // If it exists, just increment the quantity.
-        return prevItems.map(item =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        return prevItems.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
         );
       }
-      
+
       // Otherwise, add the new standard item to the cart.
-      return [...prevItems, { ...product, quantity: 1, customInfo: '' }];
+      return [...prevItems, { ...product, quantity: 1, customInfo: "" }];
     });
   };
 
   const incrementQuantity = (itemId: string) => {
-    setCartItems(prevItems =>
-      prevItems.map(item =>
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
         item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
       )
     );
   };
 
   const removeFromCart = (productId: string) => {
-    setCartItems(prevItems => {
+    setCartItems((prevItems) => {
       return prevItems.reduce((acc, item) => {
         if (item.id === productId) {
           if (item.quantity > 1) {
@@ -79,11 +87,19 @@ const App: React.FC = () => {
   return (
     <LanguageProvider>
       <div className="flex flex-col min-h-screen bg-light text-primary">
-        <Header cartItemCount={cartItemCount} onCartClick={() => setIsCartOpen(true)} />
+        <Header
+          cartItemCount={cartItemCount}
+          onCartClick={() => setIsCartOpen(true)}
+        />
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage onAddToCart={addToCart} />} />
-            <Route path="/products" element={<ProductsPage products={PRODUCTS} onAddToCart={addToCart} />} />
+            <Route
+              path="/products"
+              element={
+                <ProductsPage products={PRODUCTS} onAddToCart={addToCart} />
+              }
+            />
             <Route path="/about" element={<AboutUsPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
