@@ -20,7 +20,8 @@ const XMarkIcon: React.FC = () => (
     className="h-6 w-6"
     fill="none"
     viewBox="0 0 24 24"
-    stroke="currentColor">
+    stroke="currentColor"
+  >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -220,18 +221,21 @@ const CartModal: React.FC<CartModalProps> = ({
             className="animate-spin -ml-1 mr-3 h-5 w-5"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
-            viewBox="0 0 24 24">
+            viewBox="0 0 24 24"
+          >
             <circle
               className="opacity-25"
               cx="12"
               cy="12"
               r="10"
               stroke="currentColor"
-              strokeWidth="4"></circle>
+              strokeWidth="4"
+            ></circle>
             <path
               className="opacity-75"
               fill="currentColor"
-              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
           </svg>
           {t("submitOrderButton")}...
         </div>
@@ -243,17 +247,20 @@ const CartModal: React.FC<CartModalProps> = ({
   return (
     <div
       className="fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-end"
-      onClick={onClose}>
+      onClick={onClose}
+    >
       <div
         className="w-full max-w-md h-full bg-white shadow-xl flex flex-col"
-        onClick={(e) => e.stopPropagation()}>
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="flex justify-between items-center p-6 border-b">
           <h2 className="text-2xl font-bold font-serif text-primary">
             {renderTitle()}
           </h2>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-primary">
+            className="text-gray-500 hover:text-primary"
+          >
             <XMarkIcon />
           </button>
         </div>
@@ -313,13 +320,15 @@ const CartModal: React.FC<CartModalProps> = ({
                               <div className="flex items-center mt-2">
                                 <button
                                   onClick={() => onRemoveFromCart(item.id)}
-                                  className="px-2 py-1 border rounded-md">
+                                  className="px-2 py-1 border rounded-md"
+                                >
                                   -
                                 </button>
                                 <span className="px-3">{item.quantity}</span>
                                 <button
                                   onClick={() => onIncrementQuantity(item.id)}
-                                  className="px-2 py-1 border rounded-md">
+                                  className="px-2 py-1 border rounded-md"
+                                >
                                   +
                                 </button>
                               </div>
@@ -337,7 +346,8 @@ const CartModal: React.FC<CartModalProps> = ({
                 </div>
                 <button
                   onClick={onClearCart}
-                  className="text-sm text-red-500 hover:underline mt-6">
+                  className="text-sm text-red-500 hover:underline mt-6"
+                >
                   {t("clearCart")}
                 </button>
               </>
@@ -347,7 +357,8 @@ const CartModal: React.FC<CartModalProps> = ({
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-primary font-semibold mb-2">
+                    className="block text-primary font-semibold mb-2"
+                  >
                     {t("formNameLabel")}{" "}
                     <span className="text-red-500">{t("fieldRequired")}</span>
                   </label>
@@ -364,7 +375,8 @@ const CartModal: React.FC<CartModalProps> = ({
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block text-primary font-semibold mb-2">
+                    className="block text-primary font-semibold mb-2"
+                  >
                     {t("formPhoneLabel")}{" "}
                     <span className="text-red-500">{t("fieldRequired")}</span>
                   </label>
@@ -389,7 +401,8 @@ const CartModal: React.FC<CartModalProps> = ({
                 <div>
                   <label
                     htmlFor="address"
-                    className="block text-primary font-semibold mb-2">
+                    className="block text-primary font-semibold mb-2"
+                  >
                     {t("formAddressLabel")}{" "}
                     <span className="text-red-500">{t("fieldRequired")}</span>
                   </label>
@@ -403,7 +416,7 @@ const CartModal: React.FC<CartModalProps> = ({
                     className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
                   />
                 </div>
-                <div>
+                {/* <div>
                   <label className="block text-primary font-semibold mb-2">
                     {t("formLocationLabel")}{" "}
                     <span className="text-red-500">{t("fieldRequired")}</span>
@@ -421,7 +434,7 @@ const CartModal: React.FC<CartModalProps> = ({
                       Location captured successfully!
                     </p>
                   )}
-                </div>
+                </div> */}
               </div>
             )}
           </div>
@@ -441,7 +454,8 @@ const CartModal: React.FC<CartModalProps> = ({
                 </div>
                 <button
                   onClick={() => setCheckoutStep("form")}
-                  className="w-full bg-secondary text-primary font-bold py-3 rounded-md hover:opacity-90 transition-opacity flex justify-center items-center h-12">
+                  className="w-full bg-secondary text-primary font-bold py-3 rounded-md hover:opacity-90 transition-opacity flex justify-center items-center h-12"
+                >
                   {t("proceedToCheckout")}
                 </button>
               </>
@@ -450,7 +464,8 @@ const CartModal: React.FC<CartModalProps> = ({
               <button
                 onClick={handleFinalSubmit}
                 disabled={!isFormValid || isSubmitting}
-                className="w-full bg-secondary text-primary font-bold py-3 rounded-md hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center h-12">
+                className="w-full bg-secondary text-primary font-bold py-3 rounded-md hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center h-12"
+              >
                 {proceedButtonContent()}
               </button>
             )}
