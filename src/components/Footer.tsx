@@ -131,7 +131,10 @@ const Footer: React.FC = () => {
                 <PhoneIcon />
                 <span>WhatsApp: </span>
                 <a
-                  href={`https://wa.me/${CONTACT_INFO.whatsapp.replace(/\D/g,"")}`}
+                  href={`https://wa.me/${CONTACT_INFO.whatsapp.replace(
+                    /\D/g,
+                    ""
+                  )}`}
                   className="hover:text-secondary ml-1"
                 >
                   {CONTACT_INFO.whatsapp}
@@ -152,7 +155,9 @@ const Footer: React.FC = () => {
         </div>
         <div className="border-t border-light/30 mt-8 pt-4 grid grid-cols-1 md:grid-cols-3 items-center text-xs opacity-80">
           <div className="flex justify-center md:justify-start mb-2 md:mb-0">
-            <span>&copy; {year} {t("companyName")}. {t("footerRights")}</span>
+            <span>
+              &copy; {year} {t("companyName")}. {t("footerRights")}
+            </span>
           </div>
           <div className="flex justify-center space-x-4 mb-2 md:mb-0">
             <a
