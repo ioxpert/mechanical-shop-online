@@ -12,11 +12,13 @@ interface ProductsPageProps {
   products: Product[];
   // FIX: Use the AddToCartProduct type for the onAddToCart prop.
   onAddToCart: (product: AddToCartProduct) => void;
+  onImageClick: (imageUrl: string) => void;
 }
 
 const ProductsPage: React.FC<ProductsPageProps> = ({
   products,
   onAddToCart,
+  onImageClick,
 }) => {
   const { t } = useTranslation();
   const [isCustomOrderModalOpen, setIsCustomOrderModalOpen] = useState(false);
@@ -131,6 +133,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({
                         key={product.id}
                         product={product}
                         onAddToCartClick={handleAddToCartClick}
+                        onImageClick={onImageClick}
                       />
                     ))}
                   </div>

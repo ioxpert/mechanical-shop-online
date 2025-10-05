@@ -6,6 +6,7 @@ import { PRODUCTS } from "./src/constant/constants";
 import Header from "./src/components/Header";
 import Footer from "./src/components/Footer";
 import CartModal from "./src/components/CartModal";
+import Lightbox from "./src/components/Lightbox";
 import HomePage from "./src/pages/HomePage";
 import ProductsPage from "./src/pages/ProductsPage";
 import AboutUsPage from "./src/pages/AboutUsPage";
@@ -14,11 +15,15 @@ import { LanguageProvider } from "./src/localization/LanguageContext";
 
 const App: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [lightboxImageUrl, setLightboxImageUrl] = useState<string | null>(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const cartItemCount = useMemo(() => {
     return cartItems.reduce((sum, item) => sum + item.quantity, 0);
   }, [cartItems]);
+
+  const openLightbox = (url: string) => setLightboxImageUrl(url);
+  const closeLightbox = () => setLightboxImageUrl(null);
 
   // FIX: Use the AddToCartProduct type for the product parameter.
   const addToCart = (product: AddToCartProduct) => {
@@ -112,6 +117,11 @@ const App: React.FC = () => {
           onRemoveFromCart={removeFromCart}
           onIncrementQuantity={incrementQuantity}
           onClearCart={clearCart}
+        />
+        <Lightbox
+          isOpen={!!lightboxImageUrl}
+          imageUrl={lightboxImageUrl}
+          onClose={closeLightbox}
         />
       </div>
     </LanguageProvider>

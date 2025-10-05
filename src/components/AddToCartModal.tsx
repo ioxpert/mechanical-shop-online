@@ -88,7 +88,7 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({
                 {t(product.nameKey)}
               </h3>
               <p className="text-lg font-semibold text-secondary">
-                ${product.price.toFixed(2)}
+                ₹{product.price.toFixed(2)}
               </p>
             </div>
           </div>
