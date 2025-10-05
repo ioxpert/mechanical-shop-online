@@ -61,7 +61,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount, onCartClick }) => {
   const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const logoSrc = "../public/icons/shop_logo_ga.png"; // Replace with your logo path
+  const logoSrc = "icons/shop_logo_ga.png"; // Replace with your logo path
 
   // Close mobile menu on route change
   useEffect(() => {
