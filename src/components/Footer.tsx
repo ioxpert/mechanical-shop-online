@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "../localization/useTranslation";
 import { CONTACT_INFO, NAV_LINKS } from "../constant/constants";
+import { NavLink } from "react-router-dom";
 
 const LocationIcon: React.FC = () => (
   <svg
@@ -11,8 +12,7 @@ const LocationIcon: React.FC = () => (
     stroke="currentColor"
     strokeWidth={2}
     strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+    strokeLinejoin="round">
     <path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10z" />
     <circle cx="12" cy="11" r="2" />
   </svg>
@@ -22,8 +22,7 @@ const EmailIcon: React.FC = () => (
     xmlns="http://www.w3.org/2000/svg"
     className="inline h-5 w-5 mr-2 text-secondary align-middle"
     viewBox="0 0 24 24"
-    fill="currentColor"
-  >
+    fill="currentColor">
     <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4V8l8 5 8-5v10z" />
   </svg>
 );
@@ -32,8 +31,7 @@ const PhoneIcon: React.FC = () => (
     xmlns="http://www.w3.org/2000/svg"
     className="inline h-5 w-5 mr-2 text-secondary align-middle"
     viewBox="0 0 24 24"
-    fill="currentColor"
-  >
+    fill="currentColor">
     <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.35.27 2.67.76 3.88a1 1 0 01-.21 1.11l-2.2 2.2z" />
   </svg>
 );
@@ -45,8 +43,7 @@ const FacebookIcon: React.FC = () => (
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
-    strokeWidth={2}
-  >
+    strokeWidth={2}>
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -62,8 +59,7 @@ const TwitterIcon: React.FC = () => (
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
-    strokeWidth={2}
-  >
+    strokeWidth={2}>
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -79,8 +75,7 @@ const InstagramIcon: React.FC = () => (
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
-    strokeWidth={2}
-  >
+    strokeWidth={2}>
     <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" strokeLinecap="round"></line>
@@ -103,8 +98,7 @@ const Footer: React.FC = () => {
             </span>
             <a
               href="/contact"
-              className="text-secondary font-semibold hover:underline text-base mb-4 block"
-            >
+              className="text-secondary font-semibold hover:underline text-base mb-4 block">
               {t("navContact") || "Contact Us"}
             </a>
           </div>
@@ -112,13 +106,16 @@ const Footer: React.FC = () => {
           <div className="flex-1 flex flex-col items-center justify-center">
             <nav className="flex flex-col gap-2">
               {NAV_LINKS.map((link) => (
-                <a
+                <NavLink
                   key={link.nameKey}
-                  href={link.path}
-                  className="text-light hover:text-secondary font-medium transition-colors duration-300 text-lg"
-                >
+                  to={link.path}
+                  className={({ isActive }) =>
+                    `text-white hover:text-secondary transition-colors duration-300 ${
+                      isActive ? "font-bold border-b-2 border-secondary" : ""
+                    }`
+                  }>
                   {t(link.nameKey)}
-                </a>
+                </NavLink>
               ))}
             </nav>
           </div>
@@ -140,8 +137,7 @@ const Footer: React.FC = () => {
                     /\D/g,
                     ""
                   )}`}
-                  className="hover:text-secondary ml-1"
-                >
+                  className="hover:text-secondary ml-1">
                   {CONTACT_INFO.whatsapp}
                 </a>
               </p>
@@ -150,8 +146,7 @@ const Footer: React.FC = () => {
                 <span>Email: </span>
                 <a
                   href={`mailto:${CONTACT_INFO.email}`}
-                  className="hover:text-secondary ml-1"
-                >
+                  className="hover:text-secondary ml-1">
                   {CONTACT_INFO.email}
                 </a>
               </p>
@@ -170,8 +165,7 @@ const Footer: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               title="Facebook"
-              className="hover:text-secondary"
-            >
+              className="hover:text-secondary">
               <FacebookIcon />
             </a>
             <a
@@ -179,8 +173,7 @@ const Footer: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               title="Instagram"
-              className="hover:text-secondary"
-            >
+              className="hover:text-secondary">
               <InstagramIcon />
             </a>
             <a
@@ -188,8 +181,7 @@ const Footer: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               title="Twitter"
-              className="hover:text-secondary"
-            >
+              className="hover:text-secondary">
               <TwitterIcon />
             </a>
           </div>
