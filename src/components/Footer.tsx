@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 const LocationIcon: React.FC = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="h-12 w-12 mb-2 text-secondary align-middle"
+    className="h-10 w-10 text-secondary align-middle"
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor">
@@ -132,9 +132,11 @@ const Footer: React.FC = () => {
               {t("Contact Us") || "Contact & Address"}
             </h2>
             <div className="space-y-4">
-              <p className="text-sm flex items-center justify-end">
+              <p className="flex items-center space-x-2">
                 <LocationIcon />
-                <a href="https://www.google.com/maps/place/Gurunanak+Glass+%26+Aluminum/@29.7007693,73.6237091,18.25z/data=!4m14!1m7!3m6!1s0x39162f001902c24f:0x73af041d492cc760!2sGurunanak+Glass+%26+Aluminum!8m2!3d29.7007917!4d73.6245058!16s%2Fg%2F11yjthry8g!3m5!1s0x39162f001902c24f:0x73af041d492cc760!8m2!3d29.7007917!4d73.6245058!16s%2Fg%2F11yjthry8g?entry=ttu&g_ep=EgoyMDI1MTAwMS4wIKXMDSoASAFQAw%3D%3D">
+                <a
+                  href="https://www.google.com/maps/place/Gurunanak+Glass+%26+Aluminum/@29.7007693,73.6237091,18.25z/data=!4m14!1m7!3m6!1s0x39162f001902c24f:0x73af041d492cc760!2sGurunanak+Glass+%26+Aluminum!8m2!3d29.7007917!4d73.6245058!16s%2Fg%2F11yjthry8g!3m5!1s0x39162f001902c24f:0x73af041d492cc760!8m2!3d29.7007917!4d73.6245058!16s%2Fg%2F11yjthry8g?entry=ttu&g_ep=EgoyMDI1MTAwMS4wIKXMDSoASAFQAw%3D%3D"
+                  className="hover:text-secondary ml-1">
                   {CONTACT_INFO.address}
                 </a>
               </p>
