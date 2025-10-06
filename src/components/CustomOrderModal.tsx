@@ -64,11 +64,11 @@ const CustomOrderModal: React.FC<CustomOrderModalProps> = ({
 
     const customProduct = {
       id: `custom-${category.replace(/\s/g, "")}-${Date.now()}`,
-      nameKey: "customOrderRequest" as const,
-      descriptionKey: "customOrderRequest" as const,
+      nameKey: `${t("customOrderFor", { category })}` as const,
+      descriptionKey: `customOrderRequest for ${category}` as const,
       description,
       price: 0,
-      imageUrl: "https://picsum.photos/seed/custom/400/400",
+      imageUrl: "icons/logo_image.png", // https://picsum.photos/seed/custom/400/400
       category: category,
     };
 
