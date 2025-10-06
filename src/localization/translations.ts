@@ -13,6 +13,7 @@ export const translations = {
     thankYou: 'Thank You!',
     optional: 'Optional',
     fieldRequired: '*',
+    footerDes: "We provide best product quality",
     
     // Navigation
     navHome: 'Home',
@@ -199,6 +200,7 @@ export const translations = {
     thankYou: 'धन्यवाद!',
     optional: 'वैकल्पिक',
     fieldRequired: '*',
+    footerDes: "हम बेहतरीन उत्पाद गुणवत्ता प्रदान करते हैं",
     
     // Navigation
     navHome: 'होम',
@@ -385,6 +387,7 @@ export const translations = {
     thankYou: 'ਧੰਨਵਾਦ!',
     optional: 'ਵਿਕਲਪਿਕ',
     fieldRequired: '*',
+    footerDes: "ਅਸੀਂ ਉਤਪਾਦਾਂ ਦੀ ਬਿਹਤਰੀਨ ਗੁਣਵੱਤਾ ਪ੍ਰਦਾਨ ਕਰਦੇ ਹਾਂ",
     
     // Navigation
     navHome: 'ਮੁੱਖ ਪੰਨਾ',

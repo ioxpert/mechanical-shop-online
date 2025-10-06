@@ -6,15 +6,22 @@ import { NavLink } from "react-router-dom";
 const LocationIcon: React.FC = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="inline h-6 w-6 mr-2 text-secondary align-middle"
-    viewBox="0 0 24 24"
+    className="h-12 w-12 mb-2 text-secondary align-middle"
     fill="none"
-    stroke="currentColor"
-    strokeWidth={2}
-    strokeLinecap="round"
-    strokeLinejoin="round">
-    <path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10z" />
-    <circle cx="12" cy="11" r="2" />
+    viewBox="0 0 24 24"
+    stroke="currentColor">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+    />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+    />
   </svg>
 );
 const EmailIcon: React.FC = () => (
@@ -94,13 +101,13 @@ const Footer: React.FC = () => {
           <div className="flex-1 flex flex-col items-center md:items-start">
             <h2 className="font-bold text-2xl mb-2">{t("companyName")}</h2>
             <span className="text-base italic text-light/90 mb-2 block">
-              {t("We provide best product quality")}
+              {t("footerDes") || "We provide best product quality"}
             </span>
-            <a
+            {/* <a
               href="/contact"
               className="text-secondary font-semibold hover:underline text-base mb-4 block">
               {t("navContact") || "Contact Us"}
-            </a>
+            </a> */}
           </div>
           {/* Centered Menu Bar */}
           <div className="flex-1 flex flex-col items-center justify-center">
@@ -125,9 +132,11 @@ const Footer: React.FC = () => {
               {t("Contact Us") || "Contact & Address"}
             </h2>
             <div className="space-y-4">
-              <p className="text-sm font-medium flex items-center justify-end">
+              <p className="text-sm flex items-center justify-end">
                 <LocationIcon />
-                <span>{CONTACT_INFO.address}</span>
+                <a href="https://www.google.com/maps/place/Gurunanak+Glass+%26+Aluminum/@29.7007693,73.6237091,18.25z/data=!4m14!1m7!3m6!1s0x39162f001902c24f:0x73af041d492cc760!2sGurunanak+Glass+%26+Aluminum!8m2!3d29.7007917!4d73.6245058!16s%2Fg%2F11yjthry8g!3m5!1s0x39162f001902c24f:0x73af041d492cc760!8m2!3d29.7007917!4d73.6245058!16s%2Fg%2F11yjthry8g?entry=ttu&g_ep=EgoyMDI1MTAwMS4wIKXMDSoASAFQAw%3D%3D">
+                  {CONTACT_INFO.address}
+                </a>
               </p>
               <p className="text-sm flex items-center justify-end">
                 <PhoneIcon />
@@ -160,14 +169,14 @@ const Footer: React.FC = () => {
             </span>
           </div>
           <div className="flex justify-center space-x-4 mb-2 md:mb-0">
-            <a
-              href="https://www.facebook.com/ioware.solutions/"
+            {/* <a
+              href=""
               target="_blank"
               rel="noopener noreferrer"
               title="Facebook"
               className="hover:text-secondary">
               <FacebookIcon />
-            </a>
+            </a> */}
             <a
               href={CONTACT_INFO.instagram.url}
               target="_blank"
@@ -176,17 +185,26 @@ const Footer: React.FC = () => {
               className="hover:text-secondary">
               <InstagramIcon />
             </a>
-            <a
-              href="https://twitter.com/ioxpert"
+            {/* <a
+              href=""
               target="_blank"
               rel="noopener noreferrer"
               title="Twitter"
               className="hover:text-secondary">
               <TwitterIcon />
-            </a>
+            </a> */}
           </div>
           <div className="flex justify-center md:justify-end">
-            <span>Developed by IOXPERT</span>
+            <span>
+              Developed by{" "}
+              <a
+                href="https://ioxpert.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-secondary">
+                IOXPERT
+              </a>
+            </span>
           </div>
         </div>
       </div>
