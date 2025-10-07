@@ -255,18 +255,26 @@ const ContactPage: React.FC = () => {
                 {/* Google Map Embed */}
                 <div className="mt-8">
                   <h3 className="font-semibold text-primary mb-2">
-                    {t("Our Location on Map")}
+                    {t("contactLocationMap")}
                   </h3>
                   <div className="rounded-lg overflow-hidden shadow-md">
                     <iframe
                       title="Shri Guru Nanak Glass & Aluminium Location"
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3522.073624170857!2d74.6046240753937!3d29.70807337505409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3913e7e2e2e2e2e3%3A0x123456789abcdef!2sShri%20Guru%20Nanak%20Glass%20%26%20Aluminium!5e0!3m2!1sen!2sin!4v1696512345678!5m2!1sen!2sin"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1732.8272835108833!2d73.62345309570792!3d29.700793083860024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39162f001902c24f%3A0x73af041d492cc760!2sGurunanak%20Glass%20%26%20Aluminum!5e0!3m2!1spa!2sin!4v1759811234979!5m2!1spa!2sin"
                       width="100%"
                       height="350"
                       style={{ border: 0 }}
                       allowFullScreen={true}
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"></iframe>
+                    {/* <iframe
+http                      src="s://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1732.8272835108833!2d73.62345309570792!3d29.700793083860024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39162f001902c24f%3A0x73af041d492cc760!2sGurunanak%20Glass%20%26%20Aluminum!5e0!3m2!1spa!2sin!4v1759811234979!5m2!1spa!2sin"
+                      width="600"
+                      height="450"
+                      style="border:0;"
+                      allowfullscreen=""
+                      loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade"></iframe> */}
                   </div>
                 </div>
               </div>
