@@ -27,6 +27,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <p className="text-gray-600 text-sm mb-4 flex-grow">
           {t(product.descriptionKey)}
         </p>
+        <p className="text-red-500 text-xs mb-4 italic">
+          Note: {t("prizeNotice")}
+        </p>
         <div className="flex justify-between items-center mt-auto">
           <span className="text-2xl font-bold text-primary">
             ₹{product.price.toFixed(2)}

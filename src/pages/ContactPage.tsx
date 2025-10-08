@@ -153,7 +153,7 @@ const ContactPage: React.FC = () => {
       <section
         className="relative bg-cover bg-center py-24 text-white text-center"
         style={{
-          backgroundImage: "url(public/icons/glass_aluminum_logo.png)",
+          backgroundImage: "url(icons/glass_aluminum_logo.png)",
         }}>
         <div className="absolute inset-0 bg-primary bg-opacity-70"></div>
         <div className="relative z-10 container mx-auto px-6">
