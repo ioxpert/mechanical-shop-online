@@ -1,37 +1,52 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, FC } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { NAV_LINKS } from "../constant/constants";
 import { useTranslation } from "../localization/useTranslation";
 import LanguageSwitcher from "./LanguageSwitcher";
+
+// Constants
+const LOGO_SRC = "icons/shop_logo_ga.png";
+const LOGO_SIZE_CLASS = "h-12 w-12";
+const ICON_SIZE_CLASS = "h-6 w-6";
+const CART_BADGE_SIZE = "h-5 w-5";
 
 interface HeaderProps {
   cartItemCount: number;
   onCartClick: () => void;
 }
 
-const ShoppingCartIcon: React.FC = () => (
+interface SVGIconProps {
+  className?: string;
+}
+
+// Reusable Icon Components
+const ShoppingCartIcon: FC<SVGIconProps> = ({
+  className = ICON_SIZE_CLASS,
+}) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="h-6 w-6"
+    className={className}
     fill="none"
     viewBox="0 0 24 24"
-    stroke="currentColor">
+    stroke="currentColor"
+    aria-hidden="true">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}
-      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 S0 11-4 0 2 2 0 014 0z"
+      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100-4 2 2 0 000 4z"
     />
   </svg>
 );
 
-const MenuIcon: React.FC = () => (
+const MenuIcon: FC<SVGIconProps> = ({ className = ICON_SIZE_CLASS }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="h-6 w-6"
+    className={className}
     fill="none"
     viewBox="0 0 24 24"
-    stroke="currentColor">
+    stroke="currentColor"
+    aria-hidden="true">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -41,13 +56,14 @@ const MenuIcon: React.FC = () => (
   </svg>
 );
 
-const XIcon: React.FC = () => (
+const XIcon: FC<SVGIconProps> = ({ className = ICON_SIZE_CLASS }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="h-6 w-6"
+    className={className}
     fill="none"
     viewBox="0 0 24 24"
-    stroke="currentColor">
+    stroke="currentColor"
+    aria-hidden="true">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -57,61 +73,79 @@ const XIcon: React.FC = () => (
   </svg>
 );
 
-const Header: React.FC<HeaderProps> = ({ cartItemCount, onCartClick }) => {
+const Header: FC<HeaderProps> = ({ cartItemCount, onCartClick }) => {
   const { t } = useTranslation();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const location = useLocation();
-  const logoSrc = "icons/shop_logo_ga.png"; // Replace with your logo path
 
   // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
-  // Prevent body scroll when mobile menu is open
+  // Manage body overflow when mobile menu is open
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    const handleBodyScroll = (): void => {
+      document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
+    };
+
+    handleBodyScroll();
+
     return () => {
-      // Cleanup function
       document.body.style.overflow = "unset";
     };
   }, [isMobileMenuOpen]);
 
+  const handleMenuToggle = useCallback((): void => {
+    setIsMobileMenuOpen((prev: boolean) => !prev);
+  }, []);
+
+  const handleMenuClose = useCallback((): void => {
+    setIsMobileMenuOpen(false);
+  }, []);
+
+  const handleCartClick = useCallback((): void => {
+    onCartClick();
+  }, [onCartClick]);
+
+  const isMenuOpen = isMobileMenuOpen;
+
   return (
     <>
       <header className="bg-white/80 backdrop-blur-md sticky top-0 z-40 shadow-md">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="font-serif">
+        <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+          {/* Logo Section */}
+          <div className="font-serif flex-shrink-0">
             <NavLink
               to="/"
-              className="flex items-center gap-3 group"
+              className="flex items-center gap-2 sm:gap-3 group"
               title={t("navHome")}>
               <img
-                src={logoSrc}
+                src={LOGO_SRC}
                 alt={t("logoAlt")}
-                className="h-12 w-12 object-cover"
+                className={`${LOGO_SIZE_CLASS} object-cover rounded`}
               />
-              <h1 className="font-bold text-primary">
-                <span className="hidden sm:inline text-xl whitespace-nowrap">
+              <h1 className="font-bold text-primary hidden sm:block">
+                <span className="hidden lg:inline text-lg sm:text-xl whitespace-nowrap">
                   {t("companyName")}
                 </span>
-                <span className="sm:hidden text-2xl">
+                <span className="lg:hidden text-base sm:text-lg">
                   {t("companyNameShort")}
                 </span>
               </h1>
             </NavLink>
           </div>
-          <nav className="hidden md:flex items-center space-x-8">
+
+          {/* Desktop Navigation */}
+          <nav
+            className="hidden md:flex items-center space-x-4 lg:space-x-8"
+            aria-label="Main navigation">
             {NAV_LINKS.map((link) => (
               <NavLink
                 key={link.nameKey}
                 to={link.path}
-                className={({ isActive }) =>
-                  `text-primary hover:text-secondary transition-colors duration-300 ${
+                className={({ isActive }: { isActive: boolean }) =>
+                  `text-sm lg:text-base text-primary hover:text-secondary transition-colors duration-300 ${
                     isActive ? "font-bold border-b-2 border-secondary" : ""
                   }`
                 }>
@@ -119,25 +153,31 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount, onCartClick }) => {
               </NavLink>
             ))}
           </nav>
-          <div className="flex items-center space-x-4">
+
+          {/* Right Actions Section */}
+          <div className="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
             <LanguageSwitcher />
             <button
-              onClick={onCartClick}
-              className="relative text-primary hover:text-secondary transition-colors duration-300"
-              aria-label="Open shopping cart">
+              onClick={handleCartClick}
+              className="relative p-2 lg:p-0 text-primary hover:text-secondary transition-colors duration-300"
+              aria-label={`Shopping cart with ${cartItemCount} item${cartItemCount !== 1 ? "s" : ""}`}>
               <ShoppingCartIcon />
               {cartItemCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-secondary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  {cartItemCount}
+                <span
+                  className={`absolute -top-1 -right-1 lg:-top-2 lg:-right-2 bg-secondary text-white text-xs font-semibold rounded-full ${CART_BADGE_SIZE} flex items-center justify-center`}
+                  aria-live="polite">
+                  {cartItemCount > 99 ? "99+" : cartItemCount}
                 </span>
               )}
             </button>
+
+            {/* Mobile Menu Toggle */}
             <button
-              onClick={() => setIsMobileMenuOpen(true)}
-              className="md:hidden text-primary hover:text-secondary transition-colors duration-300"
-              aria-label="Open menu"
+              onClick={handleMenuToggle}
+              className="md:hidden p-2 text-primary hover:text-secondary transition-colors duration-300"
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               aria-controls="mobile-menu"
-              aria-expanded={isMobileMenuOpen}>
+              aria-expanded={isMenuOpen}>
               <MenuIcon />
             </button>
           </div>
@@ -148,40 +188,45 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount, onCartClick }) => {
       <div
         id="mobile-menu"
         className={`fixed inset-0 z-50 md:hidden ${
-          isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
+          isMenuOpen ? "pointer-events-auto" : "pointer-events-none"
         }`}
         role="dialog"
-        aria-modal="true">
+        aria-modal="true"
+        aria-labelledby="mobile-menu-title">
         {/* Overlay */}
         <div
-          className={`absolute inset-0 bg-black bg-opacity-60 transition-opacity duration-300 ${
-            isMobileMenuOpen ? "opacity-100" : "opacity-0"
+          className={`absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ${
+            isMenuOpen ? "opacity-100" : "opacity-0"
           }`}
-          onClick={() => setIsMobileMenuOpen(false)}
-          aria-hidden="true"></div>
+          onClick={handleMenuClose}
+          aria-hidden="true"
+        />
 
         {/* Menu Panel */}
         <nav
-          className={`absolute top-0 right-0 w-4/5 max-w-sm h-full bg-primary p-6 shadow-2xl transform transition-transform duration-300 ease-in-out ${
-            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          className={`absolute inset-y-0 right-0 w-4/5 sm:w-1/2 max-w-sm bg-primary p-4 sm:p-6 shadow-2xl transform transition-transform duration-300 ease-in-out overflow-y-auto ${
+            isMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
           aria-label="Mobile navigation">
-          <div className="flex justify-end mb-8">
+          {/* Close Button */}
+          <div className="flex justify-end mb-6 sm:mb-8">
             <button
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-light hover:text-secondary"
+              onClick={handleMenuClose}
+              className="p-2 text-light hover:text-secondary transition-colors duration-300"
               aria-label="Close menu">
               <XIcon />
             </button>
           </div>
-          <div className="flex flex-col items-center space-y-8 text-center mt-8">
+
+          {/* Mobile Menu Links */}
+          <div className="flex flex-col items-center space-y-4 sm:space-y-6 text-center mt-8">
             {NAV_LINKS.map((link) => (
               <NavLink
                 key={link.nameKey}
                 to={link.path}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={({ isActive }) =>
-                  `text-2xl text-light hover:text-secondary transition-colors duration-300 py-2 ${
+                onClick={handleMenuClose}
+                className={({ isActive }: { isActive: boolean }) =>
+                  `text-lg sm:text-xl text-light hover:text-secondary transition-colors duration-300 py-2 block w-full ${
                     isActive ? "font-bold border-b-2 border-secondary" : ""
                   }`
                 }>
