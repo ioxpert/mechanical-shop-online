@@ -1,0 +1,43 @@
+:root {
+  --primary-color: #0d3d56;
+  --secondary-color: #c7a36e;
+  --accent-color: #f2e8dc;
+  --light-color: #f5f5f5;
+}
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
+}
+
+body {
+  background-color: var(--light-color);
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+body::before {
+  content: "S G N G A";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-20deg);
+  font-size: 15vw;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.07);
+  z-index: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
