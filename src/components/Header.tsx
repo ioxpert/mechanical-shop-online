@@ -30,7 +30,7 @@ import {
   getMobileLinkActiveStyle,
   getCartBadgeStyle,
   getMenuButtonStyle,
-} from "./headerStyle";
+} from "../styles/headerStyle";
 
 interface HeaderProps {
   cartItemCount: number;
